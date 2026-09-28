@@ -1,0 +1,5 @@
+'use strict';
+const menuButton=document.querySelector('.menu-toggle');const navigation=document.querySelector('.site-nav');
+if(menuButton&&navigation){menuButton.addEventListener('click',()=>{const open=navigation.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));});navigation.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navigation.classList.remove('open');menuButton.setAttribute('aria-expanded','false');}));}
+document.querySelectorAll('.pricing-tab').forEach(tab=>tab.addEventListener('click',()=>{document.querySelectorAll('.pricing-tab,.price-panel').forEach(el=>el.classList.remove('active'));tab.classList.add('active');document.getElementById(tab.dataset.target).classList.add('active');}));
+document.querySelectorAll('.faq-list details,.faq-page details').forEach(detail=>detail.addEventListener('toggle',()=>{if(detail.open){detail.parentElement.querySelectorAll('details').forEach(other=>{if(other!==detail)other.removeAttribute('open');});}}));document.getElementById('year')?.append(new Date().getFullYear());
