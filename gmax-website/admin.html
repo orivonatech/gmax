@@ -16,6 +16,7 @@
 @media(max-width:1050px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.image-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:800px){.admin{grid-template-columns:1fr}.sidebar{position:relative;height:auto;padding:14px}.brand{padding-bottom:14px;margin-bottom:12px}.nav{display:flex;overflow:auto}.nav button{width:auto;white-space:nowrap}.main{padding:22px 16px}.top{align-items:flex-start;gap:13px;flex-direction:column}.row{grid-template-columns:1fr}}
 @media(max-width:520px){.cards,.image-grid{grid-template-columns:1fr}.panel{padding:20px}.welcome{padding:22px}.top h1{font-size:24px}}
+.list-editor{display:grid;gap:14px}.list-row{border:1px solid var(--line);border-radius:7px;padding:16px;background:#fbfcfd}.list-row-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}.list-row-head strong{color:var(--navy)}.mini-btn{border:1px solid var(--line);background:#fff;padding:7px 10px;border-radius:4px;cursor:pointer;color:var(--navy);font-weight:700}.preview-thumb{width:120px;height:80px;object-fit:contain;border:1px solid var(--line);border-radius:5px;background:#fff;margin-bottom:8px}.upload-line{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 </style>
 <style>
 .admin-gated{display:none!important}.publish-bar{position:sticky;bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:15px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:9px;padding:13px 16px;margin:24px 0}.publish-actions{display:flex;gap:8px;flex-wrap:wrap}.publish-actions button{border:1px solid var(--line);background:#fff;color:var(--navy);padding:10px 14px;border-radius:5px;font-weight:700;cursor:pointer}.publish-actions .publish{background:var(--orange);color:#fff;border:0}.publish-actions .danger{color:#c33}.publish-meta{color:var(--muted)}.login-gate{position:fixed;inset:0;background:linear-gradient(135deg,#092852,#123f84);display:flex;align-items:center;justify-content:center;z-index:10000;padding:20px}.login-card-g{background:#fff;width:min(430px,100%);border-radius:12px;padding:34px;box-shadow:0 20px 60px rgba(0,0,0,.2)}.login-card-g h1{color:#092852;margin:0 0 4px}.login-card-g p{color:#7b8794;margin:0 0 24px}.login-card-g input{width:100%;padding:11px;border:1px solid #ccd4df;border-radius:5px;margin:6px 0 14px}.login-card-g button{width:100%;background:#f58220;color:#fff;border:0;padding:12px;border-radius:5px;font-weight:800}.login-error-g{color:#c33;font-weight:700;margin-top:12px;display:none}
@@ -33,6 +34,7 @@
 <button data-page="faq"><i class="fa-solid fa-circle-question"></i>FAQ</button>
 <button data-page="contact"><i class="fa-solid fa-address-book"></i>Contact</button>
 <button data-page="images"><i class="fa-solid fa-images"></i>Images</button>
+<button data-page="settings"><i class="fa-solid fa-sliders"></i>Website Settings</button>
 </nav>
 </aside>
 <main class="main">
@@ -47,6 +49,7 @@
 <div class="card"><div class="card-icon"><i class="fa-solid fa-tags"></i></div><h2>Pricing</h2><p>Manage packages, prices, durations and data allowances.</p><button class="edit" data-open="pricing">Edit</button></div>
 <div class="card"><div class="card-icon"><i class="fa-solid fa-circle-question"></i></div><h2>FAQ</h2><p>Manage frequently asked questions and answers.</p><button class="edit" data-open="faq">Edit</button></div>
 <div class="card"><div class="card-icon"><i class="fa-solid fa-address-book"></i></div><h2>Contact</h2><p>Manage the G-MAX address, email and phone.</p><button class="edit" data-open="contact">Edit</button></div>
+<div class="card"><div class="card-icon"><i class="fa-solid fa-sliders"></i></div><h2>Website Settings</h2><p>Change logo, favicon, colors, menu, social links, WhatsApp and visual settings.</p><button class="edit" data-open="settings">Edit</button></div>
 </div>
 </section>
 
@@ -64,14 +67,7 @@ Understanding, delivering our commitments and being trustworthy</textarea></div>
 <section id="about" class="section"><div class="panel"><h2>About G-MAX</h2><div class="field"><label>G-MAX LTD description</label><textarea>An Internet Service Provider (ISP) company registered in Rwanda with a license issued by Rwanda Utility Regulatory Agency (RURA) and in partnership with Korea Telecom Rwanda Networks (KTRN) to provide Internet access to end users.</textarea></div><button class="save" data-save>Save Changes</button><span class="status">Saved</span></div></section>
 
 <section id="services" class="section"><div class="panel"><h2>Services</h2>
-<div class="service"><h3>Telecom Solutions</h3><div class="field"><label>Description</label><textarea>Building tomorrow’s connectivity today
-Design, deploy, and optimize robust telecom networks with our end-to-end solutions</textarea></div></div>
-<div class="service"><h3>Enterprise Networking</h3><div class="field"><label>Description</label><textarea>Secure, high-performance networks for the digital age
-Design and deploy wired/wireless networks that keep your business connected</textarea></div></div>
-<div class="service"><h3>CCTV</h3><div class="field"><label>Description</label><textarea>Protect what matters most
-Install intelligent surveillance systems with AI-powered analytics, remote monitoring, and 24/7 threat detection</textarea></div></div>
-<div class="service"><h3>IT Services</h3><div class="field"><label>Description</label><textarea>Your 24/7 technology partner
-Proactive IT support, cybersecurity, and system maintenance to keep your business running smoothly.</textarea></div></div>
+<div id="service-editor-list"></div>
 <button class="save" data-save>Save Changes</button><span class="status">Saved</span></div></section>
 
 <section id="pricing" class="section"><div class="panel"><h2>Pricing</h2>
@@ -86,21 +82,54 @@ Proactive IT support, cybersecurity, and system maintenance to keep your busines
 <button class="save" data-save>Save Changes</button><span class="status">Saved</span></div></section>
 
 <section id="faq" class="section"><div class="panel"><h2>FAQ</h2>
-<div class="faq-item"><h3>What is G-MAX Ltd?</h3><div class="field"><label>Answer</label><textarea>G-MAX Ltd is an Internet Service Provider registered in Rwanda.</textarea></div></div>
-<div class="faq-item"><h3>Where is G-MAX Ltd located?</h3><div class="field"><label>Answer</label><textarea>Ubumwe House, KG 5 Ave, 2nd Floor, Kigali</textarea></div></div>
-<div class="faq-item"><h3>Does G-MAX Ltd provide services to businesses?</h3><div class="field"><label>Answer</label><textarea>Yes.</textarea></div></div>
-<div class="faq-item"><h3>What principles guide G-MAX Ltd's services for corporate customers?</h3><div class="field"><label>Answer</label><textarea>Stability, Flexibility, Dedication.</textarea></div></div>
+<div id="faq-editor-list"></div>
 <button class="save" data-save>Save Changes</button><span class="status">Saved</span></div></section>
 
 <section id="contact" class="section"><div class="panel"><h2>Contact</h2><div class="field"><label>Office Address</label><input value="Ubumwe House, KG 5 Ave, 2nd Floor, Kigali"></div><div class="field"><label>Email</label><input value="sales@gmax.co.rw"></div><div class="field"><label>Phone</label><input value="+250788304259"></div><button class="save" data-save>Save Changes</button><span class="status">Saved</span></div></section>
 
-<section id="images" class="section"><div class="panel"><h2>Images</h2><div class="image-grid">
-<div class="image-box"><img src="assets/images/connections.jpg" alt=""><div>connections.jpg</div><div class="image-actions"><button type="button">Manage</button></div></div>
-<div class="image-box"><img src="assets/images/4glt.jpg" alt=""><div>4glt.jpg</div><div class="image-actions"><button type="button">Manage</button></div></div>
-<div class="image-box"><img src="assets/images/Faster.jpg" alt=""><div>Faster.jpg</div><div class="image-actions"><button type="button">Manage</button></div></div>
-<div class="image-box"><img src="assets/images/office.jpg" alt=""><div>office.jpg</div><div class="image-actions"><button type="button">Manage</button></div></div>
-</div></div></section>
-</main></div>
+<section id="images" class="section"><div class="panel"><h2>Website Images</h2>
+<div class="note">Upload replacement images here. The manager can change the image used by the homepage or About page without editing code.</div>
+<div id="media-editor-list"></div>
+<button class="save" data-save>Save Image Settings</button><span class="status">Saved</span></div></section>
+<section id="settings" class="section">
+<div class="panel"><h2>Branding</h2><div class="note">These settings control the common visual identity of the website. Uploading a file commits it to the website assets; saving settings publishes the path in your draft.</div>
+<div class="row">
+<div class="field"><label>Company / brand name</label><input data-setting="brandName"></div>
+<div class="field"><label>Tagline</label><input data-setting="tagline"></div>
+</div>
+<div class="row">
+<div class="field"><label>Logo path</label><input data-setting="logo"></div>
+<div class="field"><label>Favicon path</label><input data-setting="favicon"></div>
+</div>
+<div class="row">
+<div class="field"><label>Upload new logo</label><input id="logoUpload" type="file" accept=".svg,.png,.jpg,.jpeg,.webp"></div>
+<div class="field"><label>Upload new favicon</label><input id="faviconUpload" type="file" accept=".svg,.png,.ico"></div>
+</div>
+<div class="row">
+<div class="field"><label>Primary color</label><input data-color="primary" type="color"></div>
+<div class="field"><label>Secondary / dark color</label><input data-color="secondary" type="color"></div>
+</div>
+<div class="row">
+<div class="field"><label>Accent color</label><input data-color="accent" type="color"></div>
+<div class="field"><label>Success color</label><input data-color="success" type="color"></div>
+</div>
+</div>
+<div class="panel"><h2>Navigation</h2><div id="nav-editor-list"></div></div>
+<div class="panel"><h2>Social Media</h2><div id="social-editor-list"></div></div>
+<div class="panel"><h2>Floating Buttons</h2>
+<div class="row"><div class="field"><label>WhatsApp number</label><input data-setting="whatsapp.number"></div><div class="field"><label>WhatsApp label</label><input data-setting="whatsapp.label"></div></div>
+<div class="row"><div class="field"><label>WhatsApp enabled</label><select data-setting="whatsapp.enabled"><option value="true">Enabled</option><option value="false">Disabled</option></select></div><div class="field"><label>Scroll-down button enabled</label><select data-setting="scrollDown.enabled"><option value="true">Enabled</option><option value="false">Disabled</option></select></div></div>
+<div class="field"><label>Scroll-down icon</label><input data-setting="scrollDown.icon"></div>
+</div>
+<div class="panel"><h2>Homepage Visuals</h2>
+<div class="row"><div class="field"><label>Hero background image path</label><input data-setting="homepage.heroImage"></div><div class="field"><label>Hero button label</label><input data-setting="homepage.heroButton.label"></div></div>
+<div class="field"><label>Hero button link</label><input data-setting="homepage.heroButton.url"></div>
+<div class="row"><div class="field"><label>Everywhere title</label><input data-setting="homepage.everywhere.title"></div><div class="field"><label>Everywhere subtitle</label><input data-setting="homepage.everywhere.subtitle"></div></div>
+<div class="field"><label>Everywhere description</label><input data-setting="homepage.everywhere.description"></div>
+<div class="field"><label>Everywhere image path</label><input data-setting="homepage.everywhere.image"></div>
+</div>
+<div class="panel"><h2>Footer</h2><div class="field"><label>Copyright text</label><input data-setting="footerCopyright"></div><button class="save" data-save>Save Settings</button><span class="status">Saved</span></div>
+</section></main></div>
 <script>
 const DATA_URL='data/content.json', DRAFT_KEY='gmax-admin-draft-v1';
 let siteData=null;
@@ -115,43 +144,57 @@ function setField(label,value){
   const l=labels.find(x=>x.textContent.trim().toLowerCase()===label.toLowerCase());
   if(l){const el=l.parentElement.querySelector('input,textarea'); if(el) el.value=value||'';}
 }
+function getPath(obj,path,def=''){return path.split('.').reduce((a,k)=>a&&a[k]!==undefined?a[k]:undefined,obj)??def}
+function setPath(obj,path,value){const keys=path.split('.');let cur=obj;keys.forEach((k,i)=>{if(i===keys.length-1)cur[k]=value;else cur=cur[k]||(cur[k]={})})}
 function collectData(){
   if(!siteData)return;
   const labels=[...document.querySelectorAll('.field label')];
   const read=(label)=>{const l=labels.find(x=>x.textContent.trim().toLowerCase()===label.toLowerCase());return l?.parentElement.querySelector('input,textarea')?.value||'';};
-  siteData.homepage.heroHeading=read('Hero heading');
-  siteData.homepage.heroSubtitle=read('Hero subtitle');
-  siteData.homepage.heroDescription=read('Hero description');
-  siteData.homepage.about=read('About G-MAX');
-  siteData.homepage.mission=read('Our Mission');
-  siteData.homepage.vision=read('Our Vision');
-  siteData.homepage.commitments=read('Core Commitments').split(/\n+/).map(x=>x.trim()).filter(Boolean);
+  siteData.homepage.heroHeading=read('Hero heading');siteData.homepage.heroSubtitle=read('Hero subtitle');siteData.homepage.heroDescription=read('Hero description');siteData.homepage.about=read('About G-MAX');siteData.homepage.mission=read('Our Mission');siteData.homepage.vision=read('Our Vision');siteData.homepage.commitments=read('Core Commitments').split(/\n+/).map(x=>x.trim()).filter(Boolean);
   siteData.about.description=read('G-MAX LTD description');
-  const serviceAreas=[...document.querySelectorAll('#services .service textarea')];
-  siteData.services.forEach((s,i)=>{if(serviceAreas[i])s.description=serviceAreas[i].value;});
-  const pricingGroups=['promo','volume','daily','mup'];
-  pricingGroups.forEach((group,gi)=>{
-    const tables=[...document.querySelectorAll('#pricing .pricing-table')];
-    const table=tables[gi]; if(!table)return;
-    siteData.pricing[group]=[...table.querySelectorAll('tbody tr')].map(row=>[...row.querySelectorAll('input')].map(x=>x.value));
-  });
-  siteData.faq=[...document.querySelectorAll('#faq .faq-item')].map(item=>({question:item.querySelector('h3')?.textContent||'',answer:item.querySelector('textarea')?.value||''}));
+  siteData.services=[...document.querySelectorAll('#service-editor-list .service-edit')].map(row=>({name:row.querySelector('[data-service-name]')?.value||'',icon:row.querySelector('[data-service-icon]')?.value||'fa-solid fa-circle',description:row.querySelector('textarea')?.value||''}));
+  siteData.pricing=['promo','volume','daily','mup'].reduce((out,group,gi)=>{const table=document.querySelectorAll('#pricing .pricing-table')[gi];if(table)out[group]=[...table.querySelectorAll('tbody tr')].map(row=>[...row.querySelectorAll('input')].map(x=>x.value));return out},{});
+  siteData.faq=[...document.querySelectorAll('#faq-editor-list .faq-edit')].map(row=>({question:row.querySelector('[data-faq-question]')?.value||'',answer:row.querySelector('textarea')?.value||''}));
   siteData.contact={address:read('Office Address'),email:read('Email'),phone:read('Phone')};
-  siteData.status='draft'; siteData.updatedAt=new Date().toISOString();
+  siteData.site=siteData.site||{};
+  document.querySelectorAll('[data-setting]').forEach(el=>setPath(siteData,el.dataset.setting,el.tagName==='SELECT'?el.value:el.value));
+  siteData.site.colors=siteData.site.colors||{};
+  document.querySelectorAll('[data-color]').forEach(el=>siteData.site.colors[el.dataset.color]=el.value);
+  siteData.site.nav=[...document.querySelectorAll('#nav-editor-list .nav-edit')].map(row=>({label:row.querySelector('[data-nav-label]')?.value||'',url:row.querySelector('[data-nav-url]')?.value||'',visible:row.querySelector('[data-nav-visible]')?.checked!==false}));
+  siteData.site.social=[...document.querySelectorAll('#social-editor-list .social-edit')].map(row=>({name:row.querySelector('[data-social-name]')?.value||'',url:row.querySelector('[data-social-url]')?.value||'',icon:row.querySelector('[data-social-icon]')?.value||'fa-brands fa-globe',visible:row.querySelector('[data-social-visible]')?.checked!==false}));
+  siteData.status='draft';siteData.updatedAt=new Date().toISOString();
   return siteData;
 }
+function renderServices(items){
+  const box=document.getElementById('service-editor-list');box.className='list-editor';box.innerHTML='';
+  const icons=['fa-solid fa-tower-broadcast','fa-solid fa-network-wired','fa-solid fa-video','fa-solid fa-laptop-code','fa-solid fa-server','fa-solid fa-shield-halved','fa-solid fa-wifi','fa-solid fa-cloud','fa-solid fa-satellite-dish','fa-solid fa-microchip'];
+  items.forEach((s,i)=>{const row=document.createElement('div');row.className='service-edit list-row';row.innerHTML='<div class="list-row-head"><strong>Service '+(i+1)+'</strong></div><div class="row"><div class="field"><label>Name</label><input data-service-name></div><div class="field"><label>Icon</label><select data-service-icon>'+icons.map(x=>'<option value="'+x+'">'+x.replace('fa-solid fa-','')+'</option>').join('')+'</select></div></div><div class="field"><label>Description</label><textarea></textarea></div>';row.querySelector('[data-service-name]').value=s.name||'';row.querySelector('[data-service-icon]').value=s.icon||icons[i%icons.length];row.querySelector('textarea').value=s.description||'';box.appendChild(row)})
+}
+function renderFaq(items){
+  const box=document.getElementById('faq-editor-list');box.className='list-editor';box.innerHTML='';
+  items.forEach((item,i)=>{const row=document.createElement('div');row.className='faq-edit list-row';row.innerHTML='<div class="list-row-head"><strong>Question '+(i+1)+'</strong></div><div class="field"><label>Question</label><input data-faq-question></div><div class="field"><label>Answer</label><textarea></textarea></div>';row.querySelector('[data-faq-question]').value=item.question||'';row.querySelector('textarea').value=item.answer||'';box.appendChild(row)})
+}
+function renderMedia(data){
+  const box=document.getElementById('media-editor-list');box.className='list-editor';box.innerHTML='';
+  const items=data.images||[];items.forEach((item,i)=>{const row=document.createElement('div');row.className='list-row media-edit';row.innerHTML='<div class="list-row-head"><strong>'+((item.label||item.name||'Image')+'')+'</strong></div><div class="upload-line"><img class="preview-thumb" src="'+(item.path||'')+'" alt=""><input data-media-path style="flex:1" value="'+(item.path||'')+'"><input data-media-file type="file" accept=".svg,.png,.jpg,.jpeg,.webp,.gif"><button class="mini-btn" type="button" data-upload>Upload</button></div>';row.querySelector('[data-upload]').onclick=()=>uploadMedia(row);box.appendChild(row)})
+}
+function renderSettings(data){
+  const s=data.site||{};document.querySelectorAll('[data-setting]').forEach(el=>{const v=getPath(data,el.dataset.setting,'');el.value=typeof v==='boolean'?String(v):v});
+  document.querySelectorAll('[data-color]').forEach(el=>el.value=s.colors?.[el.dataset.color]||'#123f84');
+  const nb=document.getElementById('nav-editor-list');nb.className='list-editor';nb.innerHTML='';(s.nav||[]).forEach((n,i)=>{const row=document.createElement('div');row.className='nav-edit list-row';row.innerHTML='<div class="row"><div class="field"><label>Label</label><input data-nav-label></div><div class="field"><label>URL</label><input data-nav-url></div></div><label><input type="checkbox" data-nav-visible> Visible</label>';row.querySelector('[data-nav-label]').value=n.label||'';row.querySelector('[data-nav-url]').value=n.url||'';row.querySelector('[data-nav-visible]').checked=n.visible!==false;nb.appendChild(row)});
+  const sb=document.getElementById('social-editor-list');sb.className='list-editor';sb.innerHTML='';(s.social||[]).forEach(n=>{const row=document.createElement('div');row.className='social-edit list-row';row.innerHTML='<div class="row"><div class="field"><label>Name</label><input data-social-name></div><div class="field"><label>Icon class</label><input data-social-icon></div></div><div class="row"><div class="field"><label>Profile URL</label><input data-social-url></div><label><input type="checkbox" data-social-visible> Visible</label></div>';row.querySelector('[data-social-name]').value=n.name||'';row.querySelector('[data-social-icon]').value=n.icon||'';row.querySelector('[data-social-url]').value=n.url||'';row.querySelector('[data-social-visible]').checked=n.visible!==false;sb.appendChild(row)})
+}
+async function uploadMedia(row){
+  const file=row.querySelector('[data-media-file]')?.files?.[0];const path=row.querySelector('[data-media-path]');if(!file||!path?.value){toast2('Choose a file and enter its website asset path.');return}
+  const reader=new FileReader();reader.onload=async()=>{try{const r=await fetch('/api/upload',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify({path:path.value,contentBase64:String(reader.result).split(',')[1]||''})});const d=await r.json();if(!r.ok)throw Error(d.error||'Upload failed');row.querySelector('img').src=path.value+'?t='+Date.now();toast2('Image uploaded successfully. Save settings next.')}catch(e){toast2(e.message)}};reader.readAsDataURL(file)
+}
+document.getElementById('logoUpload')?.addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;const input=document.querySelector('[data-setting="logo"]');const path='assets/logo/'+file.name;document.querySelector('[data-setting="logo"]').value=path;const reader=new FileReader();reader.onload=async()=>{try{const r=await fetch('/api/upload',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify({path,contentBase64:String(reader.result).split(',')[1]||''})});const d=await r.json();if(!r.ok)throw Error(d.error||'Upload failed');toast2('Logo uploaded. Save Settings to use it.')}catch(err){toast2(err.message)}};reader.readAsDataURL(file)});
+document.getElementById('faviconUpload')?.addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;const path='assets/logo/'+file.name;document.querySelector('[data-setting="favicon"]').value=path;const reader=new FileReader();reader.onload=async()=>{try{const r=await fetch('/api/upload',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify({path,contentBase64:String(reader.result).split(',')[1]||''})});const d=await r.json();if(!r.ok)throw Error(d.error||'Upload failed');toast2('Favicon uploaded. Save Settings to use it.')}catch(err){toast2(err.message)}};reader.readAsDataURL(file)});
 function populate(data){
   siteData=structuredClone(data);
-  setField('Hero heading',data.homepage.heroHeading);setField('Hero subtitle',data.homepage.heroSubtitle);
-  setField('Hero description',data.homepage.heroDescription);setField('About G-MAX',data.homepage.about);
-  setField('Our Mission',data.homepage.mission);setField('Our Vision',data.homepage.vision);
-  setField('Core Commitments',data.homepage.commitments.join('\n'));
-  setField('G-MAX LTD description',data.about.description);
-  [...document.querySelectorAll('#services .service textarea')].forEach((el,i)=>el.value=data.services[i]?.description||'');
-  const groups=['promo','volume','daily','mup'];
-  groups.forEach((g,gi)=>{const table=document.querySelectorAll('#pricing .pricing-table')[gi];if(!table)return;[...table.querySelectorAll('tbody tr')].forEach((row,ri)=>[...row.querySelectorAll('input')].forEach((el,ci)=>el.value=data.pricing[g]?.[ri]?.[ci]||''));});
-  [...document.querySelectorAll('#faq .faq-item')].forEach((item,i)=>{item.querySelector('textarea').value=data.faq[i]?.answer||'';});
-  setField('Office Address',data.contact.address);setField('Email',data.contact.email);setField('Phone',data.contact.phone);
+  setField('Hero heading',getPath(data,'homepage.heroHeading'));setField('Hero subtitle',getPath(data,'homepage.heroSubtitle'));setField('Hero description',getPath(data,'homepage.heroDescription'));setField('About G-MAX',getPath(data,'homepage.about'));setField('Our Mission',getPath(data,'homepage.mission'));setField('Our Vision',getPath(data,'homepage.vision'));setField('Core Commitments',(data.homepage?.commitments||[]).join('\n'));setField('G-MAX LTD description',getPath(data,'about.description'));setField('Office Address',getPath(data,'contact.address'));setField('Email',getPath(data,'contact.email'));setField('Phone',getPath(data,'contact.phone'));
+  renderServices(data.services||[]);renderFaq(data.faq||[]);renderMedia(data);renderSettings(data);
+  const groups=['promo','volume','daily','mup'];groups.forEach((g,gi)=>{const table=document.querySelectorAll('#pricing .pricing-table')[gi];if(!table)return;table.innerHTML='<thead>'+table.querySelector('thead').innerHTML+'</thead><tbody></tbody>';const body=table.querySelector('tbody');(data.pricing?.[g]||[]).forEach(row=>{const tr=document.createElement('tr');row.forEach(v=>{const td=document.createElement('td');const input=document.createElement('input');input.value=v||'';td.appendChild(input);tr.appendChild(td)});body.appendChild(tr)})});
 }
 function saveDraft(){
   const data=collectData(); localStorage.setItem(DRAFT_KEY,JSON.stringify(data));
