@@ -114,6 +114,15 @@ Understanding, delivering our commitments and being trustworthy</textarea></div>
 <div class="field"><label>Success color</label><input data-color="success" type="color"></div>
 </div>
 </div>
+<div class="panel"><h2>Page Titles & Section Headings</h2>
+<div class="row"><div class="field"><label>About page title</label><input data-setting="about.pageTitle"></div><div class="field"><label>About section heading</label><input data-setting="about.sectionTitle"></div></div>
+<div class="row"><div class="field"><label>Services page title</label><input data-setting="servicesPage.pageTitle"></div><div class="field"><label>Services section heading</label><input data-setting="servicesPage.sectionTitle"></div></div>
+<div class="row"><div class="field"><label>Pricing page title</label><input data-setting="pricingPage.pageTitle"></div><div class="field"><label>Pricing section heading</label><input data-setting="pricingPage.sectionTitle"></div></div>
+<div class="row"><div class="field"><label>FAQ page title</label><input data-setting="faqPage.pageTitle"></div><div class="field"><label>FAQ section heading</label><input data-setting="faqPage.sectionTitle"></div></div>
+<div class="row"><div class="field"><label>Contact page title</label><input data-setting="contactPage.pageTitle"></div><div class="field"><label>Contact section heading</label><input data-setting="contactPage.sectionTitle"></div></div>
+<div class="row"><div class="field"><label>Homepage About heading</label><input data-setting="homepage.sectionTitles.about"></div><div class="field"><label>Homepage Commitments heading</label><input data-setting="homepage.sectionTitles.commitments"></div></div>
+<div class="field"><label>Homepage Services heading</label><input data-setting="homepage.sectionTitles.services"></div>
+</div>
 <div class="panel"><h2>Navigation</h2><div id="nav-editor-list"></div></div>
 <div class="panel"><h2>Social Media</h2><div id="social-editor-list"></div></div>
 <div class="panel"><h2>Floating Buttons</h2>
@@ -161,7 +170,7 @@ function collectData(){
   siteData.site.colors=siteData.site.colors||{};
   document.querySelectorAll('[data-color]').forEach(el=>siteData.site.colors[el.dataset.color]=el.value);
   siteData.site.nav=[...document.querySelectorAll('#nav-editor-list .nav-edit')].map(row=>({label:row.querySelector('[data-nav-label]')?.value||'',url:row.querySelector('[data-nav-url]')?.value||'',visible:row.querySelector('[data-nav-visible]')?.checked!==false}));
-  siteData.site.social=[...document.querySelectorAll('#social-editor-list .social-edit')].map(row=>({name:row.querySelector('[data-social-name]')?.value||'',url:row.querySelector('[data-social-url]')?.value||'',icon:row.querySelector('[data-social-icon]')?.value||'fa-brands fa-globe',visible:row.querySelector('[data-social-visible]')?.checked!==false}));
+  const mediaRows=[...document.querySelectorAll('#media-editor-list .media-edit')];siteData.images=mediaRows.map(row=>{const old=(siteData.images||[]).find(x=>x.role===row.dataset.role)||{};return {...old,path:row.querySelector('[data-media-path]')?.value||old.path||''}});siteData.images.forEach(item=>{if(item.role==='promo1')siteData.homepage.images[0]=item.path;if(item.role==='promo2'){siteData.homepage.images[1]=item.path;siteData.homepage.everywhere.image=item.path}if(item.role==='promo3')siteData.homepage.images[2]=item.path;if(item.role==='about')siteData.about.image=item.path});siteData.site.social=[...document.querySelectorAll('#social-editor-list .social-edit')].map(row=>({name:row.querySelector('[data-social-name]')?.value||'',url:row.querySelector('[data-social-url]')?.value||'',icon:row.querySelector('[data-social-icon]')?.value||'fa-brands fa-globe',visible:row.querySelector('[data-social-visible]')?.checked!==false}));
   siteData.status='draft';siteData.updatedAt=new Date().toISOString();
   return siteData;
 }
@@ -176,7 +185,7 @@ function renderFaq(items){
 }
 function renderMedia(data){
   const box=document.getElementById('media-editor-list');box.className='list-editor';box.innerHTML='';
-  const items=data.images||[];items.forEach((item,i)=>{const row=document.createElement('div');row.className='list-row media-edit';row.innerHTML='<div class="list-row-head"><strong>'+((item.label||item.name||'Image')+'')+'</strong></div><div class="upload-line"><img class="preview-thumb" src="'+(item.path||'')+'" alt=""><input data-media-path style="flex:1" value="'+(item.path||'')+'"><input data-media-file type="file" accept=".svg,.png,.jpg,.jpeg,.webp,.gif"><button class="mini-btn" type="button" data-upload>Upload</button></div>';row.querySelector('[data-upload]').onclick=()=>uploadMedia(row);box.appendChild(row)})
+  const items=data.images||[];items.forEach((item,i)=>{const row=document.createElement('div');row.className='list-row media-edit';row.dataset.role=item.role||'';row.innerHTML='<div class="list-row-head"><strong>'+((item.label||item.name||'Image')+'')+'</strong></div><div class="upload-line"><img class="preview-thumb" src="'+(item.path||'')+'" alt=""><input data-media-path style="flex:1" value="'+(item.path||'')+'"><input data-media-file type="file" accept=".svg,.png,.jpg,.jpeg,.webp,.gif"><button class="mini-btn" type="button" data-upload>Upload</button></div>';row.querySelector('[data-upload]').onclick=()=>uploadMedia(row);box.appendChild(row)})
 }
 function renderSettings(data){
   const s=data.site||{};document.querySelectorAll('[data-setting]').forEach(el=>{const v=getPath(data,el.dataset.setting,'');el.value=typeof v==='boolean'?String(v):v});
