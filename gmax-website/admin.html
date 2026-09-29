@@ -291,9 +291,9 @@ function updateStats(data){
   if(el('statFaq'))el('statFaq').textContent=(data.faq||[]).length;
   if(el('statStatus'))el('statStatus').textContent=(data.status||'draft').toUpperCase();
 }
-function refreshPreview(){const f=document.getElementById('previewFrame');if(f)f.src='index.html?preview='+Date.now()}
+function refreshPreview(){try{const d=collectData()||siteData;localStorage.setItem('gmax_preview_data',JSON.stringify(d));const f=document.getElementById('previewFrame');if(f)f.src='index.html?preview=1&t='+Date.now()}catch(e){toast2('Could not prepare preview: '+e.message)}}
 document.getElementById('previewSite')?.addEventListener('click',()=>{refreshPreview();document.querySelector('[data-page="preview"]')?.click()});
-document.getElementById('openPreview')?.addEventListener('click',()=>window.open('index.html?preview='+Date.now(),'_blank','noopener,noreferrer'));
+document.getElementById('openPreview')?.addEventListener('click',()=>{try{const d=collectData()||siteData;localStorage.setItem('gmax_preview_data',JSON.stringify(d));window.open('index.html?preview=1&t='+Date.now(),'_blank','noopener,noreferrer')}catch(e){toast2('Could not prepare preview: '+e.message)}});
 
 function saveDraft(){
   const data=collectData(); localStorage.setItem(DRAFT_KEY,JSON.stringify(data));
