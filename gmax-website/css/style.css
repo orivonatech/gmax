@@ -3,7 +3,7 @@
 
 :root{--blue:#123f84;--orange:#f58220;--green:#52b949;--navy:#092852;--light:#f5f7fa;--text:#485260;--line:#e4e8ee;--shadow:0 9px 28px rgba(9,40,82,.1)}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;direction:ltr}
 body{margin:0;color:var(--text);font:15px/1.75 'Open Sans',Arial,sans-serif;background:#fff}
 img{max-width:100%}
 a{color:inherit;text-decoration:none}
