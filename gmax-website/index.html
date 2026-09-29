@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>G-MAX | Always Ahead</title>
-<meta name="description" content="G-MAX Ltd is a Rwandan Internet Service Provider and technology solutions company.">
+<meta name="description" content="G-MAX Ltd is an Internet Service Provider registered in Rwanda.">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,32 +21,30 @@
       <span aria-hidden="true"><i class="fa-brands fa-instagram"></i></span>
     </div>
   </div>
-</div><header class="site-header">
+</div>
+<header class="site-header">
   <div class="container nav-wrap">
     <a class="logo" href="index.html"><img src="assets/logo/gmax-logo.svg" alt="G-MAX"></a>
-    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">
+    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
       <span></span><span></span><span></span><span class="sr-only">Open menu</span>
     </button>
     <nav id="site-nav" class="site-nav">
       <a class="active" href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="services.html">Services</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Contact Us</a>
+      <a class="" href="about.html">About Us</a>
+      <a class="" href="services.html">Services</a>
+      <a class="" href="faq.html">FAQ</a>
+      <a class="" href="pricing.html">Pricing</a>
+      <a class="" href="contact.html">Contact Us</a>
     </nav>
   </div>
 </header>
-
 <main>
   <section class="hero">
     <div class="hero-overlay"></div>
     <div class="container hero-content">
       <h1>Telecom Activities</h1>
       <p>Building tomorrow’s connectivity today</p>
-      <p>Design, deploy, and optimize robust telecom networks with our complete solutions.<br>
-      Whether you’re upgrading to VoLTE, expanding 4G/5G infrastructure, or streamlining<br>
-      enterprise communication systems, we ensure lightning-fast connectivity and unmatched reliability.</p>
+      <p>Design, deploy, and optimize robust telecom networks with our end-to-end solutions.</p>
       <a class="btn btn-outline hero-read-more" href="services.html">Read More</a>
     </div>
   </section>
@@ -62,20 +60,24 @@
       <div class="about-showcase-copy">
         <h2>G-MAX LTD</h2>
         <p class="about-lead">An Internet Service Provider (ISP) company registered in Rwanda with a license issued by Rwanda Utility Regulatory Agency (RURA) and in partnership with Korea Telecom Rwanda Networks (KTRN) to provide Internet access to end users.</p>
-
-        <div class="mission-vision-tabs">
-          <a href="#gmax-mission"><span>+</span> Our Mission</a>
-          <a href="#gmax-vision"><span>+</span> Our Vision</a>
-        </div>
-
-        <p id="gmax-mission" class="showcase-mission">We believe in looking towards the future with great visions and endless inventions in developing technologies, products and services to suit our customers’ needs both today and in the future to live up to the company’s motto – “Always Ahead”.</p>
-
-        <div id="gmax-vision" class="showcase-commitments">
+        <div class="mission-vision" data-mission-vision>
+  <div class="mission-vision-controls">
+    <button type="button" class="mission-vision-toggle" data-panel="mission" aria-expanded="false"><span aria-hidden="true">+</span> Our Mission</button>
+    <button type="button" class="mission-vision-toggle" data-panel="vision" aria-expanded="false"><span aria-hidden="true">+</span> Our Vision</button>
+  </div>
+  <div class="mission-vision-panel" data-panel-content="mission" hidden>
+    <p>We believe in looking towards the future with great visions and endless inventions in developing technologies, products and services to suit our customers’ needs both today and in the future to live up to the company’s motto – “Always Ahead”.</p>
+  </div>
+  <div class="mission-vision-panel" data-panel-content="vision" hidden>
+    <p>By constantly searching for technological innovations that will provide performance-enhancing solutions for our customers, and striving for the highest standards of service, we will continue to champion the advancement of Internet and Business Solutions Service Provider in Rwanda especially in services for corporate customers.</p>
+  </div>
+</div>
+        <div class="showcase-commitments">
           <h3>G-MAX’s Core Commitments</h3>
           <ul>
-            <li>Knowing it all and knowing it right.</li>
-            <li>Reading customers' minds and minding our customers.</li>
-            <li>Understanding, delivering our commitments and being trustworthy.</li>
+            <li>Knowing it all and knowing it right</li>
+            <li>Reading customers' minds and minding our customers</li>
+            <li>Understanding, delivering our commitments and being trustworthy</li>
           </ul>
         </div>
       </div>
@@ -112,24 +114,7 @@
 
   <section class="section everywhere-showcase">
     <div class="container everywhere-grid">
-      <div class="everywhere-visual">
-        <div class="everywhere-image"><img src="assets/images/office.jpg" alt="G-MAX network visual"></div>
-        <div class="everywhere-map" aria-label="G-MAX Rwanda network coverage visual">
-          <div class="map-shape">
-            <span class="map-ring ring-1"></span>
-            <span class="map-ring ring-2"></span>
-            <span class="map-ring ring-3"></span>
-            <span class="map-line line-1"></span>
-            <span class="map-line line-2"></span>
-            <span class="map-line line-3"></span>
-            <span class="map-dot dot-1"></span>
-            <span class="map-dot dot-2"></span>
-            <span class="map-dot dot-3"></span>
-            <span class="map-dot dot-4"></span>
-            <span class="map-dot dot-5"></span>
-          </div>
-        </div>
-      </div>
+      <div class="everywhere-image single"><img src="assets/images/4glt.jpg" alt="G-MAX 4G LTE promotional image"></div>
       <div class="everywhere-copy">
         <h2>We are everywhere</h2>
         <p>Expert Telecom Team</p>
@@ -138,7 +123,7 @@
     </div>
   </section>
 </main>
-
+<a class="whatsapp-widget" href="https://wa.me/250788304259" target="_blank" rel="noopener" aria-label="Chat with G-MAX on WhatsApp"><span>Need Help? Chat with us</span><strong><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></strong></a>
 <footer class="site-footer">
   <div class="container footer-content">
     <div class="footer-brand">
