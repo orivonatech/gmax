@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "status": "published",
   "updatedAt": null,
   "homepage": {
@@ -291,7 +291,12 @@
       "enabled": true,
       "icon": "fa-solid fa-chevron-down"
     },
-    "footerCopyright": "Copyright © {year} Gmax All rights reserved"
+    "footerCopyright": "Copyright © {year} Gmax All rights reserved",
+    "contactIcons": {
+      "address": "fa-solid fa-location-dot",
+      "email": "fa-regular fa-envelope",
+      "phone": "fa-solid fa-phone"
+    }
   },
   "servicesPage": {
     "pageTitle": "Our Services",
