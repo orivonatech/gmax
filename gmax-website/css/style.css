@@ -17,3 +17,5 @@
 .js-reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}.js-reveal.is-visible{opacity:1;transform:none}.site-header.is-scrolled{box-shadow:0 5px 18px rgba(9,40,82,.08)}.menu-toggle{cursor:pointer}.menu-toggle span:not(.sr-only){transition:transform .25s ease,opacity .25s ease}.menu-toggle.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}.menu-toggle.is-open span:nth-child(2){opacity:0}.menu-toggle.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 .service-icon svg{width:58px;height:58px;display:block;color:var(--orange);transition:transform .3s ease,filter .3s ease}.service-card:hover .service-icon svg{transform:translateY(-3px) scale(1.04)}.service-icon svg path,.service-icon svg circle{vector-effect:non-scaling-stroke}@media(max-width:700px){.service-icon svg{width:50px;height:50px}}
+
+.office-image{overflow:hidden}.office-image img{width:100%;height:100%;display:block;object-fit:cover}.office-image{background:#fff}
