@@ -1,37 +1,27 @@
-# G-MAX Website
+# G-MAX Website Reconstruction
 
-A static HTML, CSS and vanilla JavaScript website for G-MAX Ltd.
+A static HTML, CSS and vanilla JavaScript rebuild of the public G-MAX web presence.
 
 ## Run locally
+
+Open `index.html` directly in a browser, or run a local static server:
 
 ```bash
 cd gmax-website
 python3 -m http.server 8000
 ```
 
-Open `http://localhost:8000` in a browser.
+Then visit `http://localhost:8000`.
 
 ## Pages
 
-- `index.html` — Home
-- `about.html` — About Us
-- `services.html` — Services
-- `pricing.html` — Pricing
-- `faq.html` — Frequently Asked Questions
-- `contact.html` — Contact Us
+- Home (`index.html`)
+- About Us (`about.html`)
+- Services (`services.html`)
+- Pricing (`pricing.html`)
+- FAQ (`faq.html`)
+- Contact (`contact.html`)
 
-## Vercel deployment
+## Notes
 
-This repository intentionally keeps the website in the `gmax-website` directory. In the Vercel project settings, use:
-
-- **Framework Preset:** `Other`
-- **Root Directory:** `gmax-website`
-- **Build Command:** leave empty
-- **Output Directory:** leave empty
-- **Install Command:** leave empty
-
-Vercel will serve `index.html` at `/`, and the existing relative CSS, JavaScript, asset, and page links will work without a build step or a `vercel.json` file.
-
-## Contact form
-
-The contact form intentionally does not submit data because there is no backend or form provider configured. It directs visitors to the published email address and telephone number instead.
+The live reference website was unavailable from this execution environment (network proxy returned HTTP 403), so its current remotely hosted photography, exact package prices, and full FAQ copy could not be retrieved. The rebuild preserves the public company details and requested pricing categories, with those unavailable particulars clearly represented without inventing prices.
