@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G-MAX Admin Dashboard</title>
+<style>
+:root{--blue:#123f84;--orange:#f58220;--green:#52b949;--navy:#092852;--light:#f5f7fa;--text:#485260;--line:#e4e8ee}
+*{box-sizing:border-box}body{margin:0;background:var(--light);color:var(--text);font:15px/1.6 Arial,sans-serif}.admin{min-height:100vh;display:grid;grid-template-columns:250px 1fr}.sidebar{background:var(--navy);color:#fff;padding:28px 18px}.brand{font-size:25px;font-weight:800;color:var(--orange);margin:0 12px 36px}.brand small{display:block;color:#fff;font-size:11px;font-weight:400;margin-top:2px}.nav{display:grid;gap:6px}.nav button{border:0;background:transparent;color:#fff;text-align:left;padding:13px 14px;border-radius:6px;cursor:pointer;font-size:15px}.nav button:hover,.nav button.active{background:rgba(255,255,255,.1);color:var(--orange)}.main{padding:32px 42px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}.top h1{margin:0;color:var(--navy);font-size:30px}.manager{background:#fff;border:1px solid var(--line);padding:9px 14px;border-radius:6px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:28px}.card{background:#fff;border:1px solid var(--line);padding:25px;border-radius:8px}.card h2{margin:0 0 8px;color:var(--navy);font-size:19px}.card p{margin:0 0 18px;color:#687383}.edit{border:0;background:var(--orange);color:#fff;padding:9px 16px;border-radius:4px;cursor:pointer}.section{display:none}.section.active{display:block}.panel{background:#fff;border:1px solid var(--line);border-radius:8px;padding:28px;margin-bottom:20px}.panel h2{color:var(--navy);margin:0 0 20px}.field{margin-bottom:20px}.field label{display:block;font-weight:700;color:var(--navy);margin-bottom:7px}.field input,.field textarea{width:100%;border:1px solid #ccd4df;border-radius:5px;padding:11px;font:inherit;color:var(--text)}textarea{min-height:110px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:20px}.service{border-top:1px solid var(--line);padding:20px 0}.service:first-child{border-top:0}.service h3{color:var(--orange);margin:0 0 12px}.save{background:var(--green);color:#fff;border:0;padding:11px 22px;border-radius:5px;font-weight:700;cursor:pointer}.note{background:#fff8f1;border-left:4px solid var(--orange);padding:14px 17px;margin-bottom:22px}.status{color:var(--green);font-weight:700;display:none;margin-left:15px}.image-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.image-box{border:1px solid var(--line);border-radius:7px;overflow:hidden;background:#fff}.image-box img{width:100%;aspect-ratio:1;object-fit:cover;display:block}.image-box div{padding:12px;font-weight:700;color:var(--navy)}@media(max-width:900px){.admin{grid-template-columns:1fr}.sidebar{padding:16px}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap}.main{padding:25px 18px}.cards,.row,.image-grid{grid-template-columns:1fr}.top{align-items:flex-start;gap:15px;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="admin">
+<aside class="sidebar"><div class="brand">G-MAX<small>ADMIN DASHBOARD</small></div>
+<nav class="nav">
+<button class="active" data-page="dashboard">Dashboard</button><button data-page="homepage">Homepage</button><button data-page="about">About</button><button data-page="services">Services</button><button data-page="pricing">Pricing</button><button data-page="faq">FAQ</button><button data-page="contact">Contact</button><button data-page="images">Images</button>
+</nav></aside>
+<main class="main">
+<div class="top"><h1 id="title">Dashboard</h1><div class="manager">Manager ▾</div></div>
+<section id="dashboard" class="section active">
+<div class="note">This is the G-MAX website management area. The dashboard is currently a design preview; saving content will be connected to the website in the next step.</div>
+<div class="cards">
+<div class="card"><h2>Homepage</h2><p>Manage the homepage content, mission, vision and commitments.</p><button class="edit" data-open="homepage">Edit</button></div>
+<div class="card"><h2>Services</h2><p>Manage the four G-MAX services and their descriptions.</p><button class="edit" data-open="services">Edit</button></div>
+<div class="card"><h2>Pricing</h2><p>Manage packages, prices, durations and data allowances.</p><button class="edit" data-open="pricing">Edit</button></div>
+<div class="card"><h2>FAQ</h2><p>Manage frequently asked questions and answers.</p><button class="edit" data-open="faq">Edit</button></div>
+<div class="card"><h2>Contact</h2><p>Manage the G-MAX address, email and phone.</p><button class="edit" data-open="contact">Edit</button></div>
+<div class="card"><h2>Images</h2><p>Manage the images used on the website.</p><button class="edit" data-open="images">Manage</button></div>
+</div></section>
+<section id="homepage" class="section"><div class="panel"><h2>Homepage</h2>
+<div class="field"><label>Hero heading</label><input value="Telecom Activities"></div><div class="field"><label>Hero subtitle</label><input value="Building tomorrow’s connectivity today"></div><div class="field"><label>Hero description</label><textarea>Design, deploy, and optimize robust telecom networks with our end-to-end solutions.</textarea></div>
+<div class="field"><label>About G-MAX</label><textarea>An Internet Service Provider (ISP) company registered in Rwanda with a license issued by Rwanda Utility Regulatory Agency (RURA) and in partnership with Korea Telecom Rwanda Networks (KTRN) to provide Internet access to end users.</textarea></div>
+<div class="row"><div class="field"><label>Our Mission</label><textarea>We believe in looking towards the future with great visions and endless inventions in developing technologies, products and services to suit our customers’ needs both today and in the future to live up to the company’s motto – “Always Ahead”.</textarea></div><div class="field"><label>Our Vision</label><textarea>By constantly searching for technological innovations that will provide performance-enhancing solutions for our customers, and striving for the highest standards of service, we will continue to champion the advancement of Internet and Business Solutions Service Provider in Rwanda especially in services for corporate customers.</textarea></div></div>
+<div class="field"><label>Core Commitments</label><textarea>Knowing it all and knowing it right
+Reading customers' minds and minding our customers
+Understanding, delivering our commitments and being trustworthy</textarea></div>
+<button class="save" data-save>Save Changes</button><span class="status">Saved</span></div></section>
+<section id="about" class="section"><div class="panel"><h2>About G-MAX</h2><div class="field"><label>G-MAX LTD description</label><textarea>An Internet Service Provider (ISP) company registered in Rwanda with a license issued by Rwanda Utility Regulatory Agency (RURA) and in partnership with Korea Telecom Rwanda Networks (KTRN) to provide Internet access to end users.</textarea></div><button class="save" data-save>Save Changes</button><span class="status">Saved</span></div></section>
+<section id="services" class="section"><div class="panel"><h2>Services</h2>
+<div class="service"><h3>Telecom Solutions</h3><div class="field"><label>Description</label><textarea>Building tomorrow’s connectivity today Design, deploy, and optimize robust telecom networks with our end-to-end solutions</textarea></div></div>
+<div class="service"><h3>Enterprise Networking</h3><div class="field"><label>Description</label><textarea>Secure, high-performance networks for the digital age Design and deploy wired/wireless networks that keep your business connected</textarea></div></div>
+<div class="service"><h3>CCTV</h3><div class="field"><label>Description</label><textarea>Protect what matters most Install intelligent surveillance systems with AI-powered analytics, remote monitoring, and 24/7 threat detection</textarea></div></div>
+<div class="service"><h3>IT Services</h3><div class="field"><label>Description</label><textarea>Your 24/7 technology partner Proactive IT support, cybersecurity, and system maintenance to keep your business running smoothly.</textarea></div></div>
+<button class="save" data-save>Save Changes</button><span class="status">Saved</span></div></section>
+<section id="pricing" class="section"><div class="panel"><h2>Pricing</h2><div class="note">Pricing editor layout is ready. Package tables and editing controls will be connected to the real pricing data next.</div><button class="save" data-save>Save Changes</button><span class="status">Saved</span></div></section>
+<section id="faq" class="section"><div class="panel"><h2>FAQ</h2><div class="field"><label>Question</label><input value="What is G-MAX Ltd?"></div><div class="field"><label>Answer</label><textarea>G-MAX Ltd is an Internet Service Provider registered in Rwanda.</textarea></div><div class="field"><label>Question</label><input value="Where is G-MAX Ltd located?"></div><div class="field"><label>Answer</label><textarea>Ubumwe House, KG 5 Ave, 2nd Floor, Kigali</textarea></div><button class="save" data-save>Save Changes</button><span class="status">Saved</span></div></section>
+<section id="contact" class="section"><div class="panel"><h2>Contact</h2><div class="field"><label>Office Address</label><input value="Ubumwe House, KG 5 Ave, 2nd Floor, Kigali"></div><div class="field"><label>Email</label><input value="sales@gmax.co.rw"></div><div class="field"><label>Phone</label><input value="+250788304259"></div><button class="save" data-save>Save Changes</button><span class="status">Saved</span></div></section>
+<section id="images" class="section"><div class="panel"><h2>Images</h2><div class="image-grid"><div class="image-box"><img src="assets/images/connections.jpg"><div>connections.jpg</div></div><div class="image-box"><img src="assets/images/4glt.jpg"><div>4glt.jpg</div></div><div class="image-box"><img src="assets/images/Faster.jpg"><div>Faster.jpg</div></div><div class="image-box"><img src="assets/images/office.jpg"><div>office.jpg</div></div></div></div></section>
+</main></div>
+<script>
+const pages=document.querySelectorAll('.section'),buttons=document.querySelectorAll('[data-page]'),title=document.querySelector('#title');
+function openPage(id){pages.forEach(p=>p.classList.toggle('active',p.id===id));buttons.forEach(b=>b.classList.toggle('active',b.dataset.page===id));title.textContent=id[0].toUpperCase()+id.slice(1);window.scrollTo({top:0,behavior:'smooth'})}
+buttons.forEach(b=>b.addEventListener('click',()=>openPage(b.dataset.page)));
+document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>openPage(b.dataset.open)));
+document.querySelectorAll('[data-save]').forEach(b=>b.addEventListener('click',()=>{const s=b.nextElementSibling;s.style.display='inline';setTimeout(()=>s.style.display='none',1800)}));
+</script>
+</body></html>
