@@ -67,7 +67,7 @@ Understanding, delivering our commitments and being trustworthy</textarea></div>
 <section id="about" class="section"><div class="panel"><h2>About G-MAX</h2><div class="field"><label>G-MAX LTD description</label><textarea>An Internet Service Provider (ISP) company registered in Rwanda with a license issued by Rwanda Utility Regulatory Agency (RURA) and in partnership with Korea Telecom Rwanda Networks (KTRN) to provide Internet access to end users.</textarea></div><button class="save" data-save>Save Changes</button><span class="status">Saved</span></div></section>
 
 <section id="services" class="section"><div class="panel"><h2>Services</h2>
-<div id="service-editor-list"></div>
+<div id="service-editor-list"></div><button class="mini-btn" type="button" id="addService">+ Add Service</button>
 <button class="save" data-save>Save Changes</button><span class="status">Saved</span></div></section>
 
 <section id="pricing" class="section"><div class="panel"><h2>Pricing</h2>
@@ -82,7 +82,7 @@ Understanding, delivering our commitments and being trustworthy</textarea></div>
 <button class="save" data-save>Save Changes</button><span class="status">Saved</span></div></section>
 
 <section id="faq" class="section"><div class="panel"><h2>FAQ</h2>
-<div id="faq-editor-list"></div>
+<div id="faq-editor-list"></div><button class="mini-btn" type="button" id="addFaq">+ Add FAQ</button>
 <button class="save" data-save>Save Changes</button><span class="status">Saved</span></div></section>
 
 <section id="contact" class="section"><div class="panel"><h2>Contact</h2><div class="field"><label>Office Address</label><input value="Ubumwe House, KG 5 Ave, 2nd Floor, Kigali"></div><div class="field"><label>Email</label><input value="sales@gmax.co.rw"></div><div class="field"><label>Phone</label><input value="+250788304259"></div><button class="save" data-save>Save Changes</button><span class="status">Saved</span></div></section>
@@ -175,14 +175,24 @@ function collectData(){
   siteData.status='draft';siteData.updatedAt=new Date().toISOString();
   return siteData;
 }
-function renderServices(items){
-  const box=document.getElementById('service-editor-list');box.className='list-editor';box.innerHTML='';
+function serviceRow(s,i){
   const icons=['fa-solid fa-tower-broadcast','fa-solid fa-network-wired','fa-solid fa-video','fa-solid fa-laptop-code','fa-solid fa-server','fa-solid fa-shield-halved','fa-solid fa-wifi','fa-solid fa-cloud','fa-solid fa-satellite-dish','fa-solid fa-microchip'];
-  items.forEach((s,i)=>{const row=document.createElement('div');row.className='service-edit list-row';row.innerHTML='<div class="list-row-head"><strong>Service '+(i+1)+'</strong></div><div class="row"><div class="field"><label>Name</label><input data-service-name></div><div class="field"><label>Icon</label><select data-service-icon>'+icons.map(x=>'<option value="'+x+'">'+x.replace('fa-solid fa-','')+'</option>').join('')+'</select></div></div><div class="field"><label>Description</label><textarea></textarea></div>';row.querySelector('[data-service-name]').value=s.name||'';row.querySelector('[data-service-icon]').value=s.icon||icons[i%icons.length];row.querySelector('textarea').value=s.description||'';box.appendChild(row)})
+  const row=document.createElement('div');row.className='service-edit list-row';row.innerHTML='<div class="list-row-head"><strong>Service '+(i+1)+'</strong><button class="mini-btn" type="button" data-remove>Remove</button></div><div class="row"><div class="field"><label>Name</label><input data-service-name></div><div class="field"><label>Icon</label><select data-service-icon>'+icons.map(x=>'<option value="'+x+'">'+x.replace('fa-solid fa-','')+'</option>').join('')+'</select></div></div><div class="field"><label>Description</label><textarea></textarea></div>';
+  row.querySelector('[data-service-name]').value=s?.name||'';row.querySelector('[data-service-icon]').value=s?.icon||icons[i%icons.length];row.querySelector('textarea').value=s?.description||'';row.querySelector('[data-remove]').onclick=()=>{row.remove();renumberServices()};return row;
 }
+function renumberServices(){document.querySelectorAll('#service-editor-list .service-edit').forEach((r,i)=>{const h=r.querySelector('.list-row-head strong');if(h)h.textContent='Service '+(i+1)})}
+function renderServices(items){
+  const box=document.getElementById('service-editor-list');box.className='list-editor';box.innerHTML='';items.forEach((s,i)=>box.appendChild(serviceRow(s,i)));
+  document.getElementById('addService').onclick=()=>{box.appendChild(serviceRow({name:'New Service',icon:'fa-solid fa-circle',description:''},box.children.length));renumberServices()};
+}
+function faqRow(item,i){
+  const row=document.createElement('div');row.className='faq-edit list-row';row.innerHTML='<div class="list-row-head"><strong>Question '+(i+1)+'</strong><button class="mini-btn" type="button" data-remove>Remove</button></div><div class="field"><label>Question</label><input data-faq-question></div><div class="field"><label>Answer</label><textarea></textarea></div>';
+  row.querySelector('[data-faq-question]').value=item?.question||'';row.querySelector('textarea').value=item?.answer||'';row.querySelector('[data-remove]').onclick=()=>{row.remove();renumberFaq()};return row;
+}
+function renumberFaq(){document.querySelectorAll('#faq-editor-list .faq-edit').forEach((r,i)=>{const h=r.querySelector('.list-row-head strong');if(h)h.textContent='Question '+(i+1)})}
 function renderFaq(items){
-  const box=document.getElementById('faq-editor-list');box.className='list-editor';box.innerHTML='';
-  items.forEach((item,i)=>{const row=document.createElement('div');row.className='faq-edit list-row';row.innerHTML='<div class="list-row-head"><strong>Question '+(i+1)+'</strong></div><div class="field"><label>Question</label><input data-faq-question></div><div class="field"><label>Answer</label><textarea></textarea></div>';row.querySelector('[data-faq-question]').value=item.question||'';row.querySelector('textarea').value=item.answer||'';box.appendChild(row)})
+  const box=document.getElementById('faq-editor-list');box.className='list-editor';box.innerHTML='';items.forEach((item,i)=>box.appendChild(faqRow(item,i)));
+  document.getElementById('addFaq').onclick=()=>{box.appendChild(faqRow({question:'New question',answer:''},box.children.length));renumberFaq()};
 }
 function renderMedia(data){
   const box=document.getElementById('media-editor-list');box.className='list-editor';box.innerHTML='';
