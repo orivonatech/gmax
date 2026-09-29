@@ -263,4 +263,3 @@ p{margin:0 0 16px}
 /* Keep only the scroll-down control visible; hide the browser scrollbar. */
 html{-ms-overflow-style:none;scrollbar-width:none}
 html::-webkit-scrollbar{display:none}
-.whatsapp-widget{display:none!important}
