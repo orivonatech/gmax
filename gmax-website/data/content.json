@@ -1,0 +1,185 @@
+{
+  "version": 1,
+  "status": "published",
+  "updatedAt": null,
+  "homepage": {
+    "heroHeading": "Telecom Activities",
+    "heroSubtitle": "Building tomorrow’s connectivity today",
+    "heroDescription": "Design, deploy, and optimize robust telecom networks with our end-to-end solutions.",
+    "about": "An Internet Service Provider (ISP) company registered in Rwanda with a license issued by Rwanda Utility Regulatory Agency (RURA) and in partnership with Korea Telecom Rwanda Networks (KTRN) to provide Internet access to end users.",
+    "mission": "We believe in looking towards the future with great visions and endless inventions in developing technologies, products and services to suit our customers’ needs both today and in the future to live up to the company’s motto – “Always Ahead”.",
+    "vision": "By constantly searching for technological innovations that will provide performance-enhancing solutions for our customers, and striving for the highest standards of service, we will continue to champion the advancement of Internet and Business Solutions Service Provider in Rwanda especially in services for corporate customers.",
+    "commitments": [
+      "Knowing it all and knowing it right",
+      "Reading customers' minds and minding our customers",
+      "Understanding, delivering our commitments and being trustworthy"
+    ]
+  },
+  "about": {
+    "description": "An Internet Service Provider (ISP) company registered in Rwanda with a license issued by Rwanda Utility Regulatory Agency (RURA) and in partnership with Korea Telecom Rwanda Networks (KTRN) to provide Internet access to end users."
+  },
+  "services": [
+    {
+      "name": "Telecom Solutions",
+      "description": "Building tomorrow’s connectivity today\nDesign, deploy, and optimize robust telecom networks with our end-to-end solutions"
+    },
+    {
+      "name": "Enterprise Networking",
+      "description": "Secure, high-performance networks for the digital age\nDesign and deploy wired/wireless networks that keep your business connected"
+    },
+    {
+      "name": "CCTV",
+      "description": "Protect what matters most\nInstall intelligent surveillance systems with AI-powered analytics, remote monitoring, and 24/7 threat detection"
+    },
+    {
+      "name": "IT Services",
+      "description": "Your 24/7 technology partner\nProactive IT support, cybersecurity, and system maintenance to keep your business running smoothly."
+    }
+  ],
+  "pricing": {
+    "promo": [
+      [
+        "RWF 8,900",
+        "30 days",
+        "30GB"
+      ],
+      [
+        "RWF 3,900",
+        "30 days",
+        "11GB"
+      ]
+    ],
+    "volume": [
+      [
+        "RWF 27,500",
+        "30 days",
+        "50GB"
+      ],
+      [
+        "RWF 16,000",
+        "30 days",
+        "30GB"
+      ],
+      [
+        "RWF 5,500",
+        "30 days",
+        "10GB"
+      ],
+      [
+        "RWF 3,600",
+        "30 days",
+        "5GB"
+      ]
+    ],
+    "daily": [
+      [
+        "RF 300",
+        "1 day",
+        "1GB"
+      ],
+      [
+        "RF 100",
+        "1 day",
+        "60 MB"
+      ],
+      [
+        "RF 200",
+        "1 day",
+        "150 MB"
+      ],
+      [
+        "RF 300",
+        "1 day",
+        "300 MB"
+      ],
+      [
+        "RF 600",
+        "1 day",
+        "300 MB"
+      ]
+    ],
+    "mup": [
+      [
+        "RF 12,500",
+        "30 days",
+        "500 Mb/day"
+      ],
+      [
+        "RF 25,000",
+        "30 days",
+        "1Gb/day"
+      ],
+      [
+        "RF 68,000",
+        "30 days",
+        "3GB (Limited) /Day + 256 Kbps afterwards"
+      ],
+      [
+        "RF 96,000",
+        "30 days",
+        "4GB (Limited) /Day + 512 Kbps afterwards"
+      ],
+      [
+        "RF 39,500",
+        "30 days",
+        "2GB Per day + 256Kbps +3Mbps for E-Learning Website"
+      ],
+      [
+        "RF 33,000",
+        "30 days",
+        "Private MUP 2GB Per day +256Kbps"
+      ],
+      [
+        "RF 18,000",
+        "30 days",
+        "G-MAX New Monthly Unlimited Pack Smart 1GB Bundle"
+      ],
+      [
+        "RF 120,000",
+        "30 days",
+        "8GB MUP Ltd APP Basic"
+      ]
+    ]
+  },
+  "faq": [
+    {
+      "question": "What is G-MAX Ltd?",
+      "answer": "G-MAX Ltd is an Internet Service Provider (ISP) company registered in Rwanda. It is licensed by the Rwanda Utility Regulatory Agency (RURA) and partners with Korea Telecom Rwanda Networks (KTRN) to provide internet access to end users."
+    },
+    {
+      "question": "Where is G-MAX Ltd located?",
+      "answer": "G-MAX Ltd is located at KG 5Av. 2nd floor UBUMWE HOUSE, Kimihurura Sector, Gasabo District, Kigali City, Rwanda. Their P.O. Box is 2838, Kigali-Rwanda."
+    },
+    {
+      "question": "Does G-MAX Ltd provide services to businesses?",
+      "answer": "Yes, G-MAX Ltd provides internet and IT solutions for corporate customers."
+    },
+    {
+      "question": "What principles guide G-MAX Ltd's services for corporate customers?",
+      "answer": "G-MAX Ltd's services for corporate customers are guided by these principles:\nStability: Providing quality and stable network systems with high system security.\nFlexibility: Developing various services and solutions that are flexible, customizable to business needs, and can answer every corporate customer's need.\nDedication: Providing quality after-sale services, consultations, and quick problem-solving by a 24/7 team of experts."
+    }
+  ],
+  "contact": {
+    "address": "Ubumwe House, KG 5 Ave, 2nd Floor, Kigali",
+    "email": "sales@gmax.co.rw",
+    "phone": "+250 788304259"
+  },
+  "images": [
+    {
+      "name": "connections.jpg",
+      "path": "assets/images/connections.jpg"
+    },
+    {
+      "name": "4glt.jpg",
+      "path": "assets/images/4glt.jpg"
+    },
+    {
+      "name": "Faster.jpg",
+      "path": "assets/images/Faster.jpg"
+    },
+    {
+      "name": "office.jpg",
+      "path": "assets/images/office.jpg"
+    }
+  ]
+}
