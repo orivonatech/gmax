@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "status": "published",
   "updatedAt": null,
   "homepage": {
@@ -13,27 +13,49 @@
       "Knowing it all and knowing it right",
       "Reading customers' minds and minding our customers",
       "Understanding, delivering our commitments and being trustworthy"
-    ]
+    ],
+    "heroButton": {
+      "label": "Read More",
+      "url": "services.html"
+    },
+    "images": [
+      "assets/images/connections.jpg",
+      "assets/images/4glt.jpg",
+      "assets/images/Faster.jpg",
+      "assets/images/office.jpg"
+    ],
+    "everywhere": {
+      "title": "We are everywhere",
+      "subtitle": "Expert Telecom Team",
+      "description": "Our Team’s Dedication, Your Network’s Perfection",
+      "image": "assets/images/4glt.jpg"
+    }
   },
   "about": {
-    "description": "An Internet Service Provider (ISP) company registered in Rwanda with a license issued by Rwanda Utility Regulatory Agency (RURA) and in partnership with Korea Telecom Rwanda Networks (KTRN) to provide Internet access to end users."
+    "description": "An Internet Service Provider (ISP) company registered in Rwanda with a license issued by Rwanda Utility Regulatory Agency (RURA) and in partnership with Korea Telecom Rwanda Networks (KTRN) to provide Internet access to end users.",
+    "pageTitle": "About Us",
+    "image": "assets/images/office.jpg"
   },
   "services": [
     {
       "name": "Telecom Solutions",
-      "description": "Building tomorrow’s connectivity today\nDesign, deploy, and optimize robust telecom networks with our end-to-end solutions"
+      "description": "Building tomorrow’s connectivity today\nDesign, deploy, and optimize robust telecom networks with our end-to-end solutions",
+      "icon": "fa-solid fa-tower-broadcast"
     },
     {
       "name": "Enterprise Networking",
-      "description": "Secure, high-performance networks for the digital age\nDesign and deploy wired/wireless networks that keep your business connected"
+      "description": "Secure, high-performance networks for the digital age\nDesign and deploy wired/wireless networks that keep your business connected",
+      "icon": "fa-solid fa-network-wired"
     },
     {
       "name": "CCTV",
-      "description": "Protect what matters most\nInstall intelligent surveillance systems with AI-powered analytics, remote monitoring, and 24/7 threat detection"
+      "description": "Protect what matters most\nInstall intelligent surveillance systems with AI-powered analytics, remote monitoring, and 24/7 threat detection",
+      "icon": "fa-solid fa-video"
     },
     {
       "name": "IT Services",
-      "description": "Your 24/7 technology partner\nProactive IT support, cybersecurity, and system maintenance to keep your business running smoothly."
+      "description": "Your 24/7 technology partner\nProactive IT support, cybersecurity, and system maintenance to keep your business running smoothly.",
+      "icon": "fa-solid fa-laptop-code"
     }
   ],
   "pricing": {
@@ -167,19 +189,111 @@
   "images": [
     {
       "name": "connections.jpg",
-      "path": "assets/images/connections.jpg"
+      "path": "assets/images/connections.jpg",
+      "label": "Homepage promotional image"
     },
     {
       "name": "4glt.jpg",
-      "path": "assets/images/4glt.jpg"
+      "path": "assets/images/4glt.jpg",
+      "label": "4G LTE / everywhere image"
     },
     {
       "name": "Faster.jpg",
-      "path": "assets/images/Faster.jpg"
+      "path": "assets/images/Faster.jpg",
+      "label": "Homepage promotional image"
     },
     {
       "name": "office.jpg",
-      "path": "assets/images/office.jpg"
+      "path": "assets/images/office.jpg",
+      "label": "Office / About image"
     }
-  ]
+  ],
+  "site": {
+    "brandName": "G-MAX",
+    "tagline": "Always Ahead",
+    "logo": "assets/logo/gmax-logo.svg",
+    "favicon": "assets/logo/gmax-logo.svg",
+    "colors": {
+      "primary": "#123f84",
+      "secondary": "#092852",
+      "accent": "#f58220",
+      "success": "#52b949"
+    },
+    "nav": [
+      {
+        "label": "Home",
+        "url": "index.html",
+        "visible": true
+      },
+      {
+        "label": "About Us",
+        "url": "about.html",
+        "visible": true
+      },
+      {
+        "label": "Services",
+        "url": "services.html",
+        "visible": true
+      },
+      {
+        "label": "FAQ",
+        "url": "faq.html",
+        "visible": true
+      },
+      {
+        "label": "Pricing",
+        "url": "pricing.html",
+        "visible": true
+      },
+      {
+        "label": "Contact Us",
+        "url": "contact.html",
+        "visible": true
+      }
+    ],
+    "social": [
+      {
+        "name": "Facebook",
+        "url": "",
+        "icon": "fa-brands fa-facebook-f",
+        "visible": true
+      },
+      {
+        "name": "X",
+        "url": "",
+        "icon": "fa-brands fa-x-twitter",
+        "visible": true
+      },
+      {
+        "name": "Instagram",
+        "url": "",
+        "icon": "fa-brands fa-instagram",
+        "visible": true
+      }
+    ],
+    "whatsapp": {
+      "enabled": true,
+      "number": "+250788304259",
+      "label": "Need Help? Chat with us"
+    },
+    "scrollDown": {
+      "enabled": true,
+      "icon": "fa-solid fa-chevron-down"
+    },
+    "footerCopyright": "Copyright © {year} Gmax All rights reserved"
+  },
+  "servicesPage": {
+    "pageTitle": "Our Services",
+    "sectionTitle": "Our Services"
+  },
+  "pricingPage": {
+    "pageTitle": "Pricing",
+    "sectionTitle": "Discover Our Best Packages"
+  },
+  "faqPage": {
+    "pageTitle": "Frequently Asked Questions"
+  },
+  "contactPage": {
+    "pageTitle": "Contact Us"
+  }
 }
