@@ -314,7 +314,7 @@ function populate(data){
   });
 }
 function updateStats(data){
-  const sections=['homepage','about','services','pricing','faq','contact','site'].filter(k=>data[k]);
+  const sections=Array.isArray(data.homepage?.layout)?data.homepage.layout.filter(x=>x&&x.enabled!==false):['homepage','about','services','pricing','faq','contact','site'].filter(k=>data[k]);
   const el=id=>document.getElementById(id);
   if(el('statSections'))el('statSections').textContent=sections.length;
   if(el('statServices'))el('statServices').textContent=(data.services||[]).length;
