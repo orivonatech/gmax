@@ -211,7 +211,7 @@ async function uploadMedia(row){
 document.getElementById('logoUpload')?.addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;const input=document.querySelector('[data-setting="logo"]');const path='assets/logo/'+file.name;document.querySelector('[data-setting="logo"]').value=path;const reader=new FileReader();reader.onload=async()=>{try{const r=await fetch('/api/upload',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify({path,contentBase64:String(reader.result).split(',')[1]||''})});const d=await r.json();if(!r.ok)throw Error(d.error||'Upload failed');toast2('Logo uploaded. Save Settings to use it.')}catch(err){toast2(err.message)}};reader.readAsDataURL(file)});
 document.getElementById('faviconUpload')?.addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;const path='assets/logo/'+file.name;document.querySelector('[data-setting="favicon"]').value=path;const reader=new FileReader();reader.onload=async()=>{try{const r=await fetch('/api/upload',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify({path,contentBase64:String(reader.result).split(',')[1]||''})});const d=await r.json();if(!r.ok)throw Error(d.error||'Upload failed');toast2('Favicon uploaded. Save Settings to use it.')}catch(err){toast2(err.message)}};reader.readAsDataURL(file)});
 function addPricingRow(body,values){
-  const tr=document.createElement('tr');(values||['','','']).forEach(v=>{const td=document.createElement('td');const input=document.createElement('input');input.value=v||'';td.appendChild(input);tr.appendChild(td)});
+  const cols=Math.max(1,body.closest('table').querySelectorAll('thead th').length-1);const vals=values||[];while(vals.length<cols)vals.push('');const tr=document.createElement('tr');vals.slice(0,cols).forEach(v=>{const td=document.createElement('td');const input=document.createElement('input');input.value=v||'';td.appendChild(input);tr.appendChild(td)});
   const action=document.createElement('td');const b=document.createElement('button');b.type='button';b.className='mini-btn';b.textContent='Remove';b.onclick=()=>tr.remove();action.appendChild(b);tr.appendChild(action);body.appendChild(tr);
 }
 function populate(data){
@@ -226,7 +226,7 @@ function populate(data){
     const body=table.querySelector('tbody');
     (data.pricing?.[g]||[]).forEach(row=>addPricingRow(body,row));
     let add=table.closest('.table-wrap').nextElementSibling;if(!add||!add.matches('[data-add-pricing]')){add=document.createElement('button');add.type='button';add.className='mini-btn';add.dataset.addPricing=g;add.textContent='+ Add Package';table.closest('.table-wrap').after(add)}
-    add.onclick=()=>addPricingRow(body,['','','']);
+    add.onclick=()=>addPricingRow(body,[]);
   });
 }
 function saveDraft(){
