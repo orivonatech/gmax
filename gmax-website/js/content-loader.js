@@ -18,8 +18,9 @@ function applyGmaxSiteSettings(data){
   if(!fav){fav=document.createElement('link');fav.rel='icon';document.head.appendChild(fav)}
   if(s.favicon)fav.href=s.favicon;
   const nav=s.nav||[];
-  document.querySelectorAll('.site-nav a').forEach((a,i)=>{const n=nav[i];if(!n)return;a.textContent=n.label||a.textContent;a.href=n.url||a.href;a.style.display=n.visible===false?'none':''});
+  document.querySelectorAll('.site-nav a').forEach((a,i)=>{const n=nav[i];if(!n)return;a.textContent=n.label||a.textContent;a.href=n.url||a.href;a.style.display=n.visible===false?'none':''});document.querySelectorAll('.footer-nav a').forEach(a=>{const n=nav.find(x=>x.url===a.getAttribute('href'));if(n){a.textContent=n.label;a.style.display=n.visible===false?'none':''}});
   const social=s.social||[];
+  const ci=s.contactIcons||{};const iconMap=[ci.address||'fa-solid fa-location-dot',ci.email||'fa-regular fa-envelope',ci.phone||'fa-solid fa-phone'];document.querySelectorAll('.topbar-contact i,.footer-contact > a > i,.contact-item > i').forEach((el,i)=>{if(iconMap[i%3])el.className=iconMap[i%3]});
   document.querySelectorAll('.topbar-social span,.footer-social span').forEach((el,i)=>{
     const item=social[i];if(!item)return;
     el.style.display=item.visible===false?'none':'';
@@ -50,9 +51,19 @@ function applyGmaxSiteSettings(data){
   const ev=h.everywhere||{};
   const evImg=document.querySelector('.everywhere-image img');if(evImg&&ev.image)evImg.src=ev.image;
   const evCopy=document.querySelector('.everywhere-copy');if(evCopy){const ps=evCopy.querySelectorAll('p');text(evCopy.querySelector('h2'),ev.title);if(ps[0])text(ps[0],ev.subtitle);if(ps[1])text(ps[1],ev.description)}
-  document.querySelectorAll('.services-page .service-card,.services-preview .service-card').forEach((card,i)=>{
-    const service=(data.services||[])[i];if(!service)return;
-    const icon=card.querySelector('.service-icon');if(icon&&service.icon)icon.innerHTML='<i class="'+service.icon+'" aria-hidden="true"></i>';
+  document.querySelectorAll('.services-page .service-grid,.services-preview .service-grid').forEach(grid=>{
+    grid.innerHTML='';
+    (data.services||[]).forEach(service=>{
+      const card=document.createElement('article');card.className='service-card';
+      const icon=document.createElement('div');icon.className='service-icon';
+      const i=document.createElement('i');i.className=service.icon||'fa-solid fa-circle';i.setAttribute('aria-hidden','true');icon.appendChild(i);
+      const h=document.createElement('h3');text(h,service.name);
+      const parts=String(service.description||'').split(/\r?\n/);
+      const p1=document.createElement('p');text(p1,parts[0]||'');
+      card.append(icon,h,p1);
+      if(parts.length>1){const p2=document.createElement('p');text(p2,parts.slice(1).join(' '));card.appendChild(p2)}
+      grid.appendChild(card);
+    });
   });
   const about=data.about||{};const st=h.sectionTitles||{};text(document.querySelector('.about-showcase-copy h2'),st.about);text(document.querySelector('.showcase-commitments h3'),st.commitments);text(document.querySelector('.services-showcase-title'),st.services);
   const aboutImg=document.querySelector('.about-page-image img');if(aboutImg&&about.image)aboutImg.src=about.image;
@@ -60,8 +71,8 @@ function applyGmaxSiteSettings(data){
     '.page-hero h1':about.pageTitle||'About Us',
   };
   if(location.pathname.endsWith('/about.html')){text(document.querySelector('.page-hero h1'),about.pageTitle||'About Us');text(document.querySelector('.about-page-copy h2'),about.sectionTitle||'G-MAX LTD')}
-  if(location.pathname.endsWith('/pricing.html')){text(document.querySelector('.page-hero h1'),data.pricingPage?.pageTitle||'Pricing');text(document.querySelector('.pricing-showcase-title'),data.pricingPage?.sectionTitle||'Discover Our Best Packages')}
-  if(location.pathname.endsWith('/faq.html')){text(document.querySelector('.page-hero h1'),data.faqPage?.pageTitle||'Frequently Asked Questions');text(document.querySelector('.faq-showcase-title'),data.faqPage?.sectionTitle||'Frequently Asked Questions')}
+  if(location.pathname.endsWith('/pricing.html')){text(document.querySelector('.page-hero h1'),data.pricingPage?.pageTitle||'Pricing');text(document.querySelector('.pricing-discover h2'),data.pricingPage?.sectionTitle||'Discover Our Best Packages')}
+  if(location.pathname.endsWith('/faq.html')){text(document.querySelector('.page-hero h1'),data.faqPage?.pageTitle||'Frequently Asked Questions')}
   if(location.pathname.endsWith('/contact.html')){text(document.querySelector('.page-hero h1'),data.contactPage?.pageTitle||'Contact Us');text(document.querySelector('.contact-details h2'),data.contactPage?.sectionTitle||'G-MAX LTD')}
   const footer=document.querySelector('.copyright');if(footer&&s.footerCopyright)footer.textContent=s.footerCopyright.replace('{year}',new Date().getFullYear());
 }
