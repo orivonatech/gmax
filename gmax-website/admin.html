@@ -210,11 +210,24 @@ async function uploadMedia(row){
 }
 document.getElementById('logoUpload')?.addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;const input=document.querySelector('[data-setting="logo"]');const path='assets/logo/'+file.name;document.querySelector('[data-setting="logo"]').value=path;const reader=new FileReader();reader.onload=async()=>{try{const r=await fetch('/api/upload',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify({path,contentBase64:String(reader.result).split(',')[1]||''})});const d=await r.json();if(!r.ok)throw Error(d.error||'Upload failed');toast2('Logo uploaded. Save Settings to use it.')}catch(err){toast2(err.message)}};reader.readAsDataURL(file)});
 document.getElementById('faviconUpload')?.addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;const path='assets/logo/'+file.name;document.querySelector('[data-setting="favicon"]').value=path;const reader=new FileReader();reader.onload=async()=>{try{const r=await fetch('/api/upload',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify({path,contentBase64:String(reader.result).split(',')[1]||''})});const d=await r.json();if(!r.ok)throw Error(d.error||'Upload failed');toast2('Favicon uploaded. Save Settings to use it.')}catch(err){toast2(err.message)}};reader.readAsDataURL(file)});
+function addPricingRow(body,values){
+  const tr=document.createElement('tr');(values||['','','']).forEach(v=>{const td=document.createElement('td');const input=document.createElement('input');input.value=v||'';td.appendChild(input);tr.appendChild(td)});
+  const action=document.createElement('td');const b=document.createElement('button');b.type='button';b.className='mini-btn';b.textContent='Remove';b.onclick=()=>tr.remove();action.appendChild(b);tr.appendChild(action);body.appendChild(tr);
+}
 function populate(data){
   siteData=structuredClone(data);
   setField('Hero heading',getPath(data,'homepage.heroHeading'));setField('Hero subtitle',getPath(data,'homepage.heroSubtitle'));setField('Hero description',getPath(data,'homepage.heroDescription'));setField('About G-MAX',getPath(data,'homepage.about'));setField('Our Mission',getPath(data,'homepage.mission'));setField('Our Vision',getPath(data,'homepage.vision'));setField('Core Commitments',(data.homepage?.commitments||[]).join('\n'));setField('G-MAX LTD description',getPath(data,'about.description'));setField('Office Address',getPath(data,'contact.address'));setField('Email',getPath(data,'contact.email'));setField('Phone',getPath(data,'contact.phone'));
   renderServices(data.services||[]);renderFaq(data.faq||[]);renderMedia(data);renderSettings(data);
-  const groups=['promo','volume','daily','mup'];groups.forEach((g,gi)=>{const table=document.querySelectorAll('#pricing .pricing-table')[gi];if(!table)return;table.innerHTML='<thead>'+table.querySelector('thead').innerHTML+'</thead><tbody></tbody>';const body=table.querySelector('tbody');(data.pricing?.[g]||[]).forEach(row=>{const tr=document.createElement('tr');row.forEach(v=>{const td=document.createElement('td');const input=document.createElement('input');input.value=v||'';td.appendChild(input);tr.appendChild(td)});body.appendChild(tr)})});
+  const groups=['promo','volume','daily','mup'];groups.forEach((g,gi)=>{
+    const table=document.querySelectorAll('#pricing .pricing-table')[gi];if(!table)return;
+    const head=table.querySelector('thead tr');if(!head)return;
+    if(!head.querySelector('[data-actions-head]'))head.insertAdjacentHTML('beforeend','<th data-actions-head>Actions</th>');
+    table.querySelector('tbody').innerHTML='';
+    const body=table.querySelector('tbody');
+    (data.pricing?.[g]||[]).forEach(row=>addPricingRow(body,row));
+    let add=table.closest('.table-wrap').nextElementSibling;if(!add||!add.matches('[data-add-pricing]')){add=document.createElement('button');add.type='button';add.className='mini-btn';add.dataset.addPricing=g;add.textContent='+ Add Package';table.closest('.table-wrap').after(add)}
+    add.onclick=()=>addPricingRow(body,['','','']);
+  });
 }
 function saveDraft(){
   const data=collectData(); localStorage.setItem(DRAFT_KEY,JSON.stringify(data));
