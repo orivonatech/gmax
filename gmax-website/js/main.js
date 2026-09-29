@@ -17,9 +17,36 @@ if(menuButton&&navigation){
   }));
 }
 
+document.querySelectorAll('[data-mission-vision]').forEach(group=>{
+  const toggles=group.querySelectorAll('.mission-vision-toggle');
+  const panels=group.querySelectorAll('.mission-vision-panel');
+
+  toggles.forEach(toggle=>{
+    toggle.addEventListener('click',()=>{
+      const target=toggle.dataset.panel;
+      const isOpen=toggle.getAttribute('aria-expanded')==='true';
+
+      toggles.forEach(item=>{
+        item.setAttribute('aria-expanded','false');
+      });
+      panels.forEach(panel=>{
+        panel.hidden=true;
+      });
+
+      if(!isOpen){
+        toggle.setAttribute('aria-expanded','true');
+        const panel=group.querySelector('[data-panel-content="'+target+'"]');
+        if(panel) panel.hidden=false;
+      }
+    });
+  });
+});
+
 document.querySelectorAll('.pricing-tab').forEach(tab=>tab.addEventListener('click',()=>{
   document.querySelectorAll('.pricing-tab,.price-panel').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.pricing-tab').forEach(item=>item.setAttribute('aria-selected','false'));
   tab.classList.add('active');
+  tab.setAttribute('aria-selected','true');
   const panel=document.getElementById(tab.dataset.target);
   if(panel) panel.classList.add('active');
 }));
@@ -38,7 +65,7 @@ if(header){
   window.addEventListener('scroll',updateHeader,{passive:true});
 }
 
-const revealItems=document.querySelectorAll('.service-card,.promo-image,.everywhere-image,.section-heading,.faq-page details,.pricing-table-wrap,.contact-item,.contact-form');
+const revealItems=document.querySelectorAll('.service-card,.promo-image,.everywhere-image,.pricing-table-wrap,.faq-page details,.contact-item,.contact-note,.about-page-image');
 revealItems.forEach((item,index)=>{
   item.classList.add('js-reveal');
   item.style.transitionDelay=Math.min(index*35,280)+'ms';
