@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "status": "published",
   "updatedAt": null,
   "homepage": {
@@ -29,12 +29,19 @@
       "subtitle": "Expert Telecom Team",
       "description": "Our Team’s Dedication, Your Network’s Perfection",
       "image": "assets/images/4glt.jpg"
+    },
+    "heroImage": "assets/images/4glt.jpg",
+    "sectionTitles": {
+      "about": "G-MAX LTD",
+      "commitments": "G-MAX’s Core Commitments",
+      "services": "Our Services"
     }
   },
   "about": {
     "description": "An Internet Service Provider (ISP) company registered in Rwanda with a license issued by Rwanda Utility Regulatory Agency (RURA) and in partnership with Korea Telecom Rwanda Networks (KTRN) to provide Internet access to end users.",
     "pageTitle": "About Us",
-    "image": "assets/images/office.jpg"
+    "image": "assets/images/office.jpg",
+    "sectionTitle": "G-MAX LTD"
   },
   "services": [
     {
@@ -190,22 +197,26 @@
     {
       "name": "connections.jpg",
       "path": "assets/images/connections.jpg",
-      "label": "Homepage promotional image"
+      "label": "Homepage promotional image 1",
+      "role": "promo1"
     },
     {
       "name": "4glt.jpg",
       "path": "assets/images/4glt.jpg",
-      "label": "4G LTE / everywhere image"
+      "label": "Homepage promotional / Everywhere image",
+      "role": "promo2"
     },
     {
       "name": "Faster.jpg",
       "path": "assets/images/Faster.jpg",
-      "label": "Homepage promotional image"
+      "label": "Homepage promotional image 3",
+      "role": "promo3"
     },
     {
       "name": "office.jpg",
       "path": "assets/images/office.jpg",
-      "label": "Office / About image"
+      "label": "About page image",
+      "role": "about"
     }
   ],
   "site": {
@@ -291,9 +302,11 @@
     "sectionTitle": "Discover Our Best Packages"
   },
   "faqPage": {
-    "pageTitle": "Frequently Asked Questions"
+    "pageTitle": "Frequently Asked Questions",
+    "sectionTitle": "Frequently Asked Questions"
   },
   "contactPage": {
-    "pageTitle": "Contact Us"
+    "pageTitle": "Contact Us",
+    "sectionTitle": "G-MAX LTD"
   }
 }
