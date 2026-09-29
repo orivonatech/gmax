@@ -86,3 +86,11 @@ if('IntersectionObserver' in window){
 }
 
 document.getElementById('year')?.append(new Date().getFullYear());
+
+const scrollDownButton=document.querySelector('.scroll-down-widget');
+if(scrollDownButton){
+  scrollDownButton.addEventListener('click',()=>{
+    const nextSection=document.querySelector('main > section:nth-of-type(2)');
+    if(nextSection) nextSection.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+}
