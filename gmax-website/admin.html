@@ -100,11 +100,77 @@ Proactive IT support, cybersecurity, and system maintenance to keep your busines
 </div></div></section>
 </main></div>
 <script>
+const DATA_URL='data/content.json', DRAFT_KEY='gmax-admin-draft-v1';
+let siteData=null;
+
 const pages=document.querySelectorAll('.section'),buttons=document.querySelectorAll('[data-page]'),title=document.querySelector('#title');
-function openPage(id){pages.forEach(p=>p.classList.toggle('active',p.id===id));buttons.forEach(b=>b.classList.toggle('active',b.dataset.page===id));title.textContent=id[0].toUpperCase()+id.slice(1);window.scrollTo({top:0,behavior:'smooth'})}
+function openPage(id){pages.forEach(p=>p.classList.toggle('active',p.id===id));buttons.forEach(b=>b.classList.toggle('active',b.dataset.page===id));title.textContent=id[0].toUpperCase()+id.slice(1);window.scrollTo({top:0,behavior:'smooth'});}
 buttons.forEach(b=>b.addEventListener('click',()=>openPage(b.dataset.page)));
 document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>openPage(b.dataset.open)));
-document.querySelectorAll('[data-save]').forEach(b=>b.addEventListener('click',()=>{const s=b.nextElementSibling;s.style.display='inline';setTimeout(()=>s.style.display='none',1800)}));
+
+function setField(label,value){
+  const labels=[...document.querySelectorAll('.field label')];
+  const l=labels.find(x=>x.textContent.trim().toLowerCase()===label.toLowerCase());
+  if(l){const el=l.parentElement.querySelector('input,textarea'); if(el) el.value=value||'';}
+}
+function collectData(){
+  if(!siteData)return;
+  const labels=[...document.querySelectorAll('.field label')];
+  const read=(label)=>{const l=labels.find(x=>x.textContent.trim().toLowerCase()===label.toLowerCase());return l?.parentElement.querySelector('input,textarea')?.value||'';};
+  siteData.homepage.heroHeading=read('Hero heading');
+  siteData.homepage.heroSubtitle=read('Hero subtitle');
+  siteData.homepage.heroDescription=read('Hero description');
+  siteData.homepage.about=read('About G-MAX');
+  siteData.homepage.mission=read('Our Mission');
+  siteData.homepage.vision=read('Our Vision');
+  siteData.homepage.commitments=read('Core Commitments').split(/\n+/).map(x=>x.trim()).filter(Boolean);
+  siteData.about.description=read('G-MAX LTD description');
+  const serviceAreas=[...document.querySelectorAll('#services .service textarea')];
+  siteData.services.forEach((s,i)=>{if(serviceAreas[i])s.description=serviceAreas[i].value;});
+  const pricingGroups=['promo','volume','daily','mup'];
+  pricingGroups.forEach((group,gi)=>{
+    const tables=[...document.querySelectorAll('#pricing .pricing-table')];
+    const table=tables[gi]; if(!table)return;
+    siteData.pricing[group]=[...table.querySelectorAll('tbody tr')].map(row=>[...row.querySelectorAll('input')].map(x=>x.value));
+  });
+  siteData.faq=[...document.querySelectorAll('#faq .faq-item')].map(item=>({question:item.querySelector('h3')?.textContent||'',answer:item.querySelector('textarea')?.value||''}));
+  siteData.contact={address:read('Office Address'),email:read('Email'),phone:read('Phone')};
+  siteData.status='draft'; siteData.updatedAt=new Date().toISOString();
+  return siteData;
+}
+function populate(data){
+  siteData=structuredClone(data);
+  setField('Hero heading',data.homepage.heroHeading);setField('Hero subtitle',data.homepage.heroSubtitle);
+  setField('Hero description',data.homepage.heroDescription);setField('About G-MAX',data.homepage.about);
+  setField('Our Mission',data.homepage.mission);setField('Our Vision',data.homepage.vision);
+  setField('Core Commitments',data.homepage.commitments.join('\n'));
+  setField('G-MAX LTD description',data.about.description);
+  [...document.querySelectorAll('#services .service textarea')].forEach((el,i)=>el.value=data.services[i]?.description||'');
+  const groups=['promo','volume','daily','mup'];
+  groups.forEach((g,gi)=>{const table=document.querySelectorAll('#pricing .pricing-table')[gi];if(!table)return;[...table.querySelectorAll('tbody tr')].forEach((row,ri)=>[...row.querySelectorAll('input')].forEach((el,ci)=>el.value=data.pricing[g]?.[ri]?.[ci]||''));});
+  [...document.querySelectorAll('#faq .faq-item')].forEach((item,i)=>{item.querySelector('textarea').value=data.faq[i]?.answer||'';});
+  setField('Office Address',data.contact.address);setField('Email',data.contact.email);setField('Phone',data.contact.phone);
+}
+function saveDraft(){
+  const data=collectData(); localStorage.setItem(DRAFT_KEY,JSON.stringify(data));
+  showStatus('Draft saved locally. It is not published to the public website yet.');
+}
+function showStatus(message){
+  let box=document.getElementById('admin-status');
+  if(!box){box=document.createElement('div');box.id='admin-status';box.style='position:fixed;right:24px;bottom:24px;background:#092852;color:#fff;padding:13px 17px;border-radius:7px;box;box-shadow:0 8px 24px rgba(9,40,82,.2);z-index:9999;font-weight:700';document.body.appendChild(box);}
+  box.textContent=message;box.style.display='block';clearTimeout(box._timer);box._timer=setTimeout(()=>box.style.display='none',2800);
+}
+document.querySelectorAll('[data-save]').forEach(b=>b.addEventListener('click',saveDraft));
+
+(async()=>{
+  try{
+    const response=await fetch(DATA_URL,{cache:'no-store'});
+    const published=await response.json();
+    const draft=localStorage.getItem(DRAFT_KEY);
+    populate(draft?JSON.parse(draft):published);
+    if(draft)showStatus('Draft loaded. Review your changes before publishing.');
+  }catch(e){showStatus('Could not load website content data.');console.error(e);}
+})();
 </script>
 </body>
 </html>
