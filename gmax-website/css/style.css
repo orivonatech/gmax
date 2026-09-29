@@ -259,3 +259,8 @@ p{margin:0 0 16px}
 .scroll-down-widget i{animation:scrollDownPulse 1.5s ease-in-out infinite}
 @keyframes scrollDownPulse{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
 @media(max-width:420px){.scroll-down-widget{right:14px;bottom:86px;width:44px;height:44px;font-size:16px}}
+
+/* Keep only the scroll-down control visible; hide the browser scrollbar. */
+html{-ms-overflow-style:none;scrollbar-width:none}
+html::-webkit-scrollbar{display:none}
+.whatsapp-widget{display:none!important}
