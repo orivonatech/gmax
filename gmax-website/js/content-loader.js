@@ -54,15 +54,15 @@ function applyGmaxSiteSettings(data){
     const service=(data.services||[])[i];if(!service)return;
     const icon=card.querySelector('.service-icon');if(icon&&service.icon)icon.innerHTML='<i class="'+service.icon+'" aria-hidden="true"></i>';
   });
-  const about=data.about||{};
+  const about=data.about||{};const st=h.sectionTitles||{};text(document.querySelector('.about-showcase-copy h2'),st.about);text(document.querySelector('.showcase-commitments h3'),st.commitments);text(document.querySelector('.services-showcase-title'),st.services);
   const aboutImg=document.querySelector('.about-page-image img');if(aboutImg&&about.image)aboutImg.src=about.image;
   const pageTitles={
     '.page-hero h1':about.pageTitle||'About Us',
   };
-  if(location.pathname.endsWith('/services.html'))text(document.querySelector('.page-hero h1'),data.servicesPage?.pageTitle||'Our Services');
-  if(location.pathname.endsWith('/pricing.html'))text(document.querySelector('.page-hero h1'),data.pricingPage?.pageTitle||'Pricing');
-  if(location.pathname.endsWith('/faq.html'))text(document.querySelector('.page-hero h1'),data.faqPage?.pageTitle||'Frequently Asked Questions');
-  if(location.pathname.endsWith('/contact.html'))text(document.querySelector('.page-hero h1'),data.contactPage?.pageTitle||'Contact Us');
+  if(location.pathname.endsWith('/about.html')){text(document.querySelector('.page-hero h1'),about.pageTitle||'About Us');text(document.querySelector('.about-page-copy h2'),about.sectionTitle||'G-MAX LTD')}
+  if(location.pathname.endsWith('/pricing.html')){text(document.querySelector('.page-hero h1'),data.pricingPage?.pageTitle||'Pricing');text(document.querySelector('.pricing-showcase-title'),data.pricingPage?.sectionTitle||'Discover Our Best Packages')}
+  if(location.pathname.endsWith('/faq.html')){text(document.querySelector('.page-hero h1'),data.faqPage?.pageTitle||'Frequently Asked Questions');text(document.querySelector('.faq-showcase-title'),data.faqPage?.sectionTitle||'Frequently Asked Questions')}
+  if(location.pathname.endsWith('/contact.html')){text(document.querySelector('.page-hero h1'),data.contactPage?.pageTitle||'Contact Us');text(document.querySelector('.contact-details h2'),data.contactPage?.sectionTitle||'G-MAX LTD')}
   const footer=document.querySelector('.copyright');if(footer&&s.footerCopyright)footer.textContent=s.footerCopyright.replace('{year}',new Date().getFullYear());
 }
 
