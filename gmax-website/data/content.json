@@ -196,10 +196,10 @@
       "phone": ""
     },
     "colors": {
-      "primary": "#123f84",
-      "secondary": "#123f84",
-      "accent": "#123f84",
-      "success": "#123f84"
+      "primary": "#f58220",
+      "secondary": "#092852",
+      "accent": "#f58220",
+      "success": "#52b949"
     },
     "nav": [],
     "social": []
