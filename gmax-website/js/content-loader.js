@@ -74,6 +74,29 @@ function renderHomepageLayout(data){
   });
   bindMissionVision();
 }
+function applyGmaxSeo(s){
+  const seo=s.seo||{},fallbackTitle=(s.brandName||'G-MAX')+' | '+(s.tagline||'Always Ahead');
+  const title=seo.title||fallbackTitle,description=seo.description||'';
+  document.title=title;
+  const setMeta=(name,content,property)=>{
+    if(!content)return;
+    let el=document.head.querySelector(property?'meta[property="'+property+'"]':'meta[name="'+name+'"]');
+    if(!el){el=document.createElement('meta');if(property)el.setAttribute('property',property);else el.setAttribute('name',name);document.head.appendChild(el)}
+    el.setAttribute('content',content);
+  };
+  setMeta('description',description);
+  setMeta('robots',seo.robots||'index,follow');
+  setMeta('theme-color',seo.themeColor||s.colors?.secondary||'#092852');
+  setMeta('',title,'og:title');
+  setMeta('',seo.ogDescription||description,'og:description');
+  setMeta('',seo.ogImage||'','og:image');
+  setMeta('',location.href,'og:url');
+  setMeta('', 'website','og:type');
+  let canonical=document.head.querySelector('link[rel="canonical"]');
+  if(!canonical){canonical=document.createElement('link');canonical.rel='canonical';document.head.appendChild(canonical)}
+  canonical.href=seo.canonicalUrl||'https://gmax.co.rw/';
+}
+
 function applyGmaxSiteSettings(data){
   const s=data.site||{}, h=data.homepage||{};
   renderHomepageLayout(data);
@@ -83,7 +106,7 @@ function applyGmaxSiteSettings(data){
   if(colors.secondary)root.style.setProperty('--navy',colors.secondary);
   if(colors.accent)root.style.setProperty('--orange',colors.accent);
   if(colors.success)root.style.setProperty('--green',colors.success);
-  document.title=(s.brandName||'G-MAX')+' | '+(s.tagline||'Always Ahead');
+  applyGmaxSeo(s);
   document.querySelectorAll('.logo img,.footer-logo img').forEach(img=>{if(s.logo)img.src=s.logo;img.alt=s.brandName||'G-MAX'});
   let fav=document.querySelector('link[rel="icon"]');
   if(!fav){fav=document.createElement('link');fav.rel='icon';document.head.appendChild(fav)}
