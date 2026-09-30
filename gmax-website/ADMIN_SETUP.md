@@ -4,13 +4,15 @@ The admin dashboard is now connected to a secure server-side publish API.
 
 ## What it does
 
-- Manager login with an HTTP-only signed session cookie.
+- Admin login with an HTTP-only signed session cookie.
 - Edit website content without editing code.
 - Save a local draft.
 - Preview the draft at `index.html?preview=1`.
 - Publish changes to `gmax-website/data/content.json`.
 - Keep the previous published content in `data/content.backup.json`.
-- Revert the live content to the previous published version.
+- Browse published version history from GitHub through the Admin dashboard.
+- Restore any available published content version from the Admin dashboard.
+- Automatically back up the current live version before every historical restore.
 - Public pages load their content from the published JSON.
 - The GitHub token is used only by the server API and is never placed in browser code.
 
@@ -24,8 +26,8 @@ The same code can be adapted to another serverless host later.
 
 Set these server-side environment variables:
 
-- `ADMIN_USERNAME` — manager login username.
-- `ADMIN_PASSWORD` — strong manager password.
+- `ADMIN_USERNAME` — admin login username.
+- `ADMIN_PASSWORD` — strong admin password.
 - `SESSION_SECRET` — long random secret used to sign login sessions.
 - `GITHUB_TOKEN` — GitHub token with permission to read and write repository contents.
 - `GITHUB_REPO` — optional; defaults to `orivonatech/gmax`.
@@ -44,7 +46,7 @@ Never put `GITHUB_TOKEN`, `ADMIN_PASSWORD`, or `SESSION_SECRET` in HTML, JavaScr
 7. Click **Preview** to review the draft.
 8. Click **Publish Changes**.
 9. Confirm that the public page displays the published value.
-10. If necessary, use **Revert Published** to restore the previous version.
+10. If necessary, use **Version History** to review published versions and restore a selected version. **Revert Published** remains available as a quick previous-version recovery.
 
 ## GitHub token recommendation
 
@@ -54,4 +56,4 @@ Use a fine-grained GitHub token restricted to this repository and grant only the
 
 Publishing commits the content JSON to the configured branch. If the website host automatically deploys from GitHub, the content becomes live after that deployment completes. On a host serving the repository directly, the new JSON is available immediately.
 
-The public site does not use manager drafts. Only the **Preview** URL reads the manager's local draft from that browser.
+The public site does not use admin drafts. Only the **Preview** URL reads the admin's local draft from that browser.
