@@ -13,14 +13,14 @@ p{margin:0 0 16px}
 .container{width:min(1640px,calc(100% - 120px));margin:0 auto}
 .section{padding:90px 0}
 
-.topbar{height:48px;background:var(--green);color:#fff}
+.topbar{height:38px;background:var(--green);color:#fff}
 .topbar-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
 .topbar-contact{display:flex;align-items:center;gap:22px;font-size:16px;white-space:nowrap}
 .topbar-contact span,.topbar-social span{display:inline-flex;align-items:center}
 .topbar-contact i{font-size:18px;margin-right:9px}
 .topbar-social{display:flex;gap:26px;font-size:19px}
 
-.site-header{height:112px;background:#fff;position:relative;z-index:20;border-bottom:1px solid #edf0f4;transition:box-shadow .25s ease}
+.site-header{height:100px;background:#fff;position:relative;z-index:20;border-bottom:1px solid #edf0f4;transition:box-shadow .25s ease}
 .site-header.is-scrolled{box-shadow:0 5px 18px rgba(0,0,0,.08)}
 .nav-wrap{height:100%;display:flex;align-items:center;gap:32px}
 .logo{display:flex;align-items:center;flex-shrink:0}
