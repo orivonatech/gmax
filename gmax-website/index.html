@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>G-MAX | Always Ahead</title>
-<meta name="description" content="G-MAX Ltd is an Internet Service Provider registered in Rwanda.">
+<meta name="description" content="G-MAX Ltd is an Internet Service Provider registered in Rwanda.">\n<meta name="theme-color" content="#092852">\n<meta name="robots" content="index,follow">\n<link rel="canonical" href="https://gmax.co.rw/">\n<meta property="og:type" content="website">\n<meta property="og:title" content="G-MAX | Always Ahead">\n<meta property="og:description" content="G-MAX Ltd provides internet, telecom and IT solutions in Rwanda.">\n<meta property="og:url" content="https://gmax.co.rw/">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -39,7 +39,7 @@
   </div>
 </header>
 
-<main id="home">
+<a class="skip-link" href="#home">Skip to content</a>\n<main id="home">
   <div id="homepage-builder"></div>
 </main>
 
@@ -71,17 +71,18 @@
   </div>
   <div class="container copyright">Copyright © <span id="year"></span> Gmax All rights reserved</div>
 </footer>
-<script src="js/content-loader.js"></script>
-<script src="js/main.js"></script>
+<script src="js/content-loader.js" defer></script>
+<script src="js/main.js" defer></script>
 <script>
 (function(){
-const form=document.getElementById('gmax-contact-form'),status=document.getElementById('contact-form-status');
+document.addEventListener('DOMContentLoaded',()=>{const form=document.getElementById('gmax-contact-form'),status=document.getElementById('contact-form-status');
 if(!form)return;
 form.addEventListener('submit',async e=>{
  e.preventDefault();status.textContent='Sending…';const button=form.querySelector('button');button.disabled=true;
  try{const body=Object.fromEntries(new FormData(form).entries());body.source=(window.gmaxSource&&window.gmaxSource())||document.referrer||'Website contact form';body.landingPage=location.pathname+location.hash;try{body.referrer=document.referrer?new URL(document.referrer).origin:''}catch(_){body.referrer=''}const r=await fetch('api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const d=await r.json();if(!r.ok)throw Error(d.error||'Could not send your message');if(window.gmaxTrack)window.gmaxTrack('contact_form_submit');form.reset();status.textContent=d.message||'Thank you. Your message has been received.'}
  catch(err){status.textContent=err.message||'Could not send your message. Please try again.'}
  finally{button.disabled=false}
+});
 });
 })();
 </script>
