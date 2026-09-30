@@ -1,7 +1,7 @@
 {
-  "version": 7,
+  "version": 6,
   "status": "published",
-  "updatedAt": "2026-09-30T08:27:27.378Z",
+  "updatedAt": "2026-09-30T10:29:47.865Z",
   "homepage": {
     "heroHeading": "Telecom Activities",
     "heroSubtitle": "Building tomorrow’s connectivity today",
@@ -14,9 +14,21 @@
       "Reading customers' minds and minding our customers",
       "Understanding, delivering our commitments and being trustworthy"
     ],
+    "sectionTitles": {
+      "about": "",
+      "commitments": "",
+      "services": ""
+    },
+    "heroImage": "",
     "heroButton": {
-      "label": "Read More",
-      "url": "#services"
+      "label": "",
+      "url": ""
+    },
+    "everywhere": {
+      "title": "",
+      "subtitle": "",
+      "description": "",
+      "image": ""
     },
     "images": [
       "assets/images/connections.jpg",
@@ -24,18 +36,6 @@
       "assets/images/Faster.jpg",
       "assets/images/office.jpg"
     ],
-    "everywhere": {
-      "title": "We are everywhere",
-      "subtitle": "Expert Telecom Team",
-      "description": "Our Team’s Dedication, Your Network’s Perfection",
-      "image": "assets/images/4glt.jpg"
-    },
-    "heroImage": "assets/images/4glt.jpg",
-    "sectionTitles": {
-      "about": "G-MAX LTD",
-      "commitments": "G-MAX’s Core Commitments",
-      "services": "Our Services"
-    },
     "layout": [
       {
         "id": "hero",
@@ -66,14 +66,32 @@
         "type": "everywhere",
         "label": "We are everywhere",
         "enabled": true
+      },
+      {
+        "id": "pricing",
+        "type": "pricing",
+        "label": "Pricing",
+        "enabled": true
+      },
+      {
+        "id": "faq",
+        "type": "faq",
+        "label": "FAQ",
+        "enabled": true
+      },
+      {
+        "id": "contact",
+        "type": "contact",
+        "label": "Contact Us",
+        "enabled": true
       }
     ]
   },
   "about": {
     "description": "An Internet Service Provider (ISP) company registered in Rwanda with a license issued by Rwanda Utility Regulatory Agency (RURA) and in partnership with Korea Telecom Rwanda Networks (KTRN) to provide Internet access to end users.",
-    "pageTitle": "About Us",
-    "image": "assets/images/office.jpg",
-    "sectionTitle": "G-MAX LTD"
+    "pageTitle": "",
+    "sectionTitle": "",
+    "image": "assets/images/office.jpg"
   },
   "services": [
     {
@@ -89,12 +107,12 @@
     {
       "name": "CCTV",
       "description": "Protect what matters most\nInstall intelligent surveillance systems with AI-powered analytics, remote monitoring, and 24/7 threat detection",
-      "icon": "fa-solid fa-video"
+      "icon": "fa-solid fa-satellite-dish"
     },
     {
       "name": "IT Services",
       "description": "Your 24/7 technology partner\nProactive IT support, cybersecurity, and system maintenance to keep your business running smoothly.",
-      "icon": "fa-solid fa-laptop-code"
+      "icon": "fa-solid fa-server"
     }
   ],
   "pricing": {
@@ -215,129 +233,93 @@
   },
   "images": [
     {
-      "name": "connections.jpg",
+      "role": "hero",
+      "label": "Hero background",
+      "path": "",
+      "alt": "G-MAX homepage hero"
+    },
+    {
+      "role": "promo1",
+      "label": "Homepage image 1",
       "path": "assets/images/connections.jpg",
-      "label": "Homepage promotional image 1",
-      "role": "promo1"
+      "alt": "G-MAX promotional image 1"
     },
     {
-      "name": "4glt.jpg",
+      "role": "promo2",
+      "label": "Homepage image 2",
       "path": "assets/images/4glt.jpg",
-      "label": "Homepage promotional / Everywhere image",
-      "role": "promo2"
+      "alt": "G-MAX promotional image 2"
     },
     {
-      "name": "Faster.jpg",
+      "role": "promo3",
+      "label": "Homepage image 3",
       "path": "assets/images/Faster.jpg",
-      "label": "Homepage promotional image 3",
-      "role": "promo3"
+      "alt": "G-MAX promotional image 3"
     },
     {
-      "name": "office.jpg",
+      "role": "about",
+      "label": "About image",
       "path": "assets/images/office.jpg",
-      "label": "About page image",
-      "role": "about"
+      "alt": "G-MAX office"
+    },
+    {
+      "role": "everywhere",
+      "label": "Everywhere image",
+      "path": "",
+      "alt": "G-MAX connectivity coverage"
+    },
+    {
+      "role": "og",
+      "label": "SEO social image",
+      "path": "",
+      "alt": "G-MAX social sharing image"
     }
   ],
   "site": {
-    "brandName": "G-MAX",
-    "tagline": "Always Ahead",
-    "logo": "assets/logo/gmax-logo.svg",
-    "favicon": "assets/logo/gmax-logo.svg",
+    "contactIcons": {
+      "address": "",
+      "email": "",
+      "phone": ""
+    },
     "colors": {
-      "primary": "#123f84",
-      "secondary": "#092852",
+      "primary": "#f58220",
+      "secondary": "#111111",
       "accent": "#f58220",
       "success": "#52b949"
     },
-    "nav": [
-      {
-        "label": "Home",
-        "url": "#home",
-        "visible": true
-      },
-      {
-        "label": "About Us",
-        "url": "#about",
-        "visible": true
-      },
-      {
-        "label": "Services",
-        "url": "#services",
-        "visible": true
-      },
-      {
-        "label": "FAQ",
-        "url": "#faq",
-        "visible": true
-      },
-      {
-        "label": "Pricing",
-        "url": "#pricing",
-        "visible": true
-      },
-      {
-        "label": "Contact Us",
-        "url": "#contact",
-        "visible": true
-      }
-    ],
-    "social": [
-      {
-        "name": "Facebook",
-        "url": "",
-        "icon": "fa-brands fa-facebook-f",
-        "visible": true
-      },
-      {
-        "name": "X",
-        "url": "",
-        "icon": "fa-brands fa-x-twitter",
-        "visible": true
-      },
-      {
-        "name": "Instagram",
-        "url": "",
-        "icon": "fa-brands fa-instagram",
-        "visible": true
-      }
-    ],
-    "whatsapp": {
-      "enabled": true,
-      "number": "+250788304259",
-      "label": "Need Help? Chat with us"
-    },
-    "scrollDown": {
-      "enabled": true,
-      "icon": "fa-solid fa-chevron-down"
-    },
-    "footerCopyright": "Copyright © {year} Gmax All rights reserved",
-    "contactIcons": {
-      "address": "fa-solid fa-location-dot",
-      "email": "fa-regular fa-envelope",
-      "phone": "fa-solid fa-phone"
+    "nav": [],
+    "social": [],
+    "seo": {
+      "title": "G-MAX | Always Ahead",
+      "description": "Design, deploy, and optimize robust telecom networks with our end-to-end solutions.",
+      "canonicalUrl": "https://gmax.co.rw/",
+      "ogTitle": "G-MAX | Always Ahead",
+      "ogDescription": "Design, deploy, and optimize robust telecom networks with our end-to-end solutions.",
+      "ogImage": "",
+      "robots": "index,follow",
+      "themeColor": "#111111"
     }
-  },
-  "servicesPage": {
-    "pageTitle": "Our Services",
-    "sectionTitle": "Our Services"
-  },
-  "pricingPage": {
-    "pageTitle": "Pricing",
-    "sectionTitle": "Discover Our Best Packages"
-  },
-  "faqPage": {
-    "pageTitle": "Frequently Asked Questions",
-    "sectionTitle": "Frequently Asked Questions"
-  },
-  "contactPage": {
-    "pageTitle": "Contact Us",
-    "sectionTitle": "G-MAX LTD"
   },
   "brandName": "",
   "tagline": "",
   "logo": "",
   "favicon": "",
+  "servicesPage": {
+    "pageTitle": "",
+    "sectionTitle": ""
+  },
+  "pricingPage": {
+    "pageTitle": "",
+    "sectionTitle": ""
+  },
+  "faqPage": {
+    "pageTitle": "",
+    "sectionTitle": ""
+  },
+  "contactPage": {
+    "pageTitle": "",
+    "sectionTitle": ""
+  },
   "whatsapp": {
     "number": "",
     "label": "",
@@ -345,7 +327,7 @@
   },
   "scrollDown": {
     "enabled": true,
-    "icon": "fa-solid fa-angle-down"
+    "icon": ""
   },
   "footerCopyright": "",
   "publishedBy": "admin"
