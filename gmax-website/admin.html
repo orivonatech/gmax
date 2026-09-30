@@ -69,7 +69,7 @@
 .preview-thumb{width:140px;height:90px;object-fit:contain;background:#fff}.media-library{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.media-card{display:grid;grid-template-columns:180px 1fr;gap:18px;border:1px solid var(--admin-line);border-radius:10px;background:#fff;padding:15px}.media-preview{min-height:150px;border:1px solid var(--admin-line);border-radius:8px;background:#f7f9fc;display:grid;place-items:center;overflow:hidden}.media-preview img{width:100%;height:150px;object-fit:cover}.media-role-badge{font-size:11px;background:#f1f5f9;color:#526173;border-radius:999px;padding:3px 7px}.media-usage{display:block;color:#718096;margin:-7px 0 10px}@media(max-width:760px){.media-library{grid-template-columns:1fr}.media-card{grid-template-columns:1fr}.media-preview img{height:190px}}
 .media-edit{transition:.15s}.media-edit:hover{border-color:#b8c9df!important}
 .table-wrap{overflow:auto}.pricing-table{min-width:680px;width:100%;border-collapse:separate;border-spacing:0}.pricing-table th,.pricing-table td{border-bottom:1px solid var(--admin-line);padding:9px}.pricing-table th{text-align:left;color:var(--admin-navy);background:#f7f9fc}.pricing-table input{width:100%;box-sizing:border-box;border:1px solid #d5dde8;border-radius:6px;padding:8px}
-.toast{position:fixed;right:25px;bottom:25px;background:var(--admin-navy);color:#fff;padding:13px 18px;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.18);z-index:100;display:none}
+.history-list{display:grid;gap:12px}.history-item{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;border:1px solid var(--admin-line);border-radius:9px;padding:15px;background:#fff}.history-item.current{border-color:var(--admin-orange);box-shadow:0 0 0 2px rgba(245,130,32,.08)}.history-meta strong{display:block;color:var(--admin-navy)}.history-meta small{display:block;color:#718096;margin-top:3px}.history-sha{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:#7b8794}.history-item button{white-space:nowrap}@media(max-width:600px){.history-item{grid-template-columns:1fr}.history-item button{width:100%}}.toast{position:fixed;right:25px;bottom:25px;background:var(--admin-navy);color:#fff;padding:13px 18px;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.18);z-index:100;display:none}
 .preview-frame{width:100%;height:72vh;border:1px solid var(--admin-line);border-radius:10px;background:#fff}
 .mobile-menu{display:none}
 @media(max-width:1000px){.dashboard-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -151,7 +151,7 @@ Understanding, delivering our commitments and being trustworthy</textarea></div>
 <div class="note"><strong>Admin-only media management:</strong> Each asset has a stable role, usage location and alt text. Replacing one asset does not change unrelated images, colors or layout. Uploaded files use isolated paths.</div>
 <div id="media-editor-list" class="media-library"></div>
 </div></section>
-<section id="preview" class="section"><div class="panel"><div class="admin-header"><div><h2>Website Preview</h2><p>Review the public website without leaving the admin dashboard.</p></div><div class="admin-actions"><button class="btn-secondary" id="openPreview" type="button">Open in New Tab</button></div></div><iframe class="preview-frame" id="previewFrame" src="index.html"></iframe></div></section><section id="settings" class="section">
+<section id="history" class="section"><div class="panel"><div class="panel-head"><h2>Published Version History</h2><button id="refreshHistory" class="btn-secondary" type="button">Refresh</button></div><div class="note">Admin-only history of published website content. Restoring a version creates a backup of the current live version before the selected version is published.</div><div id="historyList" class="history-list"><div class="empty">Loading version history…</div></div></div></section><section id="preview" class="section"><div class="panel"><div class="admin-header"><div><h2>Website Preview</h2><p>Review the public website without leaving the admin dashboard.</p></div><div class="admin-actions"><button class="btn-secondary" id="openPreview" type="button">Open in New Tab</button></div></div><iframe class="preview-frame" id="previewFrame" src="index.html"></iframe></div></section><section id="settings" class="section">
 <div class="panel"><h2>Branding</h2><div class="note"><strong>Safe editing:</strong> logo and favicon are independent assets. Replacing the logo changes only the logo; replacing the favicon changes only the favicon. Other website images, layout, fonts and colors are preserved unless you deliberately edit those settings. Uploaded branding files are stored in dedicated logo paths.</div>
 <div class="row">
 <div class="field"><label>Company / brand name</label><input data-setting="brandName"></div>
@@ -462,6 +462,39 @@ function showStatus(message){
     updateEditorState(draft?'Draft loaded':'Ready');
     if(draft)showStatus('Draft loaded. Autosave is active; review changes before publishing.');
   }catch(e){showStatus('Could not load website content data.');console.error(e);}
+})();
+</script>
+<script>
+(function(){
+const historySection=document.getElementById('historyList');
+function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+async function loadHistory(){
+ if(!historySection)return;
+ historySection.innerHTML='<div class="empty">Loading version history…</div>';
+ try{
+  const r=await fetch('/api/history',{credentials:'include',cache:'no-store'}),d=await r.json();
+  if(!r.ok)throw Error(d.error||'Could not load version history');
+  const currentVersion=(document.getElementById('publishedState')?.textContent||'');
+  if(!d.versions?.length){historySection.innerHTML='<div class="empty">No published versions found.</div>';return}
+  historySection.innerHTML=d.versions.map((v,i)=>{
+    const date=v.date?new Date(v.date).toLocaleString():'Unknown date';
+    const short=v.sha.slice(0,10);
+    return '<div class="history-item '+(i===0?'current':'')+'"><div class="history-meta"><strong>'+(i===0?'Current published version':'Published version '+(d.versions.length-i))+'</strong><small>'+esc(date)+' · '+esc(v.author||'Admin')+'</small><small>'+esc(v.message.split('\n')[0])+'</small><span class="history-sha">'+esc(short)+'</span></div><button class="btn-secondary" type="button" data-restore-history="'+esc(v.sha)+'" '+(i===0?'disabled':'')+'>'+(i===0?'Current':'Restore this version')+'</button></div>'
+  }).join('');
+  historySection.querySelectorAll('[data-restore-history]').forEach(btn=>btn.onclick=async()=>{
+    const sha=btn.dataset.restoreHistory;
+    if(!confirm('Restore this published version? The current live version will be backed up first.'))return;
+    btn.disabled=true;btn.textContent='Restoring…';
+    try{
+      const r=await fetch('/api/restore',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify({sha})}),d=await r.json();
+      if(!r.ok)throw Error(d.error||'Restore failed');
+      localStorage.removeItem('gmax-admin-draft-v1');toast2('Version restored and published.');setTimeout(()=>location.reload(),900);
+    }catch(e){toast2(e.message);btn.disabled=false;btn.textContent='Restore this version'}
+  });
+ }catch(e){historySection.innerHTML='<div class="empty">'+esc(e.message)+'</div>'}
+}
+document.querySelector('[data-page="history"]')?.addEventListener('click',loadHistory);
+document.getElementById('refreshHistory')?.addEventListener('click',loadHistory);
 })();
 </script>
 <div class="publish-bar"><div class="publish-meta"><strong id="draftState">Checking draft…</strong><br><span id="publishedState">Checking published version…</span></div><div class="publish-actions"><span id="autosaveState" class="autosave-state">Autosave ready</span><button id="undoChanges" type="button" title="Undo last edit">↶ Undo</button><button id="redoChanges" type="button" title="Redo last edit">↷ Redo</button><button id="previewChanges" type="button">Preview</button><button id="discardChanges" type="button">Discard Draft</button><button id="revertChanges" class="danger" type="button">Revert Published</button><button id="publishChanges" class="publish" type="button">Publish Changes</button><button id="previewSite" class="btn-secondary" type="button">Preview Website</button><button id="logoutAdmin" type="button">Log out</button></div></div><script>
