@@ -75,11 +75,16 @@
 @media(max-width:760px){.admin-shell{grid-template-columns:1fr}.admin-sidebar{display:none}.mobile-menu{display:block}.admin-content{padding:18px}.dashboard-grid,.row{grid-template-columns:1fr}.admin-header{align-items:flex-start;flex-direction:column}.admin-search{min-width:0;width:100%}}
 </style><style>
 .layout-editor{display:grid;gap:10px}.layout-row{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;border:1px solid var(--admin-line);background:#f8fafc;border-radius:10px;padding:12px;cursor:grab}.layout-row.dragging{opacity:.45}.layout-handle{color:#8a97a8;font-size:18px}.layout-main{min-width:0}.layout-main strong{display:block;color:var(--admin-navy)}.layout-main small{color:#7b8794}.layout-actions{display:flex;gap:7px;align-items:center}.layout-actions button{border:1px solid var(--admin-line);background:#fff;border-radius:7px;padding:7px 9px;cursor:pointer;color:var(--admin-navy)}.layout-actions .remove-layout{color:#b42318}.layout-actions input{accent-color:var(--admin-orange)}.custom-fields{margin-top:12px;padding:14px;background:#fff;border:1px solid var(--admin-line);border-radius:9px}.layout-add{display:flex;gap:10px;align-items:center;margin-top:14px}.layout-add select{flex:1;border:1px solid #d5dde8;border-radius:7px;padding:10px;background:#fff}.custom-section{padding:78px 0;background:#fff}.custom-section:nth-child(even){background:#f7f9fc}.custom-section-inner{text-align:center}.custom-section-inner h2{font-size:40px;color:var(--admin-navy);margin:0 0 12px}.custom-section-subtitle{font-size:20px;color:var(--admin-orange);margin:0 0 12px}.custom-section-text{max-width:850px;margin:0 auto 25px;font-size:18px;line-height:1.8;color:#333}.custom-section-image{display:block;max-width:850px;width:100%;max-height:430px;object-fit:cover;border-radius:10px;margin:20px auto}.custom-section-button{display:inline-block}.commitments-section{padding:55px 0;background:#f7f9fc}.commitments-section .showcase-commitments{max-width:900px;margin:auto}
+</style><style>
+.brand{padding:12px 12px 22px}.brand-mark{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 14px;border:2px solid var(--orange);border-radius:6px;background:#fff;color:var(--navy);font-size:25px;font-weight:900;letter-spacing:.4px}.brand small{margin-top:9px}
+.admin-header{min-height:70px;padding:14px 0 18px;border-bottom:1px solid var(--line)}.header-title{display:flex;flex-direction:column;gap:0}.header-kicker{font-size:10px;line-height:1.2;letter-spacing:1.5px;font-weight:800;color:var(--orange)}.admin-header h1{line-height:1.2}.header-actions{display:flex;align-items:center;gap:10px}.header-action{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;color:var(--navy);padding:9px 13px;border-radius:6px;font:700 13px "Open Sans",Arial,sans-serif;cursor:pointer}.header-action:hover{border-color:var(--orange);color:var(--orange)}.header-action i{color:var(--orange)}
+@media(max-width:800px){.admin-header{padding:10px 0 16px}.header-actions{width:100%;justify-content:flex-start}.header-action{flex:1;justify-content:center}.admin-header .admin{padding:9px 12px}.header-kicker{font-size:9px}}
+@media(max-width:520px){.header-action span{display:none}.header-action{flex:0 0 42px;justify-content:center;padding:10px}.admin-header .admin span{display:none}}
 </style></head>
 <body><div id="loginGate" class="login-gate"><form id="loginGateForm" class="login-card-g"><h1>G-MAX</h1><p>Secure website administration</p><label>Username</label><input id="adminUser" autocomplete="username" required><label>Password</label><input id="adminPass" type="password" autocomplete="current-password" required><button type="submit">Sign in</button><div id="loginErr" class="login-error-g"></div></form></div>
 <div class="admin admin-gated">
 <aside class="sidebar">
-<div class="brand"><strong>G-MAX</strong><small>ADMIN DASHBOARD</small></div>
+<div class="brand"><div class="brand-mark"><span>G-MAX</span></div><small>ADMIN DASHBOARD</small></div>
 <nav class="nav">
 <button class="active" data-page="dashboard"><i class="fa-solid fa-gauge"></i>Dashboard</button>
 <button data-page="homepage"><i class="fa-solid fa-house"></i>Homepage</button>
@@ -89,10 +94,12 @@
 <button data-page="faq"><i class="fa-solid fa-circle-question"></i>FAQ</button>
 <button data-page="contact"><i class="fa-solid fa-address-book"></i>Contact</button><button data-page="images"><i class="fa-solid fa-images"></i>Images</button>
 <button data-page="settings"><i class="fa-solid fa-sliders"></i>Website Settings</button>
+<button data-page="history"><i class="fa-solid fa-clock-rotate-left"></i>History</button>
+<button data-page="preview"><i class="fa-solid fa-display"></i>Preview</button>
 </nav>
 </aside>
 <main class="main">
-<div class="top"><h1 id="title">Dashboard</h1><div class="admin"><i class="fa-solid fa-user-shield"></i> Admin</div></div>
+<header class="top admin-header"><div class="header-title"><span class="header-kicker">G-MAX WEBSITE</span><h1 id="title">Dashboard</h1></div><div class="header-actions"><button type="button" class="header-action" id="openPreview" title="Open public website preview"><i class="fa-solid fa-arrow-up-right-from-square"></i><span>Preview Website</span></button><div class="admin"><i class="fa-solid fa-user-shield"></i><span>Admin</span></div></div></header>
 
 <section id="dashboard" class="section active">
 <div class="welcome"><h2>G-MAX Website Management</h2><p>Manage the content used by the G-MAX website from one place.</p></div>
