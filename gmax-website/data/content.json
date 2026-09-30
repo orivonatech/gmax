@@ -291,7 +291,7 @@
     },
     "colors": {
       "primary": "#f58220",
-      "secondary": "#092852",
+      "secondary": "#111111",
       "accent": "#f58220",
       "success": "#52b949"
     },
@@ -336,7 +336,7 @@
       "ogDescription": "Design, deploy, and optimize robust telecom networks with our end-to-end solutions.",
       "ogImage": "",
       "robots": "index,follow",
-      "themeColor": "#092852"
+      "themeColor": "#111111"
     }
   },
   "brandName": "",
