@@ -1,7 +1,7 @@
 {
   "version": 7,
   "status": "published",
-  "updatedAt": "2026-09-30T12:30:47.952Z",
+  "updatedAt": "2026-09-30T13:07:11.343Z",
   "homepage": {
     "heroHeading": "Telecom Activities",
     "heroSubtitle": "Building tomorrow’s connectivity today",
@@ -19,16 +19,16 @@
       "commitments": "",
       "services": ""
     },
-    "heroImage": "assets/images/connections.jpg",
+    "heroImage": "",
     "heroButton": {
-      "label": "Read More",
-      "url": "#services"
+      "label": "",
+      "url": ""
     },
     "everywhere": {
       "title": "",
       "subtitle": "",
       "description": "",
-      "image": "assets/images/gmax-everywhere-1790771367560jpg"
+      "image": "assets/images/gmax-everywhere-1790773601341jpg"
     },
     "images": [
       "assets/images/connections.jpg",
@@ -85,43 +85,6 @@
         "label": "Contact Us",
         "enabled": true
       }
-    ],
-    "heroSlides": [
-      {
-        "title": "Telecom Activities",
-        "subtitle": "Building tomorrow’s connectivity today",
-        "description": "Design, deploy, and optimize robust telecom networks with our complete solutions.\nWhether you’re upgrading to VoLTE, expanding 4G/5G infrastructure, or streamlining\nenterprise communication systems, we ensure lightning-fast connectivity and unmatched reliability.",
-        "buttonLabel": "Read More",
-        "url": "#services"
-      },
-      {
-        "title": "Computer Programming",
-        "subtitle": "Code that transforms ideas into results",
-        "description": "Leverage bespoke software solutions engineered to solve your unique business\nchallenges. Our team builds scalable web/mobile apps, ERP systems, and automation\ntools that drive efficiency and innovation.",
-        "buttonLabel": "Read More",
-        "url": "#services"
-      },
-      {
-        "title": "Networking",
-        "subtitle": "Secure, high-performance networks for the digital age",
-        "description": "Design and deploy wired/wireless networks that keep your business connected. From LAN/WAN configuration to advanced cybersecurity protocols, we create infrastructure that scales with your ambitions.",
-        "buttonLabel": "Read More",
-        "url": "#contact"
-      },
-      {
-        "title": "CCTV Camera Installation",
-        "subtitle": "Protect what matters most",
-        "description": "Install intelligent surveillance systems with AI-powered analytics, remote monitoring,\nand 24/7 threat detection. Our CCTV solutions deter risks, enhance safety, and provide\nactionable insights for businesses of all sizes.",
-        "buttonLabel": "Read More",
-        "url": "#services"
-      },
-      {
-        "title": "IT Services &Maintenance",
-        "subtitle": "Your 24/7 technology partner",
-        "description": "Proactive IT support, cybersecurity, and system maintenance to keep your business\nrunning smoothly. We minimize downtime, secure your data, and ensure your\ntechnology always works for you not against you.",
-        "buttonLabel": "Read More",
-        "url": "#services"
-      }
     ]
   },
   "about": {
@@ -134,30 +97,22 @@
     {
       "name": "Telecom Solutions",
       "description": "Building tomorrow’s connectivity today\nDesign, deploy, and optimize robust telecom networks with our end-to-end solutions",
-      "icon": "fa-solid fa-tower-broadcast",
-      "linkLabel": "Read More",
-      "url": ""
+      "icon": "fa-solid fa-tower-broadcast"
     },
     {
       "name": "Enterprise Networking",
       "description": "Secure, high-performance networks for the digital age\nDesign and deploy wired/wireless networks that keep your business connected",
-      "icon": "fa-solid fa-network-wired",
-      "linkLabel": "Read More",
-      "url": ""
+      "icon": "fa-solid fa-network-wired"
     },
     {
       "name": "CCTV",
       "description": "Protect what matters most\nInstall intelligent surveillance systems with AI-powered analytics, remote monitoring, and 24/7 threat detection",
-      "icon": "fa-solid fa-satellite-dish",
-      "linkLabel": "Read More",
-      "url": ""
+      "icon": "fa-solid fa-satellite-dish"
     },
     {
       "name": "IT Services",
       "description": "Your 24/7 technology partner\nProactive IT support, cybersecurity, and system maintenance to keep your business running smoothly.",
-      "icon": "fa-solid fa-server",
-      "linkLabel": "Read More",
-      "url": ""
+      "icon": "fa-solid fa-server"
     }
   ],
   "pricing": {
@@ -310,7 +265,7 @@
     {
       "role": "everywhere",
       "label": "Everywhere image",
-      "path": "assets/images/gmax-everywhere-1790771367560jpg",
+      "path": "assets/images/gmax-everywhere-1790773601341jpg",
       "alt": "G-MAX connectivity coverage"
     },
     {
