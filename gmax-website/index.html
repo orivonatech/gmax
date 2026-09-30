@@ -71,6 +71,14 @@
         <div class="contact-item"><i class="fa-solid fa-phone" aria-hidden="true"></i><div><strong>Phone</strong><a href=""></a></div></div>
       </div>
       <div class="contact-note"><p></p></div>
+      <div class="contact-form-wrap">
+        <h2>Send us a message</h2>
+        <form id="gmax-contact-form" class="gmax-contact-form">
+          <div class="row"><label>Name<input name="name" maxlength="120" required></label><label>Email<input name="email" type="email" maxlength="160" required></label></div>
+          <div class="row"><label>Phone<input name="phone" maxlength="40"></label><label>Message<textarea name="message" maxlength="3000" required></textarea></label></div>
+          <button type="submit">Send Message</button><p id="contact-form-status" aria-live="polite"></p>
+        </form>
+      </div>
     </div>
   </section></section>
 </main>
@@ -105,5 +113,17 @@
 </footer>
 <script src="js/content-loader.js"></script>
 <script src="js/main.js"></script>
+<script>
+(function(){
+const form=document.getElementById('gmax-contact-form'),status=document.getElementById('contact-form-status');
+if(!form)return;
+form.addEventListener('submit',async e=>{
+ e.preventDefault();status.textContent='Sending…';const button=form.querySelector('button');button.disabled=true;
+ try{const body=Object.fromEntries(new FormData(form).entries());const r=await fetch('api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const d=await r.json();if(!r.ok)throw Error(d.error||'Could not send your message');form.reset();status.textContent=d.message||'Thank you. Your message has been received.'}
+ catch(err){status.textContent=err.message||'Could not send your message. Please try again.'}
+ finally{button.disabled=false}
+});
+})();
+</script>
 </body>
 </html>
