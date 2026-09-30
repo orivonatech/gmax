@@ -37,7 +37,7 @@ function renderHomepageLayout(data){
     const type=sec.type||'custom';
     if(type==='hero'){
       const el=document.createElement('section');el.id='hero';el.className='hero';
-      el.innerHTML='<div class="hero-overlay"></div><div class="container hero-content"><h1></h1><p></p><p></p><a class="btn btn-outline hero-read-more" href=""></a></div>';root.appendChild(el);
+      el.innerHTML='<div class="hero-overlay"></div><div class="hero-carousel" data-hero-carousel><div class="hero-slides" data-hero-slides></div><button class="hero-carousel-arrow hero-carousel-prev" type="button" aria-label="Previous slide"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button><button class="hero-carousel-arrow hero-carousel-next" type="button" aria-label="Next slide"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button><div class="hero-carousel-dots" data-hero-dots aria-label="Hero slides"></div></div>';root.appendChild(el);
     }else if(type==='about'){
       const el=document.createElement('section');el.id='about';el.className='section about-showcase';
       el.innerHTML='<div class="container about-showcase-grid"><div class="promo-grid" aria-label="G-MAX promotional images"><div class="promo-image"><img alt="G-MAX promotional image"></div><div class="promo-image"><img alt="G-MAX promotional image"></div><div class="promo-image"><img alt="G-MAX promotional image"></div><div class="promo-image"><img alt="G-MAX promotional image"></div></div><div class="about-showcase-copy"><h2></h2><p class="about-lead"></p><div class="mission-vision"><div class="mission-vision-controls"><button type="button" class="mission-vision-toggle" data-panel="mission" aria-expanded="false"><span aria-hidden="true">+</span> Our Mission</button><button type="button" class="mission-vision-toggle" data-panel="vision" aria-expanded="false"><span aria-hidden="true">+</span> Our Vision</button></div><div class="mission-vision-panel" data-panel-content="mission" hidden><p></p></div><div class="mission-vision-panel" data-panel-content="vision" hidden><p></p></div></div><div class="showcase-commitments"><h3></h3><ul></ul></div></div></div>';root.appendChild(el);
@@ -69,6 +69,35 @@ function renderHomepageLayout(data){
   });
   bindMissionVision();
 }
+function renderHeroCarousel(data){
+  const root=document.querySelector('.hero[data-carousel-ready]')||document.querySelector('.hero');
+  if(!root)return;
+  const h=data.homepage||{};
+  const slides=Array.isArray(h.heroSlides)&&h.heroSlides.length?h.heroSlides:[{title:h.heroHeading||'',subtitle:h.heroSubtitle||'',description:h.heroDescription||'',buttonLabel:(h.heroButton||{}).label||'Read More',url:(h.heroButton||{}).url||'#services'}];
+  const track=root.querySelector('[data-hero-slides]'),dots=root.querySelector('[data-hero-dots]');
+  if(!track||!dots)return;
+  track.innerHTML='';dots.innerHTML='';
+  slides.forEach((slide,index)=>{
+    const item=document.createElement('article');item.className='hero-slide'+(index===0?' is-active':'');item.setAttribute('aria-hidden',index===0?'false':'true');
+    const content=document.createElement('div');content.className='container hero-content';
+    const title=document.createElement('h1');text(title,slide.title);const sub=document.createElement('p');text(sub,slide.subtitle);const desc=document.createElement('p');lines(desc,slide.description);
+    content.append(title,sub,desc);
+    if(slide.buttonLabel&&slide.url){const a=document.createElement('a');a.className='btn btn-outline hero-read-more';a.href=slide.url;a.textContent=slide.buttonLabel;content.appendChild(a)}
+    item.appendChild(content);track.appendChild(item);
+    const dot=document.createElement('button');dot.type='button';dot.className='hero-carousel-dot'+(index===0?' is-active':'');dot.setAttribute('aria-label','Go to slide '+(index+1));dot.setAttribute('aria-selected',index===0?'true':'false');dot.dataset.index=index;dots.appendChild(dot);
+  });
+  root.dataset.carouselReady='1';
+  root._heroIndex=0;
+  const setSlide=(next)=>{const total=slides.length;root._heroIndex=(next+total)%total;track.querySelectorAll('.hero-slide').forEach((s,i)=>{const active=i===root._heroIndex;s.classList.toggle('is-active',active);s.setAttribute('aria-hidden',active?'false':'true')});dots.querySelectorAll('.hero-carousel-dot').forEach((d,i)=>{const active=i===root._heroIndex;d.classList.toggle('is-active',active);d.setAttribute('aria-selected',active?'true':'false')})};
+  const prev=root.querySelector('.hero-carousel-prev'),next=root.querySelector('.hero-carousel-next');
+  if(prev)prev.onclick=()=>setSlide(root._heroIndex-1);if(next)next.onclick=()=>setSlide(root._heroIndex+1);
+  dots.querySelectorAll('.hero-carousel-dot').forEach(d=>d.onclick=()=>setSlide(Number(d.dataset.index)));
+  if(root._heroTimer)clearInterval(root._heroTimer);
+  if(slides.length>1)root._heroTimer=setInterval(()=>setSlide(root._heroIndex+1),6000);
+  root.addEventListener('mouseenter',()=>{if(root._heroTimer)clearInterval(root._heroTimer)},{once:false});
+  root.addEventListener('mouseleave',()=>{if(slides.length>1){if(root._heroTimer)clearInterval(root._heroTimer);root._heroTimer=setInterval(()=>setSlide(root._heroIndex+1),6000)}},{once:false});
+}
+
 function applyGmaxSeo(s){
   const seo=s.seo||{},fallbackTitle=(s.brandName||'G-MAX')+' | '+(s.tagline||'Always Ahead');
   const title=seo.title||fallbackTitle,description=seo.description||'';
@@ -95,6 +124,7 @@ function applyGmaxSeo(s){
 function applyGmaxSiteSettings(data){
   const s=data.site||{}, h=data.homepage||{};
   renderHomepageLayout(data);
+  renderHeroCarousel(data);
   applyGmaxContent(data);
   const root=document.documentElement;
   const colors=s.colors||{};
