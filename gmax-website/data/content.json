@@ -1,7 +1,7 @@
 {
   "version": 8,
   "status": "published",
-  "updatedAt": "2026-09-30T13:09:30.239Z",
+  "updatedAt": "2026-09-30T13:39:32.674Z",
   "homepage": {
     "heroHeading": "Telecom Activities",
     "heroSubtitle": "Building tomorrow’s connectivity today",
@@ -19,16 +19,16 @@
       "commitments": "",
       "services": ""
     },
-    "heroImage": "assets/images/connections.jpg",
+    "heroImage": "",
     "heroButton": {
-      "label": "Read More",
-      "url": "#services"
+      "label": "",
+      "url": ""
     },
     "everywhere": {
       "title": "",
       "subtitle": "",
       "description": "",
-      "image": "assets/images/gmax-everywhere-1790773766872jpg"
+      "image": "assets/images/gmax-everywhere-1790773601341jpg"
     },
     "images": [
       "assets/images/connections.jpg",
@@ -97,30 +97,22 @@
     {
       "name": "Telecom Solutions",
       "description": "Building tomorrow’s connectivity today\nDesign, deploy, and optimize robust telecom networks with our end-to-end solutions",
-      "icon": "fa-solid fa-tower-broadcast",
-      "linkLabel": "Read More",
-      "url": ""
+      "icon": "fa-solid fa-tower-broadcast"
     },
     {
       "name": "Enterprise Networking",
       "description": "Secure, high-performance networks for the digital age\nDesign and deploy wired/wireless networks that keep your business connected",
-      "icon": "fa-solid fa-network-wired",
-      "linkLabel": "Read More",
-      "url": ""
+      "icon": "fa-solid fa-network-wired"
     },
     {
       "name": "CCTV",
       "description": "Protect what matters most\nInstall intelligent surveillance systems with AI-powered analytics, remote monitoring, and 24/7 threat detection",
-      "icon": "fa-solid fa-satellite-dish",
-      "linkLabel": "Read More",
-      "url": ""
+      "icon": "fa-solid fa-satellite-dish"
     },
     {
       "name": "IT Services",
       "description": "Your 24/7 technology partner\nProactive IT support, cybersecurity, and system maintenance to keep your business running smoothly.",
-      "icon": "fa-solid fa-server",
-      "linkLabel": "Read More",
-      "url": ""
+      "icon": "fa-solid fa-server"
     }
   ],
   "pricing": {
@@ -243,7 +235,7 @@
     {
       "role": "hero",
       "label": "Hero background",
-      "path": "assets/images/connections.jpg",
+      "path": "",
       "alt": "G-MAX homepage hero"
     },
     {
@@ -273,7 +265,7 @@
     {
       "role": "everywhere",
       "label": "Everywhere image",
-      "path": "assets/images/gmax-everywhere-1790773766872jpg",
+      "path": "assets/images/gmax-everywhere-1790773601341jpg",
       "alt": "G-MAX connectivity coverage"
     },
     {
@@ -291,7 +283,7 @@
     },
     "colors": {
       "primary": "#f58220",
-      "secondary": "#092852",
+      "secondary": "#111111",
       "accent": "#f58220",
       "success": "#52b949"
     },
@@ -336,7 +328,7 @@
       "ogDescription": "Design, deploy, and optimize robust telecom networks with our end-to-end solutions.",
       "ogImage": "",
       "robots": "index,follow",
-      "themeColor": "#092852"
+      "themeColor": "#111111"
     }
   },
   "brandName": "",
