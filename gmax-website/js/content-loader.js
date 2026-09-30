@@ -167,7 +167,6 @@ function applyGmaxSiteSettings(data){
     '.page-hero h1':about.pageTitle||'About Us',
   };
   if(location.pathname.endsWith('/about.html')){text(document.querySelector('.page-hero h1'),about.pageTitle||'About Us');text(document.querySelector('.about-page-copy h2'),about.sectionTitle||'G-MAX LTD')}
-  if(location.pathname.endsWith('/pricing.html')){text(document.querySelector('.page-hero h1'),data.pricingPage?.pageTitle||'Pricing');text(document.querySelector('.pricing-discover h2'),data.pricingPage?.sectionTitle||'Discover Our Best Packages')}
   if(location.pathname.endsWith('/faq.html')){text(document.querySelector('.page-hero h1'),data.faqPage?.pageTitle||'Frequently Asked Questions')}
   if(location.pathname.endsWith('/contact.html')){text(document.querySelector('.page-hero h1'),data.contactPage?.pageTitle||'Contact Us');text(document.querySelector('.contact-details h2'),data.contactPage?.sectionTitle||'G-MAX LTD')}
   const footer=document.querySelector('.copyright');if(footer&&s.footerCopyright)footer.textContent=s.footerCopyright.replace('{year}',new Date().getFullYear());
