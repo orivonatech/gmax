@@ -308,7 +308,8 @@ function renderMedia(data){
     {role:'promo2',label:'Homepage image 2',path:(data.homepage?.images||[])[1]||'',usage:'Homepage promotional grid',target:'homepage.images.1'},
     {role:'promo3',label:'Homepage image 3',path:(data.homepage?.images||[])[2]||'',usage:'Homepage promotional grid',target:'homepage.images.2'},
     {role:'about',label:'About image',path:getPath(data,'about.image','')||(data.homepage?.images||[])[3]||'',usage:'About page',target:'about.image'},
-    {role:'everywhere',label:'Everywhere image',path:getPath(data,'homepage.everywhere.image',''),usage:'Homepage “We are everywhere” section',target:'homepage.everywhere.image'}
+    {role:'everywhere',label:'Everywhere image',path:getPath(data,'homepage.everywhere.image',''),usage:'Homepage “We are everywhere” section',target:'homepage.everywhere.image'},
+    {role:'og',label:'SEO social image',path:getPath(data,'site.seo.ogImage',''),usage:'Open Graph / social sharing image',target:'site.seo.ogImage'}
   ];
   const existing=data.images||[];
   roles.forEach(item=>{
