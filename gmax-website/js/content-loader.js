@@ -102,10 +102,11 @@ function applyGmaxSiteSettings(data){
   const hb=h.heroButton||{};
   const btn=document.querySelector('.hero-read-more');
   if(btn){if(hb.label)btn.textContent=hb.label;if(hb.url)btn.href=hb.url}
-  const promo=Array.isArray(h.images)&&h.images.length?h.images:(data.images||[]).map(x=>typeof x==='string'?x:x?.path).filter(Boolean);
-  document.querySelectorAll('.promo-grid img').forEach((img,i)=>{if(promo[i])img.src=promo[i]});
+  const media=data.images||[];const mediaByRole=role=>{const item=media.find(x=>x&&x.role===role);return item||{}};
+  const promo=Array.isArray(h.images)&&h.images.length?h.images:(data.images||[]).filter(x=>/^promo[1-3]$/.test(x?.role||'')).map(x=>x.path).filter(Boolean);
+  document.querySelectorAll('.promo-grid img').forEach((img,i)=>{if(promo[i])img.src=promo[i];const meta=mediaByRole('promo'+(i+1));img.alt=meta.alt||'G-MAX promotional image'});
   const ev=h.everywhere||{};
-  const evImg=document.querySelector('.everywhere-image img');if(evImg&&ev.image)evImg.src=ev.image;
+  const evImg=document.querySelector('.everywhere-image img');if(evImg&&ev.image)evImg.src=ev.image;if(evImg)evImg.alt=mediaByRole('everywhere').alt||'G-MAX connectivity coverage';
   const evCopy=document.querySelector('.everywhere-copy');if(evCopy){const ps=evCopy.querySelectorAll('p');text(evCopy.querySelector('h2'),ev.title);if(ps[0])text(ps[0],ev.subtitle);if(ps[1])text(ps[1],ev.description)}
   document.querySelectorAll('.services-page .service-grid,.services-preview .service-grid').forEach(grid=>{
     grid.innerHTML='';
@@ -122,7 +123,7 @@ function applyGmaxSiteSettings(data){
     });
   });
   const about=data.about||{};const st=h.sectionTitles||{};text(document.querySelector('.about-showcase-copy h2'),st.about);text(document.querySelector('.showcase-commitments h3'),st.commitments);text(document.querySelector('.services-showcase-title'),st.services);
-  const aboutImg=document.querySelector('.about-page-image img');if(aboutImg&&about.image)aboutImg.src=about.image;
+  const aboutImg=document.querySelector('.about-page-image img');if(aboutImg&&about.image)aboutImg.src=about.image;if(aboutImg)aboutImg.alt=mediaByRole('about').alt||'G-MAX office';
   const pageTitles={
     '.page-hero h1':about.pageTitle||'About Us',
   };
