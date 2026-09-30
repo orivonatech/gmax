@@ -100,6 +100,7 @@ function applyGmaxSeo(s){
 function applyGmaxSiteSettings(data){
   const s=data.site||{}, h=data.homepage||{};
   renderHomepageLayout(data);
+  applyGmaxContent(data);
   const root=document.documentElement;
   const colors=s.colors||{};
   if(colors.primary)root.style.setProperty('--blue',colors.primary);
@@ -139,13 +140,13 @@ function applyGmaxSiteSettings(data){
   if(hero&&h.heroImage){hero.style.backgroundImage='url("'+h.heroImage.replace(/"/g,'&quot;')+'")'}
   const hb=h.heroButton||{};
   const btn=document.querySelector('.hero-read-more');
-  if(btn){if(hb.label)btn.textContent=hb.label;if(hb.url)btn.href=hb.url}
+  if(btn){btn.textContent=hb.label||'Explore Our Services';btn.href=hb.url||'#services';}
   const media=data.images||[];const mediaByRole=role=>{const item=media.find(x=>x&&x.role===role);return item||{}};
   const promo=Array.isArray(h.images)&&h.images.length?h.images:(data.images||[]).filter(x=>/^promo[1-3]$/.test(x?.role||'')).map(x=>x.path).filter(Boolean);
   document.querySelectorAll('.promo-grid img').forEach((img,i)=>{if(promo[i])img.src=promo[i];const meta=mediaByRole('promo'+(i+1));img.alt=meta.alt||'G-MAX promotional image'});
   const ev=h.everywhere||{};
   const evImg=document.querySelector('.everywhere-image img');if(evImg&&ev.image)evImg.src=ev.image;if(evImg)evImg.alt=mediaByRole('everywhere').alt||'G-MAX connectivity coverage';
-  const evCopy=document.querySelector('.everywhere-copy');if(evCopy){const ps=evCopy.querySelectorAll('p');text(evCopy.querySelector('h2'),ev.title);if(ps[0])text(ps[0],ev.subtitle);if(ps[1])text(ps[1],ev.description)}
+  const evCopy=document.querySelector('.everywhere-copy');if(evCopy){const ps=evCopy.querySelectorAll('p');text(evCopy.querySelector('h2'),ev.title||'We are everywhere');if(ps[0])text(ps[0],ev.subtitle||'Reliable connectivity where you need it');if(ps[1])text(ps[1],ev.description||'');}
   document.querySelectorAll('.services-page .service-grid,.services-preview .service-grid').forEach(grid=>{
     grid.innerHTML='';
     (data.services||[]).forEach(service=>{
@@ -166,7 +167,7 @@ function applyGmaxSiteSettings(data){
   text(document.querySelector('#faq .page-hero h1'),faqPageData.pageTitle||'Frequently Asked Questions');
   text(document.querySelector('#contact .page-hero h1'),contactPage.pageTitle||'Contact Us');
   text(document.querySelector('#contact .contact-details h2'),contactPage.sectionTitle||'G-MAX LTD');
-  const about=data.about||{};const st=h.sectionTitles||{};text(document.querySelector('.about-showcase-copy h2'),st.about);text(document.querySelector('.showcase-commitments h3'),st.commitments);text(document.querySelector('.services-showcase-title'),st.services);
+  const about=data.about||{};const st=h.sectionTitles||{};text(document.querySelector('.about-showcase-copy h2'),st.about||'About G-MAX');text(document.querySelector('.showcase-commitments h3'),st.commitments||'Our Core Commitments');text(document.querySelector('.services-showcase-title'),st.services||'Our Services');
   const aboutImg=document.querySelector('.about-page-image img');if(aboutImg&&about.image)aboutImg.src=about.image;if(aboutImg)aboutImg.alt=mediaByRole('about').alt||'G-MAX office';
   const pageTitles={
     '.page-hero h1':about.pageTitle||'About Us',
