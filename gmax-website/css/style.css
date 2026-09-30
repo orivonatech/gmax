@@ -400,3 +400,59 @@ body{color:var(--gmax-ink)}
 .commitments-section{display:none}
 @media(max-width:800px){.hero{min-height:500px}.hero-content{padding-top:105px}.about-showcase{padding:52px 0}.services-preview{padding:52px 0}}
 @media(max-width:560px){.hero{min-height:470px}.hero-content{padding-top:80px}.about-showcase{padding:44px 0}.services-preview{padding:48px 0}.everywhere-showcase{padding-bottom:48px}}
+
+/* Final spacing pass — eliminate unnecessary vertical gaps without changing content */
+.hero{min-height:440px}
+.hero-content{padding-top:88px;padding-bottom:70px}
+.hero h1{margin-bottom:14px}
+.hero-content>p{margin-bottom:5px}
+.hero-content>p:last-of-type{margin-bottom:20px}
+.about-showcase{padding:48px 0}
+.about-showcase-grid{gap:38px}
+.about-showcase-copy h2{margin-bottom:18px}
+.about-lead{margin-bottom:20px}
+.mission-vision{margin-bottom:18px}
+.showcase-commitments{padding-top:10px}
+.showcase-commitments h3{margin-bottom:12px}
+.showcase-commitments li{margin-bottom:5px}
+.services-preview{padding:48px 0}
+.services-showcase-title{margin-bottom:25px}
+.service-card{min-height:320px;padding:28px 24px}
+.service-icon{margin-bottom:20px}
+.service-card h3{margin-bottom:10px}
+.everywhere-showcase{padding:0 0 48px}
+.everywhere-grid{gap:42px}
+.everywhere-copy h2{margin-bottom:12px}
+.page-hero{height:180px}
+.content-page{padding:52px 0}
+.pricing-tabs{margin-bottom:22px}
+.faq-page details{margin-bottom:9px}
+.contact-grid{gap:48px}
+.contact-details h2{margin-bottom:24px}
+.contact-item{padding:14px 0}
+.contact-note{padding:24px}
+.site-footer{padding-top:16px}
+.footer-content{gap:42px}
+.footer-social{margin-top:30px}
+@media(max-width:800px){
+  .hero{min-height:430px}
+  .hero-content{padding-top:72px;padding-bottom:55px}
+  .about-showcase{padding:42px 0}
+  .about-showcase-grid{gap:28px}
+  .services-preview{padding:42px 0}
+  .service-card{min-height:270px}
+  .everywhere-showcase{padding-bottom:42px}
+  .page-hero{height:160px}
+  .content-page{padding:44px 0}
+  .contact-grid{gap:32px}
+}
+@media(max-width:560px){
+  .hero{min-height:400px}
+  .hero-content{padding-top:58px;padding-bottom:42px}
+  .about-showcase{padding:36px 0}
+  .services-preview{padding:38px 0}
+  .everywhere-showcase{padding-bottom:36px}
+  .page-hero{height:145px}
+  .content-page{padding:38px 0}
+  .footer-content{gap:28px}
+}
