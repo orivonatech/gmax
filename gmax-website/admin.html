@@ -284,6 +284,77 @@ body{background:var(--admin-bg);color:var(--admin-text)}
   .admin-profile{min-height:38px}
   .admin-profile-icon{width:28px;height:28px;border-radius:7px;font-size:12px}
 }
+</style><style>
+/* Mobile Admin repair — targets the actual G-MAX Admin markup */
+@media(max-width:800px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  .admin{display:block!important;min-height:100vh!important}
+  .mobile-admin-bar{
+    display:flex!important;position:sticky!important;top:0!important;left:0!important;
+    width:100%!important;height:56px!important;padding:8px 12px!important;
+    background:#111!important;color:#fff!important;z-index:1000!important;
+    align-items:center!important;justify-content:space-between!important
+  }
+  .mobile-admin-toggle{
+    display:inline-flex!important;align-items:center!important;gap:8px!important;
+    border:1px solid #3a3a3a!important;background:#1b1b1b!important;color:#fff!important;
+    border-radius:7px!important;padding:9px 12px!important;font-weight:700!important
+  }
+  .mobile-admin-title{font-size:13px!important;font-weight:800!important;letter-spacing:.6px!important}
+  .sidebar{
+    display:none!important;position:fixed!important;top:56px!important;left:0!important;
+    right:0!important;width:100%!important;height:auto!important;max-height:calc(100vh - 56px)!important;
+    overflow-y:auto!important;background:#111!important;padding:14px!important;
+    z-index:999!important;box-shadow:0 12px 30px rgba(0,0,0,.28)!important
+  }
+  .sidebar.mobile-open{display:block!important}
+  .sidebar .brand{display:none!important}
+  .sidebar .nav{
+    display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:7px!important;overflow:visible!important
+  }
+  .sidebar .nav button{
+    width:100%!important;min-width:0!important;min-height:44px!important;
+    white-space:normal!important;justify-content:flex-start!important;
+    padding:10px 11px!important
+  }
+  .main{width:100%!important;min-width:0!important;padding:0 12px 100px!important}
+  .top.admin-header{
+    width:100%!important;min-height:70px!important;padding:12px 2px!important;
+    margin:0 0 16px!important;top:56px!important
+  }
+  .section,.panel,.cards,.dashboard-grid,.row,.list-editor,.image-grid{min-width:0!important;max-width:100%!important}
+  .cards,.dashboard-grid{grid-template-columns:1fr!important}
+  .row{grid-template-columns:1fr!important}
+  .panel{padding:16px!important;margin-bottom:14px!important}
+  .panel-head{align-items:flex-start!important}
+  .field input,.field textarea,.field select{max-width:100%!important}
+  .table-wrap{width:100%!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+  .pricing-table{min-width:680px!important}
+  .image-grid{grid-template-columns:1fr 1fr!important;gap:10px!important}
+  .publish-bar{
+    position:sticky!important;bottom:8px!important;width:100%!important;
+    margin:14px 0 0!important;padding:10px!important;z-index:900!important;
+    flex-direction:column!important;align-items:stretch!important
+  }
+  .publish-meta{font-size:12px!important}
+  .publish-actions{display:grid!important;grid-template-columns:1fr 1fr!important;width:100%!important}
+  .publish-actions button{width:100%!important;min-width:0!important}
+  .preview-frame{min-height:560px!important}
+}
+@media(max-width:520px){
+  .sidebar .nav{grid-template-columns:1fr!important}
+  .main{padding-left:10px!important;padding-right:10px!important}
+  .top.admin-header{min-height:62px!important}
+  .admin-header-left{min-width:0!important;flex:1!important}
+  .admin-header-right{flex:0 0 auto!important}
+  .header-title{min-width:0!important}
+  .admin-header .header-title h1{white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  .image-grid{grid-template-columns:1fr!important}
+  .publish-actions{grid-template-columns:1fr!important}
+  .publish-bar{bottom:4px!important}
+  .login-card-g{padding:24px!important}
+}
 </style></head>
 <body><div id="loginGate" class="login-gate"><form id="loginGateForm" class="login-card-g"><h1>G-MAX</h1><p>Secure website administration</p><label>Username</label><input id="adminUser" autocomplete="username" required><label>Password</label><input id="adminPass" type="password" autocomplete="current-password" required><button type="submit">Sign in</button><div id="loginErr" class="login-error-g"></div></form></div>
 <div class="admin admin-gated"><div class="mobile-admin-bar"><button type="button" class="mobile-admin-toggle" id="mobileAdminToggle" aria-expanded="false"><i class="fa-solid fa-bars"></i> Menu</button><span class="mobile-admin-title">G-MAX ADMIN</span></div>
