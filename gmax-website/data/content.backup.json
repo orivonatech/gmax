@@ -1,7 +1,7 @@
 {
-  "version": 5,
+  "version": 2,
   "status": "published",
-  "updatedAt": null,
+  "updatedAt": "2026-09-30T08:21:48.959Z",
   "homepage": {
     "heroHeading": "Telecom Activities",
     "heroSubtitle": "Building tomorrow’s connectivity today",
@@ -14,66 +14,28 @@
       "Reading customers' minds and minding our customers",
       "Understanding, delivering our commitments and being trustworthy"
     ],
-    "heroButton": {
-      "label": "Read More",
-      "url": "#services"
-    },
-    "images": [
-      "assets/images/connections.jpg",
-      "assets/images/4glt.jpg",
-      "assets/images/Faster.jpg",
-      "assets/images/office.jpg"
-    ],
-    "everywhere": {
-      "title": "We are everywhere",
-      "subtitle": "Expert Telecom Team",
-      "description": "Our Team’s Dedication, Your Network’s Perfection",
-      "image": "assets/images/4glt.jpg"
-    },
-    "heroImage": "assets/images/4glt.jpg",
     "sectionTitles": {
-      "about": "G-MAX LTD",
-      "commitments": "G-MAX’s Core Commitments",
-      "services": "Our Services"
+      "about": "",
+      "commitments": "",
+      "services": ""
     },
-    "layout": [
-      {
-        "id": "hero",
-        "type": "hero",
-        "label": "Hero",
-        "enabled": true
-      },
-      {
-        "id": "about",
-        "type": "about",
-        "label": "About G-MAX",
-        "enabled": true
-      },
-      {
-        "id": "commitments",
-        "type": "commitments",
-        "label": "Core Commitments",
-        "enabled": true
-      },
-      {
-        "id": "services",
-        "type": "services",
-        "label": "Our Services",
-        "enabled": true
-      },
-      {
-        "id": "everywhere",
-        "type": "everywhere",
-        "label": "We are everywhere",
-        "enabled": true
-      }
-    ]
+    "heroImage": "",
+    "heroButton": {
+      "label": "",
+      "url": ""
+    },
+    "everywhere": {
+      "title": "",
+      "subtitle": "",
+      "description": "",
+      "image": ""
+    },
+    "layout": []
   },
   "about": {
     "description": "An Internet Service Provider (ISP) company registered in Rwanda with a license issued by Rwanda Utility Regulatory Agency (RURA) and in partnership with Korea Telecom Rwanda Networks (KTRN) to provide Internet access to end users.",
-    "pageTitle": "About Us",
-    "image": "assets/images/office.jpg",
-    "sectionTitle": "G-MAX LTD"
+    "pageTitle": "",
+    "sectionTitle": ""
   },
   "services": [
     {
@@ -89,12 +51,12 @@
     {
       "name": "CCTV",
       "description": "Protect what matters most\nInstall intelligent surveillance systems with AI-powered analytics, remote monitoring, and 24/7 threat detection",
-      "icon": "fa-solid fa-video"
+      "icon": "fa-solid fa-satellite-dish"
     },
     {
       "name": "IT Services",
       "description": "Your 24/7 technology partner\nProactive IT support, cybersecurity, and system maintenance to keep your business running smoothly.",
-      "icon": "fa-solid fa-laptop-code"
+      "icon": "fa-solid fa-server"
     }
   ],
   "pricing": {
@@ -113,23 +75,19 @@
     "volume": [
       [
         "RWF 27,500",
-        "30 days",
-        "50GB"
+        "30 days"
       ],
       [
         "RWF 16,000",
-        "30 days",
-        "30GB"
+        "30 days"
       ],
       [
         "RWF 5,500",
-        "30 days",
-        "10GB"
+        "30 days"
       ],
       [
         "RWF 3,600",
-        "30 days",
-        "5GB"
+        "30 days"
       ]
     ],
     "daily": [
@@ -162,43 +120,35 @@
     "mup": [
       [
         "RF 12,500",
-        "30 days",
-        "500 Mb/day"
+        "30 days"
       ],
       [
         "RF 25,000",
-        "30 days",
-        "1Gb/day"
+        "30 days"
       ],
       [
         "RF 68,000",
-        "30 days",
-        "3GB (Limited) /Day + 256 Kbps afterwards"
+        "30 days"
       ],
       [
         "RF 96,000",
-        "30 days",
-        "4GB (Limited) /Day + 512 Kbps afterwards"
+        "30 days"
       ],
       [
         "RF 39,500",
-        "30 days",
-        "2GB Per day + 256Kbps +3Mbps for E-Learning Website"
+        "30 days"
       ],
       [
         "RF 33,000",
-        "30 days",
-        "Private MUP 2GB Per day +256Kbps"
+        "30 days"
       ],
       [
         "RF 18,000",
-        "30 days",
-        "G-MAX New Monthly Unlimited Pack Smart 1GB Bundle"
+        "30 days"
       ],
       [
         "RF 120,000",
-        "30 days",
-        "8GB MUP Ltd APP Basic"
+        "30 days"
       ]
     ]
   },
@@ -227,123 +177,62 @@
   },
   "images": [
     {
-      "name": "connections.jpg",
-      "path": "assets/images/connections.jpg",
-      "label": "Homepage promotional image 1",
-      "role": "promo1"
+      "path": "assets/images/connections.jpg"
     },
     {
-      "name": "4glt.jpg",
-      "path": "assets/images/4glt.jpg",
-      "label": "Homepage promotional / Everywhere image",
-      "role": "promo2"
+      "path": "assets/images/4glt.jpg"
     },
     {
-      "name": "Faster.jpg",
-      "path": "assets/images/Faster.jpg",
-      "label": "Homepage promotional image 3",
-      "role": "promo3"
+      "path": "assets/images/Faster.jpg"
     },
     {
-      "name": "office.jpg",
-      "path": "assets/images/office.jpg",
-      "label": "About page image",
-      "role": "about"
+      "path": "assets/images/office.jpg"
     }
   ],
   "site": {
-    "brandName": "G-MAX",
-    "tagline": "Always Ahead",
-    "logo": "assets/logo/gmax-logo.svg",
-    "favicon": "assets/logo/gmax-logo.svg",
+    "contactIcons": {
+      "address": "",
+      "email": "",
+      "phone": ""
+    },
     "colors": {
       "primary": "#123f84",
-      "secondary": "#092852",
-      "accent": "#f58220",
-      "success": "#52b949"
+      "secondary": "#123f84",
+      "accent": "#123f84",
+      "success": "#123f84"
     },
-    "nav": [
-      {
-        "label": "Home",
-        "url": "#home",
-        "visible": true
-      },
-      {
-        "label": "About Us",
-        "url": "#about",
-        "visible": true
-      },
-      {
-        "label": "Services",
-        "url": "#services",
-        "visible": true
-      },
-      {
-        "label": "FAQ",
-        "url": "#faq",
-        "visible": true
-      },
-      {
-        "label": "Pricing",
-        "url": "#pricing",
-        "visible": true
-      },
-      {
-        "label": "Contact Us",
-        "url": "#contact",
-        "visible": true
-      }
-    ],
-    "social": [
-      {
-        "name": "Facebook",
-        "url": "",
-        "icon": "fa-brands fa-facebook-f",
-        "visible": true
-      },
-      {
-        "name": "X",
-        "url": "",
-        "icon": "fa-brands fa-x-twitter",
-        "visible": true
-      },
-      {
-        "name": "Instagram",
-        "url": "",
-        "icon": "fa-brands fa-instagram",
-        "visible": true
-      }
-    ],
-    "whatsapp": {
-      "enabled": true,
-      "number": "+250788304259",
-      "label": "Need Help? Chat with us"
-    },
-    "scrollDown": {
-      "enabled": true,
-      "icon": "fa-solid fa-chevron-down"
-    },
-    "footerCopyright": "Copyright © {year} Gmax All rights reserved",
-    "contactIcons": {
-      "address": "fa-solid fa-location-dot",
-      "email": "fa-regular fa-envelope",
-      "phone": "fa-solid fa-phone"
-    }
+    "nav": [],
+    "social": []
   },
+  "brandName": "",
+  "tagline": "",
+  "logo": "",
+  "favicon": "",
   "servicesPage": {
-    "pageTitle": "Our Services",
-    "sectionTitle": "Our Services"
+    "pageTitle": "",
+    "sectionTitle": ""
   },
   "pricingPage": {
-    "pageTitle": "Pricing",
-    "sectionTitle": "Discover Our Best Packages"
+    "pageTitle": "",
+    "sectionTitle": ""
   },
   "faqPage": {
-    "pageTitle": "Frequently Asked Questions",
-    "sectionTitle": "Frequently Asked Questions"
+    "pageTitle": "",
+    "sectionTitle": ""
   },
   "contactPage": {
-    "pageTitle": "Contact Us",
-    "sectionTitle": "G-MAX LTD"
-  }
+    "pageTitle": "",
+    "sectionTitle": ""
+  },
+  "whatsapp": {
+    "number": "",
+    "label": "",
+    "enabled": false
+  },
+  "scrollDown": {
+    "enabled": false,
+    "icon": ""
+  },
+  "footerCopyright": "",
+  "publishedBy": "admin"
 }
