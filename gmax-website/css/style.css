@@ -118,8 +118,8 @@ p{margin:0 0 16px}
 .pricing-table td{padding:17px 20px;border-top:1px solid var(--line);font-size:14px}
 .pricing-table tbody tr{transition:background .2s ease}
 .pricing-table tbody tr:hover{background:var(--light)}
-.pricing-discover{padding-top:10px}
-.pricing-discover h2{color:var(--orange);font-size:42px;margin-bottom:12px}
+
+
 
 .faq-page{max-width:1050px}
 .faq-page details{border:1px solid var(--line);padding:0 23px;margin-bottom:13px;background:#fff;transition:border-color .25s ease,box-shadow .25s ease}
