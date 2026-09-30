@@ -119,7 +119,7 @@ const form=document.getElementById('gmax-contact-form'),status=document.getEleme
 if(!form)return;
 form.addEventListener('submit',async e=>{
  e.preventDefault();status.textContent='Sending…';const button=form.querySelector('button');button.disabled=true;
- try{const body=Object.fromEntries(new FormData(form).entries());body.source=(window.gmaxSource&&window.gmaxSource())||document.referrer||'Website contact form';body.landingPage=location.pathname+location.hash;body.referrer=document.referrer||'';const r=await fetch('api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const d=await r.json();if(!r.ok)throw Error(d.error||'Could not send your message');if(window.gmaxTrack)window.gmaxTrack('contact_form_submit');form.reset();status.textContent=d.message||'Thank you. Your message has been received.'}
+ try{const body=Object.fromEntries(new FormData(form).entries());body.source=(window.gmaxSource&&window.gmaxSource())||document.referrer||'Website contact form';body.landingPage=location.pathname+location.hash;try{body.referrer=document.referrer?new URL(document.referrer).origin:''}catch(_){body.referrer=''}const r=await fetch('api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const d=await r.json();if(!r.ok)throw Error(d.error||'Could not send your message');if(window.gmaxTrack)window.gmaxTrack('contact_form_submit');form.reset();status.textContent=d.message||'Thank you. Your message has been received.'}
  catch(err){status.textContent=err.message||'Could not send your message. Please try again.'}
  finally{button.disabled=false}
 });
