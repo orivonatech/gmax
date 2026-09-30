@@ -81,7 +81,7 @@ function applyGmaxSeo(s){
   };
   setMeta('description',description);
   setMeta('robots',seo.robots||'index,follow');
-  setMeta('theme-color',seo.themeColor||s.colors?.secondary||'#092852');
+  setMeta('theme-color',seo.themeColor||(s.colors&&s.colors.secondary)||'#111111');
   setMeta('',title,'og:title');
   setMeta('',seo.ogDescription||description,'og:description');
   setMeta('',seo.ogImage||'','og:image');
