@@ -443,6 +443,10 @@ body{min-height:100vh}
   .main{padding-left:12px!important;padding-right:12px!important}
   .admin-header,.section,.panel,.welcome,.publish-bar{max-width:100%}
 }
+</style><style>
+/* Use the uploaded G-MAX JPEG logo in Admin branding */
+.brand-mark,.admin-brand img{background:#fff}
+.brand-mark img,.admin-brand img{content:url("assets/logo/gmax_logo.jpeg");object-fit:contain}
 </style></head>
 <body><div id="loginGate" class="login-gate"><form id="loginGateForm" class="login-card-g"><h1>G-MAX</h1><p>Secure website administration</p><label>Username</label><input id="adminUser" autocomplete="username" required><label>Password</label><input id="adminPass" type="password" autocomplete="current-password" required><button type="submit">Sign in</button><div id="loginErr" class="login-error-g"></div></form></div>
 <div class="admin admin-gated"><div class="mobile-admin-bar"><button type="button" class="mobile-admin-toggle" id="mobileAdminToggle" aria-expanded="false"><i class="fa-solid fa-bars"></i> Menu</button><span class="mobile-admin-title">G-MAX ADMIN</span></div>
