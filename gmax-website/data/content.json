@@ -267,6 +267,12 @@
       "label": "Everywhere image",
       "path": "",
       "alt": "G-MAX connectivity coverage"
+    },
+    {
+      "role": "og",
+      "label": "SEO social image",
+      "path": "",
+      "alt": "G-MAX social sharing image"
     }
   ],
   "site": {
