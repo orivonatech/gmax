@@ -90,7 +90,7 @@ function applyGmaxSeo(s){
   setMeta('',title,'og:title');
   setMeta('',seo.ogDescription||description,'og:description');
   setMeta('',seo.ogImage||'','og:image');
-  setMeta('',location.href,'og:url');
+  setMeta('',seo.canonicalUrl||location.href,'og:url');
   setMeta('', 'website','og:type');
   let canonical=document.head.querySelector('link[rel="canonical"]');
   if(!canonical){canonical=document.createElement('link');canonical.rel='canonical';document.head.appendChild(canonical)}
