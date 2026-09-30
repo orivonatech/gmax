@@ -98,7 +98,7 @@ p{margin:0 0 16px}
 .everywhere-copy p{font-size:20px;line-height:1.7;color:#111;margin:0}
 .everywhere-copy p+p{margin-top:2px}
 
-.page-hero{height:270px;display:grid;place-items:center;text-align:center;background:linear-gradient(110deg,rgba(9,40,82,.9),rgba(18,63,132,.8)),linear-gradient(135deg,#3b6e95,#0b2d62)}
+.page-hero{height:270px;display:grid;place-items:center;text-align:center;background:linear-gradient(110deg,rgba(9,40,82,.9),rgba(18,63,132,.8)),linear-gradient(135deg,#092852,#071b38)}
 .page-hero h1{font-size:42px;color:#fff;margin:0}
 .content-page{padding:85px 0}
 .about-page-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:70px;align-items:start}
