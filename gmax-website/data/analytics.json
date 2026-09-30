@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-30T11:14:29.429Z",
+  "updatedAt": "2026-09-30T11:17:45.077Z",
   "days": {
     "2026-09-30": {
-      "views": 5,
+      "views": 6,
       "sessions": [
         "s-munxr6bw-5xwfaamg",
         "s-muo08wre-mh3e3uoa"
@@ -12,13 +12,13 @@
         "cta_click": 1
       },
       "pages": {
-        "/index.html": 5
+        "/index.html": 6
       },
       "sources": {
         "direct": 1,
-        "https://g-maxwebsite.vercel.app": 5
+        "https://g-maxwebsite.vercel.app": 6
       },
-      "updatedAt": "2026-09-30T11:14:29.429Z"
+      "updatedAt": "2026-09-30T11:17:45.077Z"
     }
   }
 }
