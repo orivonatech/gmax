@@ -270,3 +270,5 @@ html::-webkit-scrollbar{display:none}
 
 /* Single-page navigation */
 #home,#about,#services,#pricing,#faq,#contact{scroll-margin-top:110px}
+
+.skip-link{position:fixed;left:12px;top:-60px;z-index:100000;padding:10px 14px;background:#092852;color:#fff;border-radius:4px;font-weight:700;text-decoration:none}.skip-link:focus{top:12px;outline:3px solid #f58220;outline-offset:2px}.gmax-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
