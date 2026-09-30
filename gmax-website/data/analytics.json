@@ -1,5 +1,20 @@
 {
   "version": 1,
-  "updatedAt": null,
-  "days": {}
+  "updatedAt": "2026-09-30T10:01:39.067Z",
+  "days": {
+    "2026-09-30": {
+      "views": 1,
+      "sessions": [
+        "s-munxr6bw-5xwfaamg"
+      ],
+      "events": {},
+      "pages": {
+        "/index.html": 1
+      },
+      "sources": {
+        "direct": 1
+      },
+      "updatedAt": "2026-09-30T10:01:39.067Z"
+    }
+  }
 }
