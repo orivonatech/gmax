@@ -80,9 +80,35 @@
 .admin-header{min-height:70px;padding:14px 0 18px;border-bottom:1px solid var(--line)}.header-title{display:flex;flex-direction:column;gap:0}.header-kicker{font-size:10px;line-height:1.2;letter-spacing:1.5px;font-weight:800;color:var(--orange)}.admin-header h1{line-height:1.2}.header-actions{display:flex;align-items:center;gap:10px}.header-action{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;color:var(--navy);padding:9px 13px;border-radius:6px;font:700 13px "Open Sans",Arial,sans-serif;cursor:pointer}.header-action:hover{border-color:var(--orange);color:var(--orange)}.header-action i{color:var(--orange)}
 @media(max-width:800px){.admin-header{padding:10px 0 16px}.header-actions{width:100%;justify-content:flex-start}.header-action{flex:1;justify-content:center}.admin-header .admin{padding:9px 12px}.header-kicker{font-size:9px}}
 @media(max-width:520px){.header-action span{display:none}.header-action{flex:0 0 42px;justify-content:center;padding:10px}.admin-header .admin span{display:none}}
-</style></head>
+<style>
+/* G-MAX Admin responsive layout lock */
+.mobile-admin-bar{display:none}
+@media(max-width:760px){
+  .mobile-admin-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:#111;color:#fff;position:sticky;top:0;z-index:30}
+  .mobile-admin-toggle{border:1px solid rgba(255,255,255,.2);background:#111;color:#fff;border-radius:7px;padding:9px 11px;font-weight:700;cursor:pointer}
+  .mobile-admin-title{font-weight:800;color:#fff}
+  .admin-shell{grid-template-columns:1fr!important}
+  .sidebar{display:none!important}
+  .sidebar.mobile-open{display:block!important;position:fixed;left:0;right:0;top:48px;height:auto;max-height:calc(100vh - 48px);overflow:auto;z-index:29;padding:14px;background:#111}
+  .nav{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .nav button{width:100%;white-space:normal}
+  .main{padding:16px!important}
+  .admin-header{margin-bottom:18px}
+  .panel{padding:18px!important}
+  .publish-bar{position:sticky;bottom:8px;flex-direction:column;align-items:stretch}
+  .publish-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .publish-actions button{width:100%}
+}
+@media(max-width:520px){
+  .nav{grid-template-columns:1fr}
+  .publish-actions{grid-template-columns:1fr}
+  .admin-content{padding:14px!important}
+  .history-item{padding:12px}
+  .media-card{padding:12px}
+}
+</style></style></head>
 <body><div id="loginGate" class="login-gate"><form id="loginGateForm" class="login-card-g"><h1>G-MAX</h1><p>Secure website administration</p><label>Username</label><input id="adminUser" autocomplete="username" required><label>Password</label><input id="adminPass" type="password" autocomplete="current-password" required><button type="submit">Sign in</button><div id="loginErr" class="login-error-g"></div></form></div>
-<div class="admin admin-gated">
+<div class="admin admin-gated"><div class="mobile-admin-bar"><button type="button" class="mobile-admin-toggle" id="mobileAdminToggle" aria-expanded="false"><i class="fa-solid fa-bars"></i> Menu</button><span class="mobile-admin-title">G-MAX ADMIN</span></div>
 <aside class="sidebar">
 <div class="brand"><div class="brand-mark"><span>G-MAX</span></div><small>ADMIN DASHBOARD</small></div>
 <nav class="nav">
@@ -99,7 +125,7 @@
 </nav>
 </aside>
 <main class="main">
-<header class="top admin-header"><div class="header-title"><span class="header-kicker">G-MAX WEBSITE</span><h1 id="title">Dashboard</h1></div><div class="header-actions"><button type="button" class="header-action" id="openPreview" title="Open public website preview"><i class="fa-solid fa-arrow-up-right-from-square"></i><span>Preview Website</span></button><div class="admin"><i class="fa-solid fa-user-shield"></i><span>Admin</span></div></div></header>
+<header class="top admin-header"><div class="header-title"><span class="header-kicker">G-MAX WEBSITE</span><h1 id="title">Dashboard</h1></div><div class="header-actions"><button type="button" class="header-action" id="openPublicPreview" title="Open public website preview"><i class="fa-solid fa-arrow-up-right-from-square"></i><span>Preview Website</span></button><div class="admin"><i class="fa-solid fa-user-shield"></i><span>Admin</span></div></div></header>
 
 <section id="dashboard" class="section active">
 <div class="welcome"><h2>G-MAX Website Management</h2><p>Manage the content used by the G-MAX website from one place.</p></div>
@@ -122,6 +148,7 @@
 <div class="field"><label>Core Commitments</label><textarea>Knowing it all and knowing it right
 Reading customers' minds and minding our customers
 Understanding, delivering our commitments and being trustworthy</textarea></div>
+<div class="panel"><div class="panel-head"><h2>Homepage Hero Slides</h2><button class="mini-btn" type="button" id="addHeroSlide">+ Add Slide</button></div><div class="note">These slides control the public homepage carousel. Edit the existing G-MAX slide content here; no code changes are needed.</div><div id="hero-slide-editor-list" class="list-editor"></div><button class="save" data-save>Save Slides</button><span class="status">Saved</span></div>
 <button class="save" data-save>Save Changes</button><span class="status">Saved</span></div><div class="panel"><div class="panel-head"><h2>Homepage Sections</h2></div>
 <div class="note">Drag sections to change their order. Use the eye checkbox to hide a section. Add a Custom Section for a new block of text, image and button without editing code.</div>
 <div id="layout-editor-list" class="layout-editor"></div>
@@ -155,7 +182,7 @@ Understanding, delivering our commitments and being trustworthy</textarea></div>
 <div class="note"><strong>Admin-only media management:</strong> Each asset has a stable role, usage location and alt text. Replacing one asset does not change unrelated images, colors or layout. Uploaded files use isolated paths.</div>
 <div id="media-editor-list" class="media-library"></div>
 </div></section>
-<div class="panel"><div class="panel-head"><h2>Published Version History</h2><button id="refreshHistory" class="btn-secondary" type="button">Refresh</button></div><div class="note">Admin-only history of published website content. Restoring a version creates a backup of the current live version before the selected version is published.</div><div id="historyList" class="history-list"><div class="empty">Loading version history…</div></div></div></section><section id="history" class="section"><div class="panel"><div class="panel-head"><h2>Published Version History</h2><button id="refreshHistory" class="btn-secondary" type="button">Refresh</button></div><div class="note">Published website versions are read from the GitHub repository. Restoring a version backs up the current live version first.</div><div id="historyList" class="history-list"><div class="empty">Loading version history…</div></div></div></section><section id="preview" class="section"><div class="panel"><div class="admin-header"><div><h2>Website Preview</h2><p>Review the public website without leaving the admin dashboard.</p></div><div class="admin-actions"><button class="btn-secondary" id="openPreview" type="button">Open in New Tab</button></div></div><iframe class="preview-frame" id="previewFrame" src="index.html"></iframe></div></section><section id="settings" class="section">
+<div class="panel"><div class="panel-head"><h2>Published Version History</h2><button id="refreshHistory" class="btn-secondary" type="button">Refresh</button></div><div class="note">Admin-only history of published website content. Restoring a version creates a backup of the current live version before the selected version is published.</div><div id="historyList" class="history-list"><div class="empty">Loading version history…</div></div></div></section><section id="history" class="section"><div class="panel"><div class="panel-head"><h2>Published Version History</h2><button id="refreshHistory" class="btn-secondary" type="button">Refresh</button></div><div class="note">Published website versions are read from the GitHub repository. Restoring a version backs up the current live version first.</div><div id="historyList" class="history-list"><div class="empty">Loading version history…</div></div></div></section><section id="preview" class="section"><div class="panel"><div class="admin-header"><div><h2>Website Preview</h2><p>Review the public website without leaving the admin dashboard.</p></div><div class="admin-actions"><button class="btn-secondary" id="openPreviewPage" type="button">Open in New Tab</button></div></div><iframe class="preview-frame" id="previewFrame" src="index.html"></iframe></div></section><section id="settings" class="section">
 <div class="panel"><h2>Branding</h2><div class="note"><strong>Safe editing:</strong> logo and favicon are independent assets. Replacing the logo changes only the logo; replacing the favicon changes only the favicon. Other website images, layout, fonts and colors are preserved unless you deliberately edit those settings. Uploaded branding files are stored in dedicated logo paths.</div>
 <div class="row">
 <div class="field"><label>Company / brand name</label><input data-setting="brandName"></div>
@@ -219,7 +246,13 @@ let siteData=null;
 
 const pages=document.querySelectorAll('.section'),buttons=document.querySelectorAll('[data-page]'),title=document.querySelector('#title');
 function openPage(id){pages.forEach(p=>p.classList.toggle('active',p.id===id));buttons.forEach(b=>b.classList.toggle('active',b.dataset.page===id));title.textContent=id[0].toUpperCase()+id.slice(1);window.scrollTo({top:0,behavior:'smooth'});}
-buttons.forEach(b=>b.addEventListener('click',()=>openPage(b.dataset.page)));
+buttons.forEach(b=>b.addEventListener('click',()=>openPage(b.dataset.page)));document.getElementById('mobileAdminToggle')?.addEventListener('click',()=>{
+  const side=document.querySelector('.sidebar'),btn=document.getElementById('mobileAdminToggle');
+  const open=side?.classList.toggle('mobile-open');btn?.setAttribute('aria-expanded',open?'true':'false');
+});
+buttons.forEach(b=>b.addEventListener('click',()=>{
+  if(window.innerWidth<=760){document.querySelector('.sidebar')?.classList.remove('mobile-open');document.getElementById('mobileAdminToggle')?.setAttribute('aria-expanded','false')}
+}));
 document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>openPage(b.dataset.open)));
 
 function setField(label,value){
@@ -233,7 +266,7 @@ function collectData(){
   if(!siteData)return;
   const labels=[...document.querySelectorAll('.field label')];
   const read=(label)=>{const l=labels.find(x=>x.textContent.trim().toLowerCase()===label.toLowerCase());return l?.parentElement.querySelector('input,textarea')?.value||'';};
-  siteData.homepage.heroHeading=read('Hero heading');siteData.homepage.heroSubtitle=read('Hero subtitle');siteData.homepage.heroDescription=read('Hero description');siteData.homepage.about=read('About G-MAX');siteData.homepage.mission=read('Our Mission');siteData.homepage.vision=read('Our Vision');siteData.homepage.commitments=read('Core Commitments').split(/\n+/).map(x=>x.trim()).filter(Boolean);
+  siteData.homepage.heroHeading=read('Hero heading');siteData.homepage.heroSubtitle=read('Hero subtitle');siteData.homepage.heroDescription=read('Hero description');siteData.homepage.heroSlides=[...document.querySelectorAll('#hero-slide-editor-list .hero-slide-edit')].map(row=>({title:row.querySelector('[data-slide-title]')?.value||'',subtitle:row.querySelector('[data-slide-subtitle]')?.value||'',description:row.querySelector('[data-slide-description]')?.value||'',buttonLabel:row.querySelector('[data-slide-button]')?.value||'',url:row.querySelector('[data-slide-url]')?.value||''}));siteData.homepage.about=read('About G-MAX');siteData.homepage.mission=read('Our Mission');siteData.homepage.vision=read('Our Vision');siteData.homepage.commitments=read('Core Commitments').split(/\n+/).map(x=>x.trim()).filter(Boolean);
   siteData.about.description=read('G-MAX LTD description');
   siteData.services=[...document.querySelectorAll('#service-editor-list .service-edit')].map((row,i)=>({...((siteData.services||[])[i]||{}),name:row.querySelector('[data-service-name]')?.value||'',icon:row.querySelector('[data-service-icon]')?.value||'fa-solid fa-circle',description:row.querySelector('textarea')?.value||'',linkLabel:row.querySelector('[data-service-link-label]')?.value||'Read More',url:row.querySelector('[data-service-url]')?.value||''}));
   siteData.pricing=['promo','volume','daily','mup'].reduce((out,group,gi)=>{const table=document.querySelectorAll('#pricing .pricing-table')[gi];if(table)out[group]=[...table.querySelectorAll('tbody tr')].map(row=>[...row.querySelectorAll('input')].map(x=>x.value));return out},{});
@@ -258,6 +291,22 @@ function collectData(){
   siteData.images.forEach(item=>{if(item.role==='promo1')siteData.homepage.images[0]=item.path;if(item.role==='promo2')siteData.homepage.images[1]=item.path;if(item.role==='promo3')siteData.homepage.images[2]=item.path;if(item.role==='about'){siteData.homepage.images[3]=item.path;siteData.about.image=item.path}});siteData.site.social=[...document.querySelectorAll('#social-editor-list .social-edit')].map(row=>({name:row.querySelector('[data-social-name]')?.value||'',url:row.querySelector('[data-social-url]')?.value||'',icon:row.querySelector('[data-social-icon]')?.value||'fa-brands fa-globe',visible:row.querySelector('[data-social-visible]')?.checked!==false}));
   siteData.status='draft';siteData.updatedAt=new Date().toISOString();
   return siteData;
+}
+function heroSlideRow(s,i){
+  const row=document.createElement('div');row.className='hero-slide-edit list-row';
+  row.innerHTML='<div class="list-row-head"><strong>Slide '+(i+1)+'</strong><button class="mini-btn" type="button" data-remove>Remove</button></div><div class="field"><label>Title</label><input data-slide-title></div><div class="field"><label>Subtitle</label><input data-slide-subtitle></div><div class="field"><label>Description</label><textarea data-slide-description></textarea></div><div class="row"><div class="field"><label>Button label</label><input data-slide-button></div><div class="field"><label>Button link</label><input data-slide-url></div></div>';
+  row.querySelector('[data-slide-title]').value=s?.title||'';row.querySelector('[data-slide-subtitle]').value=s?.subtitle||'';row.querySelector('[data-slide-description]').value=s?.description||'';row.querySelector('[data-slide-button]').value=s?.buttonLabel||'Read More';row.querySelector('[data-slide-url]').value=s?.url||'#services';
+  row.querySelector('[data-remove]').onclick=()=>{row.remove();renderHeroSlidesList()};
+  return row;
+}
+function renderHeroSlidesList(){
+  document.querySelectorAll('#hero-slide-editor-list .hero-slide-edit').forEach((r,i)=>{const h=r.querySelector('.list-row-head strong');if(h)h.textContent='Slide '+(i+1)});
+}
+function renderHeroSlides(items){
+  const box=document.getElementById('hero-slide-editor-list');if(!box)return;
+  box.innerHTML='';(items||[]).forEach((s,i)=>box.appendChild(heroSlideRow(s,i)));
+  renderHeroSlidesList();
+  const add=document.getElementById('addHeroSlide');if(add)add.onclick=()=>{box.appendChild(heroSlideRow({title:'New Slide',subtitle:'',description:'',buttonLabel:'Read More',url:'#services'},box.children.length));renderHeroSlidesList();scheduleAutosave()};
 }
 function serviceRow(s,i){
   const icons=['fa-solid fa-tower-broadcast','fa-solid fa-network-wired','fa-solid fa-video','fa-solid fa-laptop-code','fa-solid fa-server','fa-solid fa-shield-halved','fa-solid fa-wifi','fa-solid fa-cloud','fa-solid fa-satellite-dish','fa-solid fa-microchip'];
@@ -343,7 +392,7 @@ function addPricingRow(body,values){
 function populate(data){
   siteData=structuredClone(data);updateStats(data);
   setField('Hero heading',getPath(data,'homepage.heroHeading'));setField('Hero subtitle',getPath(data,'homepage.heroSubtitle'));setField('Hero description',getPath(data,'homepage.heroDescription'));setField('About G-MAX',getPath(data,'homepage.about'));setField('Our Mission',getPath(data,'homepage.mission'));setField('Our Vision',getPath(data,'homepage.vision'));setField('Core Commitments',(data.homepage?.commitments||[]).join('\n'));setField('G-MAX LTD description',getPath(data,'about.description'));setField('Office Address',getPath(data,'contact.address'));setField('Email',getPath(data,'contact.email'));setField('Phone',getPath(data,'contact.phone'));
-  renderServices(data.services||[]);renderFaq(data.faq||[]);renderMedia(data);renderSettings(data);renderLayout(data.homepage?.layout||[]);
+  renderHeroSlides(data.homepage?.heroSlides||[]);renderServices(data.services||[]);renderFaq(data.faq||[]);renderMedia(data);renderSettings(data);renderLayout(data.homepage?.layout||[]);
   const groups=['promo','volume','daily','mup'];groups.forEach((g,gi)=>{
     const table=document.querySelectorAll('#pricing .pricing-table')[gi];if(!table)return;
     const head=table.querySelector('thead tr');if(!head)return;
@@ -373,7 +422,7 @@ function refreshPreview(){
   }catch(e){toast2('Could not prepare preview: '+e.message)}
 }
 document.getElementById('previewSite')?.addEventListener('click',()=>{refreshPreview();document.querySelector('[data-page="preview"]')?.click()});
-document.getElementById('openPreview')?.addEventListener('click',()=>{
+document.getElementById('openPublicPreview')?.addEventListener('click',()=>{
   try{
     const d=collectData()||siteData;
     localStorage.setItem(DRAFT_KEY,JSON.stringify(d));
