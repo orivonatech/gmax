@@ -102,7 +102,7 @@ function applyGmaxSiteSettings(data){
   const hb=h.heroButton||{};
   const btn=document.querySelector('.hero-read-more');
   if(btn){if(hb.label)btn.textContent=hb.label;if(hb.url)btn.href=hb.url}
-  const promo=h.images||[];
+  const promo=Array.isArray(h.images)&&h.images.length?h.images:(data.images||[]).map(x=>typeof x==='string'?x:x?.path).filter(Boolean);
   document.querySelectorAll('.promo-grid img').forEach((img,i)=>{if(promo[i])img.src=promo[i]});
   const ev=h.everywhere||{};
   const evImg=document.querySelector('.everywhere-image img');if(evImg&&ev.image)evImg.src=ev.image;
