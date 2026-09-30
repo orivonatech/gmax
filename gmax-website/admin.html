@@ -106,6 +106,115 @@
   .history-item{padding:12px}
   .media-card{padding:12px}
 }
+</style><style>
+/* G-MAX Admin final layout — unified desktop, laptop and mobile */
+:root{
+  --admin-orange:#f58220;
+  --admin-green:#52b949;
+  --admin-black:#111111;
+  --admin-bg:#f6f6f4;
+  --admin-card:#ffffff;
+  --admin-line:#e5e5e5;
+  --admin-text:#333333;
+  --admin-muted:#707070;
+}
+body{background:var(--admin-bg);color:var(--admin-text)}
+.admin-gated{min-height:100vh}
+.admin-shell{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:100vh}
+.admin-sidebar{
+  position:sticky;top:0;height:100vh;overflow-y:auto;
+  background:var(--admin-black);padding:22px 14px;
+  border-right:1px solid #222;z-index:40
+}
+.admin-brand{padding:4px 10px 22px;margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,.1)}
+.admin-brand img{background:#fff}
+.admin-menu{gap:4px}
+.admin-menu button{
+  min-height:42px;border-radius:7px;color:#d7d7d7;padding:10px 12px;
+  transition:.18s ease
+}
+.admin-menu button i{width:20px;color:#9a9a9a}
+.admin-menu button:hover{background:#1d1d1d;color:#fff}
+.admin-menu button:hover i,.admin-menu button.active i{color:var(--admin-orange)}
+.admin-menu button.active{background:var(--admin-orange);color:#fff}
+.admin-menu button.active i{color:#fff}
+.admin-main{min-width:0;background:var(--admin-bg)}
+.admin-topbar{
+  min-height:76px;padding:14px 30px;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  background:#fff;border-bottom:1px solid var(--admin-line);
+  position:sticky;top:0;z-index:30
+}
+.admin-header{margin:0;min-width:0}
+.admin-header h1{font-size:25px;color:var(--admin-black)}
+.admin-header p{color:var(--admin-muted)}
+.admin-actions{flex-wrap:wrap}
+.admin-content{max-width:1500px;padding:28px 30px 90px}
+.dashboard-grid{grid-template-columns:repeat(3,minmax(220px,1fr));gap:18px}
+.dashboard-card,.panel{border:1px solid var(--admin-line);border-radius:10px;background:var(--admin-card);box-shadow:0 2px 10px rgba(0,0,0,.035)}
+.dashboard-card{min-width:0}
+.dashboard-card:hover{border-color:#d8d8d8;transform:translateY(-2px);transition:.18s ease}
+.dashboard-card p{color:var(--admin-muted)}
+.panel-head{gap:14px;flex-wrap:wrap}
+.panel-head h2,.panel h2{color:var(--admin-black)}
+.field label{color:#444}
+.field input,.field textarea,.field select{border-color:#d7d7d7}
+.field input:focus,.field textarea:focus,.field select:focus{
+  outline:2px solid rgba(245,130,32,.15);border-color:var(--admin-orange)
+}
+.row{gap:18px}
+.list-row{border-color:#dedede;background:#fafafa}
+.list-row-head strong{color:var(--admin-black)}
+.mini-btn,.btn-secondary{border-color:#d7d7d7}
+.btn-primary,.save,.dashboard-card .edit{background:var(--admin-orange)}
+.save:hover,.btn-primary:hover,.dashboard-card .edit:hover{background:#df7013}
+.publish-bar{z-index:25}
+.preview-frame{width:100%;min-height:720px;border:1px solid var(--admin-line);border-radius:8px;background:#fff}
+.table-wrap{max-width:100%;overflow-x:auto}
+.pricing-table{min-width:680px}
+.media-library,.history-list{min-width:0}
+.mobile-admin-bar{display:none}
+
+@media(max-width:1180px){
+  .admin-shell{grid-template-columns:220px minmax(0,1fr)}
+  .admin-content{padding:24px}
+  .dashboard-grid{grid-template-columns:repeat(2,minmax(220px,1fr))}
+  .admin-topbar{padding-left:24px;padding-right:24px}
+}
+@media(max-width:800px){
+  .admin-shell{display:block}
+  .admin-sidebar{
+    display:none;position:fixed;left:0;right:0;top:56px;height:auto;
+    max-height:calc(100vh - 56px);overflow-y:auto;padding:14px;box-shadow:0 12px 30px rgba(0,0,0,.2)
+  }
+  .admin-sidebar.mobile-open{display:block}
+  .admin-brand{display:none}
+  .admin-menu{grid-template-columns:repeat(2,minmax(0,1fr));display:grid}
+  .admin-menu button{min-height:44px}
+  .mobile-admin-bar{display:flex;position:sticky;top:0;height:56px;z-index:50;background:var(--admin-black);color:#fff;padding:8px 14px;align-items:center;justify-content:space-between}
+  .mobile-admin-toggle{border:1px solid #3a3a3a;background:#1b1b1b;color:#fff;border-radius:7px;padding:9px 12px;font-weight:700}
+  .mobile-admin-title{font-size:13px;font-weight:800;letter-spacing:.6px}
+  .admin-topbar{top:56px;min-height:70px;padding:12px 16px}
+  .admin-content{padding:18px 16px 100px}
+  .dashboard-grid{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr}
+  .admin-search{min-width:0;width:100%}
+  .admin-actions{width:auto}
+}
+@media(max-width:520px){
+  .admin-menu{grid-template-columns:1fr}
+  .admin-topbar{align-items:flex-start;flex-direction:column}
+  .admin-actions{width:100%}
+  .admin-actions>*{flex:1}
+  .admin-content{padding:14px 12px 100px}
+  .panel{padding:16px}
+  .publish-bar{bottom:8px;margin:16px 0}
+  .publish-actions{width:100%;display:grid;grid-template-columns:1fr 1fr}
+  .publish-actions button{width:100%}
+}
+@media(max-width:380px){
+  .publish-actions{grid-template-columns:1fr}
+}
 </style></style></head>
 <body><div id="loginGate" class="login-gate"><form id="loginGateForm" class="login-card-g"><h1>G-MAX</h1><p>Secure website administration</p><label>Username</label><input id="adminUser" autocomplete="username" required><label>Password</label><input id="adminPass" type="password" autocomplete="current-password" required><button type="submit">Sign in</button><div id="loginErr" class="login-error-g"></div></form></div>
 <div class="admin admin-gated"><div class="mobile-admin-bar"><button type="button" class="mobile-admin-toggle" id="mobileAdminToggle" aria-expanded="false"><i class="fa-solid fa-bars"></i> Menu</button><span class="mobile-admin-title">G-MAX ADMIN</span></div>
