@@ -215,7 +215,76 @@ body{background:var(--admin-bg);color:var(--admin-text)}
 @media(max-width:380px){
   .publish-actions{grid-template-columns:1fr}
 }
-</style></style></head>
+</style></style><style>
+/* G-MAX Admin header redesign */
+.admin-header{
+  min-height:82px!important;
+  margin:0 0 24px!important;
+  padding:0 2px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:24px!important;
+  background:transparent!important;
+}
+.admin-header-left,.admin-header-right{display:flex;align-items:center;gap:14px}
+.admin-header-left{min-width:0}
+.admin-page-icon{
+  width:48px;height:48px;flex:0 0 48px;border-radius:10px;
+  display:grid;place-items:center;background:var(--admin-orange);
+  color:#fff;font-size:19px;box-shadow:0 5px 14px rgba(245,130,32,.2)
+}
+.header-title{min-width:0}
+.header-kicker{
+  display:block;margin-bottom:2px;color:var(--admin-orange);
+  font-size:10px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase
+}
+.admin-header .header-title h1{
+  margin:0!important;color:var(--admin-black)!important;
+  font-size:25px!important;line-height:1.2!important;font-weight:800!important
+}
+.admin-header-right{justify-content:flex-end}
+.header-preview{
+  height:42px;padding:0 15px!important;border:1px solid var(--admin-line)!important;
+  border-radius:8px!important;background:#fff!important;color:var(--admin-black)!important;
+  display:flex!important;align-items:center!important;gap:9px!important;
+  font-weight:700!important;cursor:pointer;transition:.18s ease
+}
+.header-preview i{color:var(--admin-orange)}
+.header-preview:hover{border-color:var(--admin-orange)!important;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.admin-profile{
+  min-height:48px;padding:5px 11px 5px 6px;border:1px solid var(--admin-line);
+  border-radius:9px;background:#fff;display:flex;align-items:center;gap:9px
+}
+.admin-profile-icon{
+  width:36px;height:36px;border-radius:8px;background:var(--admin-green);
+  color:#fff;display:grid;place-items:center
+}
+.admin-profile-text{display:flex;flex-direction:column;line-height:1.15;padding-right:3px}
+.admin-profile-text strong{font-size:13px;color:var(--admin-black)}
+.admin-profile-text small{font-size:10px;color:var(--admin-muted);margin-top:3px}
+@media(max-width:800px){
+  .admin-header{min-height:70px!important;gap:12px!important}
+  .admin-page-icon{width:42px;height:42px;flex-basis:42px}
+  .admin-header .header-title h1{font-size:21px!important}
+  .header-kicker{font-size:9px}
+  .header-preview{width:42px;padding:0!important;justify-content:center}
+  .header-preview span{display:none}
+  .admin-profile-text{display:none}
+  .admin-profile{padding:5px}
+}
+@media(max-width:520px){
+  .admin-header{align-items:center!important;flex-direction:row!important}
+  .admin-header-left{gap:10px}
+  .admin-header-right{gap:7px}
+  .admin-page-icon{width:38px;height:38px;flex-basis:38px;border-radius:8px;font-size:16px}
+  .admin-header .header-title h1{font-size:18px!important}
+  .header-kicker{font-size:8px;letter-spacing:1.2px}
+  .header-preview{width:38px;height:38px}
+  .admin-profile{min-height:38px}
+  .admin-profile-icon{width:28px;height:28px;border-radius:7px;font-size:12px}
+}
+</style></head>
 <body><div id="loginGate" class="login-gate"><form id="loginGateForm" class="login-card-g"><h1>G-MAX</h1><p>Secure website administration</p><label>Username</label><input id="adminUser" autocomplete="username" required><label>Password</label><input id="adminPass" type="password" autocomplete="current-password" required><button type="submit">Sign in</button><div id="loginErr" class="login-error-g"></div></form></div>
 <div class="admin admin-gated"><div class="mobile-admin-bar"><button type="button" class="mobile-admin-toggle" id="mobileAdminToggle" aria-expanded="false"><i class="fa-solid fa-bars"></i> Menu</button><span class="mobile-admin-title">G-MAX ADMIN</span></div>
 <aside class="sidebar">
@@ -234,7 +303,25 @@ body{background:var(--admin-bg);color:var(--admin-text)}
 </nav>
 </aside>
 <main class="main">
-<header class="top admin-header"><div class="header-title"><span class="header-kicker">G-MAX WEBSITE</span><h1 id="title">Dashboard</h1></div><div class="header-actions"><button type="button" class="header-action" id="openPublicPreview" title="Open public website preview"><i class="fa-solid fa-arrow-up-right-from-square"></i><span>Preview Website</span></button><div class="admin"><i class="fa-solid fa-user-shield"></i><span>Admin</span></div></div></header>
+<header class="top admin-header">
+  <div class="admin-header-left">
+    <div class="admin-page-icon"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i></div>
+    <div class="header-title">
+      <span class="header-kicker">G-MAX WEBSITE</span>
+      <h1 id="title">Dashboard</h1>
+    </div>
+  </div>
+  <div class="admin-header-right">
+    <button type="button" class="header-action header-preview" id="openPublicPreview" title="Open public website preview">
+      <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+      <span>Preview Website</span>
+    </button>
+    <div class="admin-profile">
+      <span class="admin-profile-icon"><i class="fa-solid fa-user-shield" aria-hidden="true"></i></span>
+      <span class="admin-profile-text"><strong>Admin</strong><small>Administrator</small></span>
+    </div>
+  </div>
+</header>
 
 <section id="dashboard" class="section active">
 <div class="welcome"><h2>G-MAX Website Management</h2><p>Manage the content used by the G-MAX website from one place.</p></div>
