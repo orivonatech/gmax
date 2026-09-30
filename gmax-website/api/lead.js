@@ -7,13 +7,13 @@ module.exports=async function(req,res){
  if(!process.env.GITHUB_TOKEN)return json(res,500,{error:'Lead storage is not configured'});
  try{
   const b=typeof req.body==='string'?JSON.parse(req.body):(req.body||{});
-  const name=String(b.name||'').trim(),email=String(b.email||'').trim(),phone=String(b.phone||'').trim(),message=String(b.message||'').trim();
+  const name=String(b.name||'').trim(),email=String(b.email||'').trim(),phone=String(b.phone||'').trim(),message=String(b.message||'').trim(),source=String(b.source||'Website contact form').trim().slice(0,300),landingPage=String(b.landingPage||'').trim().slice(0,200),referrer=String(b.referrer||'').trim().slice(0,500);
   if(!name||!email||!message)return json(res,400,{error:'Name, email and message are required'});
   if(name.length>120||email.length>160||phone.length>40||message.length>3000)return json(res,400,{error:'One or more fields are too long'});
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return json(res,400,{error:'Please enter a valid email address'});
   const file=await gh('https://api.github.com/repos/'+REPO()+'/contents/'+PATH+'?ref='+encodeURIComponent(BRANCH()));
   const data=JSON.parse(Buffer.from(file.content,'base64').toString('utf8'));if(!Array.isArray(data.leads))data.leads=[];
-  const lead={id:'lead-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8),name,email,phone,message,status:'New',source:'Website contact form',createdAt:new Date().toISOString()};
+  const lead={id:'lead-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8),name,email,phone,message,status:'New',source:source||'Website contact form',landingPage,referrer,createdAt:new Date().toISOString()};
   data.leads.unshift(lead);data.updatedAt=lead.createdAt;
   if(data.leads.length>500)data.leads=data.leads.slice(0,500);
   await gh('https://api.github.com/repos/'+REPO()+'/contents/'+PATH,{method:'PUT',body:JSON.stringify({message:'lead: add website contact submission',content:Buffer.from(JSON.stringify(data,null,2)+'\n').toString('base64'),branch:BRANCH(),sha:file.sha})});
