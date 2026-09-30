@@ -1,7 +1,7 @@
 {
-  "version": 4,
+  "version": 5,
   "status": "published",
-  "updatedAt": "2026-09-30T08:27:35.674Z",
+  "updatedAt": "2026-09-30T09:20:04.204Z",
   "homepage": {
     "heroHeading": "Telecom Activities",
     "heroSubtitle": "Building tomorrow’s connectivity today",
@@ -41,7 +41,8 @@
   "about": {
     "description": "An Internet Service Provider (ISP) company registered in Rwanda with a license issued by Rwanda Utility Regulatory Agency (RURA) and in partnership with Korea Telecom Rwanda Networks (KTRN) to provide Internet access to end users.",
     "pageTitle": "",
-    "sectionTitle": ""
+    "sectionTitle": "",
+    "image": "assets/images/office.jpg"
   },
   "services": [
     {
@@ -182,10 +183,42 @@
     "phone": "+250 788304259"
   },
   "images": [
-    {"role": "promo1", "label": "Homepage image 1", "path": "assets/images/connections.jpg"},
-    {"role": "promo2", "label": "Homepage image 2", "path": "assets/images/4glt.jpg"},
-    {"role": "promo3", "label": "Homepage image 3", "path": "assets/images/Faster.jpg"},
-    {"role": "about", "label": "About image", "path": "assets/images/office.jpg"}
+    {
+      "role": "hero",
+      "label": "Hero background",
+      "path": "",
+      "alt": "G-MAX homepage hero"
+    },
+    {
+      "role": "promo1",
+      "label": "Homepage image 1",
+      "path": "assets/images/connections.jpg",
+      "alt": "G-MAX promotional image 1"
+    },
+    {
+      "role": "promo2",
+      "label": "Homepage image 2",
+      "path": "assets/images/4glt.jpg",
+      "alt": "G-MAX promotional image 2"
+    },
+    {
+      "role": "promo3",
+      "label": "Homepage image 3",
+      "path": "assets/images/Faster.jpg",
+      "alt": "G-MAX promotional image 3"
+    },
+    {
+      "role": "about",
+      "label": "About image",
+      "path": "assets/images/office.jpg",
+      "alt": "G-MAX office"
+    },
+    {
+      "role": "everywhere",
+      "label": "Everywhere image",
+      "path": "",
+      "alt": "G-MAX connectivity coverage"
+    }
   ],
   "site": {
     "contactIcons": {
