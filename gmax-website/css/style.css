@@ -271,8 +271,7 @@ html::-webkit-scrollbar{display:none}
 /* Single-page navigation */
 #home,#about,#services,#pricing,#faq,#contact{scroll-margin-top:110px}
 
-.skip-link{position:fixed;left:12px;top:-60px;z-index:100000;padding:10px 14px;background:#092852;color:#fff;border-radius:4px;font-weight:700;text-decoration:none}.skip-link:focus{top:12px;outline:3px solid #f58220;outline-offset:2px}.gmax-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
-
+.skip-link{position:fixed;left:12px;top:-60px;z-index:100000;padding:10px 14px;background:#092852;color:#fff;border-radius:4px;font-weight:700;text-decoration:none}.skip-link:focus{top:12px;outline:3px solid #f58220;outline-offset:2px}
 /* G-MAX public refresh — uses the same Admin brand system */
 :root{--gmax-orange:#f58220;--gmax-green:#52b949;--gmax-navy:#092852;--gmax-ink:#172536;--gmax-muted:#66758a;--gmax-line:#e1e7ef;--gmax-soft:#f5f7fa;--gmax-shadow:0 14px 40px rgba(9,40,82,.10)}
 body{color:var(--gmax-ink)}
@@ -342,15 +341,15 @@ body{color:var(--gmax-ink)}
 .pricing-table th{font-weight:700;color:#fff}
 .pricing-table td{font-size:15px;color:var(--gmax-ink)}
 .pricing-tab:focus-visible,.mission-vision-toggle:focus-visible,.site-nav a:focus-visible,.btn:focus-visible{outline:3px solid rgba(245,130,32,.45);outline-offset:3px}
-.contact-form-wrap{border:1px solid var(--gmax-line);border-radius:14px;box-shadow:var(--gmax-shadow);background:#fff;padding:34px}
+
 .contact-form-wrap h2{color:var(--gmax-navy);margin-bottom:22px}
 .gmax-contact-form input,.gmax-contact-form textarea{border:1px solid #ccd6e2;border-radius:8px;min-height:48px;padding:12px 14px;transition:border-color .2s ease,box-shadow .2s ease}
 .gmax-contact-form textarea{min-height:140px;resize:vertical}
 .gmax-contact-form input:focus,.gmax-contact-form textarea:focus{border-color:var(--gmax-orange);box-shadow:0 0 0 3px rgba(245,130,32,.12);outline:none}
 .gmax-contact-form button{min-height:48px;border:0;border-radius:8px;background:var(--gmax-orange);color:#fff;font-weight:700;padding:0 22px;cursor:pointer}
 .gmax-contact-form button:hover{background:var(--gmax-navy)}
-@media(max-width:800px){.hero-content .hero-read-more{width:auto;min-width:190px}.contact-form-wrap{padding:24px}.service-card h3{min-height:0}}
-@media(max-width:560px){.hero-content .hero-read-more{width:100%}.contact-form-wrap{padding:20px}.section{padding:64px 0}}
+@media(max-width:800px){.hero-content .hero-read-more{width:auto;min-width:190px}.service-card h3{min-height:0}}
+@media(max-width:560px){.hero-content .hero-read-more{width:100%}.section{padding:64px 0}}
 
 /* G-MAX palette lock — public site must follow Admin brand colors */
 :root{--orange:#f58220;--green:#52b949;--navy:#092852;--blue:#092852}
