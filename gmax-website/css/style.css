@@ -13,20 +13,20 @@ p{margin:0 0 16px}
 .container{width:min(1640px,calc(100% - 120px));margin:0 auto}
 .section{padding:90px 0}
 
-.topbar{height:38px;background:var(--green);color:#fff}
+.topbar{height:28px;background:var(--green);color:#fff}
 .topbar-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
-.topbar-contact{display:flex;align-items:center;gap:22px;font-size:16px;white-space:nowrap}
+.topbar-contact{display:flex;align-items:center;gap:20px;font-size:13px;white-space:nowrap}
 .topbar-contact span,.topbar-social span{display:inline-flex;align-items:center}
-.topbar-contact i{font-size:18px;margin-right:9px}
-.topbar-social{display:flex;gap:26px;font-size:19px}
+.topbar-contact i{font-size:16px;margin-right:9px}
+.topbar-social{display:flex;gap:26px;font-size:17px}
 
-.site-header{height:100px;background:#fff;position:relative;z-index:20;border-bottom:1px solid #edf0f4;transition:box-shadow .25s ease}
+.site-header{height:80px;background:#fff;position:relative;z-index:20;border-bottom:1px solid #edf0f4;transition:box-shadow .25s ease}
 .site-header.is-scrolled{box-shadow:0 5px 18px rgba(0,0,0,.08)}
-.nav-wrap{height:100%;display:flex;align-items:center;gap:32px}
+.nav-wrap{height:90%;display:flex;align-items:center;gap:32px}
 .logo{display:flex;align-items:center;flex-shrink:0}
-.logo img{width:190px;height:auto;display:block}
-.site-nav{margin-left:auto;display:flex;align-items:center;height:100%;gap:39px}
-.site-nav a{height:100%;display:flex;align-items:center;position:relative;color:#111;font:600 18px 'Open Sans',Arial,sans-serif;text-transform:uppercase;white-space:nowrap;transition:color .25s ease}
+.logo img{width:180px;height:auto;display:block}
+.site-nav{margin-left:auto;display:flex;align-items:center;height:90%;gap:39px}
+.site-nav a{height:90%;display:flex;align-items:center;position:relative;color:#111;font:600 18px 'Open Sans',Arial,sans-serif;text-transform:uppercase;white-space:nowrap;transition:color .25s ease}
 .site-nav a:after{content:"";position:absolute;left:0;right:0;bottom:25px;height:2px;background:var(--orange);transform:scaleX(0);transition:transform .25s ease}
 .site-nav a:hover,.site-nav a.active{color:var(--orange)}
 .site-nav a:hover:after,.site-nav a.active:after{transform:scaleX(1)}
