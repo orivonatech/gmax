@@ -32,8 +32,16 @@ Set these server-side environment variables:
 - `GITHUB_TOKEN` — GitHub token with permission to read and write repository contents.
 - `GITHUB_REPO` — optional; defaults to `orivonatech/gmax`.
 - `GITHUB_BRANCH` — optional; defaults to `main`.
+- `SUPABASE_URL` — optional; when paired with the service-role key, leads and analytics use Supabase/Postgres instead of GitHub JSON.
+- `SUPABASE_SERVICE_ROLE_KEY` — optional server-only Supabase service-role key. Never expose it to browser code.
 
 Never put `GITHUB_TOKEN`, `ADMIN_PASSWORD`, or `SESSION_SECRET` in HTML, JavaScript, `content.json`, or any public file.
+
+## Production database storage
+
+Phase 7 adds a database-ready storage adapter. The public lead form and Admin Leads/Analytics APIs keep the same URLs and behavior. If both Supabase variables are configured, new leads and analytics events are stored in Supabase; otherwise the existing GitHub JSON storage remains the safe fallback.
+
+Before enabling Supabase storage, run `data/supabase.schema.sql` in the Supabase SQL editor. Keep the service-role key only in Vercel/server environment variables. Existing GitHub JSON records are not automatically deleted or overwritten by this change.
 
 ## First-time setup
 
