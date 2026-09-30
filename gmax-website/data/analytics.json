@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-30T11:31:21.566Z",
+  "updatedAt": "2026-09-30T11:31:51.852Z",
   "days": {
     "2026-09-30": {
       "views": 10,
@@ -9,7 +9,7 @@
         "s-muo08wre-mh3e3uoa"
       ],
       "events": {
-        "cta_click": 1
+        "cta_click": 2
       },
       "pages": {
         "/index.html": 7,
@@ -17,9 +17,9 @@
       },
       "sources": {
         "direct": 1,
-        "https://g-maxwebsite.vercel.app": 10
+        "https://g-maxwebsite.vercel.app": 11
       },
-      "updatedAt": "2026-09-30T11:31:21.566Z"
+      "updatedAt": "2026-09-30T11:31:51.852Z"
     }
   }
 }
