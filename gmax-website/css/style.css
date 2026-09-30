@@ -144,7 +144,7 @@ p{margin:0 0 16px}
 
 .site-footer{background:#000;color:#fff;padding:20px 0 0;min-height:345px}
 .footer-content{width:min(1640px,calc(100% - 120px));display:grid;grid-template-columns:1.55fr .72fr 1.35fr;gap:72px;align-items:start}
-.footer-logo img{width:395px;height:auto;display:block;margin:0 0 12px}
+.footer-logo img{width:180px;height:auto;display:block;margin:0 0 12px}
 .footer-brand p{max-width:625px;margin:0;color:#fff;font-size:18px;line-height:1.55}
 .footer-nav{display:flex;flex-direction:column;gap:11px;padding-top:28px}
 .footer-nav a{color:#fff;font-size:20px;line-height:1.45;transition:color .25s ease}
@@ -170,7 +170,7 @@ p{margin:0 0 16px}
 @media(max-width:980px){
   .container{width:min(100% - 56px,1140px)}
   .footer-content{gap:35px}
-  .footer-logo img{width:280px}
+  .footer-logo img{width:160px}
   .footer-brand p{font-size:16px}
   .footer-nav a,.footer-contact>a{font-size:16px}
   .footer-contact i{font-size:20px}
@@ -236,7 +236,7 @@ p{margin:0 0 16px}
   .contact-details h2{font-size:40px}
   .footer-content{grid-template-columns:1fr 1fr;gap:35px}
   .footer-brand{grid-column:1/-1}
-  .footer-logo img{width:300px}
+  .footer-logo img{width:140px}
   .footer-brand p{max-width:620px}
 }
 @media(max-width:420px){
@@ -244,7 +244,7 @@ p{margin:0 0 16px}
   .topbar-contact span:nth-child(2),.topbar-contact span:nth-child(3){display:none}
   .service-grid,.footer-content{grid-template-columns:1fr}
   .footer-brand{grid-column:auto}
-  .footer-logo img{width:260px}
+  .footer-logo img{width:125px}
   .footer-nav{padding-top:0}
   .footer-contact{padding-top:0}
   .copyright{width:calc(100% - 32px);font-size:14px;padding-top:14px}
