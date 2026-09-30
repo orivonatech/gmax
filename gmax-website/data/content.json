@@ -16,7 +16,7 @@
     ],
     "heroButton": {
       "label": "Read More",
-      "url": "services.html"
+      "url": "#services"
     },
     "images": [
       "assets/images/connections.jpg",
@@ -265,32 +265,32 @@
     "nav": [
       {
         "label": "Home",
-        "url": "index.html",
+        "url": "#home",
         "visible": true
       },
       {
         "label": "About Us",
-        "url": "about.html",
+        "url": "#about",
         "visible": true
       },
       {
         "label": "Services",
-        "url": "services.html",
+        "url": "#services",
         "visible": true
       },
       {
         "label": "FAQ",
-        "url": "faq.html",
+        "url": "#faq",
         "visible": true
       },
       {
         "label": "Pricing",
-        "url": "pricing.html",
+        "url": "#pricing",
         "visible": true
       },
       {
         "label": "Contact Us",
-        "url": "contact.html",
+        "url": "#contact",
         "visible": true
       }
     ],
