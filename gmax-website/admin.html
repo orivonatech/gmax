@@ -355,6 +355,78 @@ body{background:var(--admin-bg);color:var(--admin-text)}
   .publish-bar{bottom:4px!important}
   .login-card-g{padding:24px!important}
 }
+</style><style>
+/* G-MAX Admin structural cleanup */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+body{min-height:100vh}
+.admin.admin-gated{
+  display:grid!important;
+  grid-template-columns:250px minmax(0,1fr)!important;
+  min-height:100vh!important;
+  width:100%!important;
+}
+.sidebar{
+  display:block!important;
+  grid-column:1;
+  grid-row:1;
+  width:250px!important;
+  min-width:250px!important;
+  height:100vh!important;
+  position:sticky!important;
+  top:0!important;
+  align-self:start!important;
+  overflow-y:auto!important;
+  background:#111!important;
+}
+.main{
+  grid-column:2;
+  grid-row:1;
+  min-width:0!important;
+  width:100%!important;
+  padding:0 30px 100px!important;
+}
+.admin-topbar{display:none!important}
+.admin-header{
+  width:100%!important;
+  min-height:82px!important;
+  padding:16px 0!important;
+  margin:0 0 22px!important;
+  background:transparent!important;
+}
+.dashboard-cards{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.dashboard-cards .card{min-width:0}
+.welcome{margin-bottom:18px!important}
+.publish-bar{
+  width:100%!important;
+  margin:20px 0 0!important;
+  position:sticky!important;
+  bottom:10px!important;
+  z-index:50!important;
+  box-shadow:0 6px 22px rgba(0,0,0,.12)!important;
+}
+@media(max-width:1180px){
+ .admin.admin-gated{grid-template-columns:220px minmax(0,1fr)!important}
+ .sidebar{width:220px!important;min-width:220px!important}
+ .main{padding-left:24px!important;padding-right:24px!important}
+ .dashboard-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:800px){
+ .admin.admin-gated{display:block!important}
+ .sidebar{
+   display:none!important;position:fixed!important;top:56px!important;left:0!important;
+   width:100%!important;min-width:0!important;height:auto!important;
+   max-height:calc(100vh - 56px)!important;z-index:999!important
+ }
+ .sidebar.mobile-open{display:block!important}
+ .main{display:block!important;width:100%!important;padding:0 14px 100px!important}
+ .admin-header{min-height:70px!important;margin-bottom:16px!important}
+ .dashboard-cards{grid-template-columns:1fr!important}
+ .publish-bar{position:sticky!important;bottom:6px!important;margin-top:16px!important}
+}
+@media(max-width:520px){
+ .main{padding-left:10px!important;padding-right:10px!important}
+ .admin-header{min-height:62px!important}
+}
 </style></head>
 <body><div id="loginGate" class="login-gate"><form id="loginGateForm" class="login-card-g"><h1>G-MAX</h1><p>Secure website administration</p><label>Username</label><input id="adminUser" autocomplete="username" required><label>Password</label><input id="adminPass" type="password" autocomplete="current-password" required><button type="submit">Sign in</button><div id="loginErr" class="login-error-g"></div></form></div>
 <div class="admin admin-gated"><div class="mobile-admin-bar"><button type="button" class="mobile-admin-toggle" id="mobileAdminToggle" aria-expanded="false"><i class="fa-solid fa-bars"></i> Menu</button><span class="mobile-admin-title">G-MAX ADMIN</span></div>
@@ -396,6 +468,7 @@ body{background:var(--admin-bg);color:var(--admin-text)}
 
 <section id="dashboard" class="section active">
 <div class="welcome"><h2>G-MAX Website Management</h2><p>Manage the content used by the G-MAX website from one place.</p></div>
+<div class="cards dashboard-cards">
 <div class="card"><div class="card-icon"><i class="fa-solid fa-house"></i></div><h2>Homepage</h2><p>Manage homepage content, mission, vision and commitments.</p><button class="edit" data-open="homepage">Edit</button></div>
 <div class="card"><div class="card-icon"><i class="fa-solid fa-circle-info"></i></div><h2>About</h2><p>Manage the G-MAX LTD company description.</p><button class="edit" data-open="about">Edit</button></div>
 <div class="card"><div class="card-icon"><i class="fa-solid fa-briefcase"></i></div><h2>Services</h2><p>Manage the four G-MAX services and descriptions.</p><button class="edit" data-open="services">Edit</button></div>
@@ -449,7 +522,13 @@ Understanding, delivering our commitments and being trustworthy</textarea></div>
 <div class="note"><strong>Admin-only media management:</strong> Each asset has a stable role, usage location and alt text. Replacing one asset does not change unrelated images, colors or layout. Uploaded files use isolated paths.</div>
 <div id="media-editor-list" class="media-library"></div>
 </div></section>
-<div class="panel"><div class="panel-head"><h2>Published Version History</h2><button id="refreshHistory" class="btn-secondary" type="button">Refresh</button></div><div class="note">Admin-only history of published website content. Restoring a version creates a backup of the current live version before the selected version is published.</div><div id="historyList" class="history-list"><div class="empty">Loading version history…</div></div></div></section><section id="history" class="section"><div class="panel"><div class="panel-head"><h2>Published Version History</h2><button id="refreshHistory" class="btn-secondary" type="button">Refresh</button></div><div class="note">Published website versions are read from the GitHub repository. Restoring a version backs up the current live version first.</div><div id="historyList" class="history-list"><div class="empty">Loading version history…</div></div></div></section><section id="preview" class="section"><div class="panel"><div class="admin-header"><div><h2>Website Preview</h2><p>Review the public website without leaving the admin dashboard.</p></div><div class="admin-actions"><button class="btn-secondary" id="openPreviewPage" type="button">Open in New Tab</button></div></div><iframe class="preview-frame" id="previewFrame" src="index.html"></iframe></div></section><section id="settings" class="section">
+<section id="history" class="section">
+<div class="panel">
+<div class="panel-head"><h2>Published Version History</h2><button id="refreshHistory" class="btn-secondary" type="button">Refresh</button></div>
+<div class="note">Published website versions are read from the GitHub repository. Restoring a version backs up the current live version first.</div>
+<div id="historyList" class="history-list"><div class="empty">Loading version history…</div></div>
+</div>
+</section><section id="preview" class="section"><div class="panel"><div class="admin-header"><div><h2>Website Preview</h2><p>Review the public website without leaving the admin dashboard.</p></div><div class="admin-actions"><button class="btn-secondary" id="openPreviewPage" type="button">Open in New Tab</button></div></div><iframe class="preview-frame" id="previewFrame" src="index.html"></iframe></div></section><section id="settings" class="section">
 <div class="panel"><h2>Branding</h2><div class="note"><strong>Safe editing:</strong> logo and favicon are independent assets. Replacing the logo changes only the logo; replacing the favicon changes only the favicon. Other website images, layout, fonts and colors are preserved unless you deliberately edit those settings. Uploaded branding files are stored in dedicated logo paths.</div>
 <div class="row">
 <div class="field"><label>Company / brand name</label><input data-setting="brandName"></div>
@@ -506,7 +585,7 @@ Understanding, delivering our commitments and being trustworthy</textarea></div>
 <div class="field"><label>Everywhere image path</label><input data-setting="homepage.everywhere.image"></div>
 </div>
 <div class="panel"><h2>Footer</h2><div class="field"><label>Copyright text</label><input data-setting="footerCopyright"></div><button class="save" data-save>Save Settings</button><span class="status">Saved</span></div>
-</section></main></div>
+</section><div class="publish-bar"><div class="publish-meta"><strong id="draftState">Checking draft…</strong><br><span id="publishedState">Checking published version…</span></div><div class="publish-actions"><span id="autosaveState" class="autosave-state">Autosave ready</span><button id="undoChanges" type="button" title="Undo last edit">↶ Undo</button><button id="redoChanges" type="button" title="Redo last edit">↷ Redo</button><button id="previewChanges" type="button">Preview</button><button id="discardChanges" type="button">Discard Draft</button><button id="revertChanges" class="danger" type="button">Revert Published</button><button id="publishChanges" class="publish" type="button">Publish Changes</button><button id="previewSite" class="btn-secondary" type="button">Preview Website</button><button id="logoutAdmin" type="button">Log out</button></div></div></main></div>
 <script>
 const DATA_URL='data/content.json', DRAFT_KEY='gmax-admin-draft-v1';
 let siteData=null;
@@ -829,7 +908,7 @@ document.getElementById('refreshHistory')?.addEventListener('click',loadHistory)
 </script>
 
 
-<div class="publish-bar"><div class="publish-meta"><strong id="draftState">Checking draft…</strong><br><span id="publishedState">Checking published version…</span></div><div class="publish-actions"><span id="autosaveState" class="autosave-state">Autosave ready</span><button id="undoChanges" type="button" title="Undo last edit">↶ Undo</button><button id="redoChanges" type="button" title="Redo last edit">↷ Redo</button><button id="previewChanges" type="button">Preview</button><button id="discardChanges" type="button">Discard Draft</button><button id="revertChanges" class="danger" type="button">Revert Published</button><button id="publishChanges" class="publish" type="button">Publish Changes</button><button id="previewSite" class="btn-secondary" type="button">Preview Website</button><button id="logoutAdmin" type="button">Log out</button></div></div><script>
+<script>
 (function(){
 const API='/api',draftKey='gmax-admin-draft-v1';
 function gate(on){document.getElementById('loginGate').style.display=on?'flex':'none';document.querySelector('.admin').classList.toggle('admin-gated',on)}
