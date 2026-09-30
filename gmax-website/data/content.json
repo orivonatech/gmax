@@ -366,7 +366,8 @@
       "ogImage": "",
       "robots": "index,follow",
       "themeColor": "#111111"
-    }
+    },
+    "logo": "assets/logo/gmax_logo.jpeg"
   },
   "brandName": "",
   "tagline": "",
