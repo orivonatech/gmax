@@ -32,16 +32,16 @@ function renderHomepageLayout(data){
   layout.filter(sec=>sec && sec.enabled!==false).forEach(sec=>{
     const type=sec.type||'custom';
     if(type==='hero'){
-      const el=document.createElement('section');el.className='hero';
+      const el=document.createElement('section');el.id='hero';el.className='hero';
       el.innerHTML='<div class="hero-overlay"></div><div class="container hero-content"><h1></h1><p></p><p></p><a class="btn btn-outline hero-read-more" href=""></a></div>';root.appendChild(el);
     }else if(type==='about'){
-      const el=document.createElement('section');el.className='section about-showcase';
+      const el=document.createElement('section');el.id='about';el.className='section about-showcase';
       el.innerHTML='<div class="container about-showcase-grid"><div class="promo-grid" aria-label="G-MAX promotional images"><div class="promo-image"><img alt="G-MAX promotional image"></div><div class="promo-image"><img alt="G-MAX promotional image"></div><div class="promo-image"><img alt="G-MAX promotional image"></div><div class="promo-image"><img alt="G-MAX promotional image"></div></div><div class="about-showcase-copy"><h2></h2><p class="about-lead"></p><div class="mission-vision"><div class="mission-vision-controls"><button type="button" class="mission-vision-toggle" data-panel="mission" aria-expanded="false"><span aria-hidden="true">+</span> Our Mission</button><button type="button" class="mission-vision-toggle" data-panel="vision" aria-expanded="false"><span aria-hidden="true">+</span> Our Vision</button></div><div class="mission-vision-panel" data-panel-content="mission" hidden><p></p></div><div class="mission-vision-panel" data-panel-content="vision" hidden><p></p></div></div></div></div>';root.appendChild(el);
     }else if(type==='commitments'){
       const el=document.createElement('section');el.className='section commitments-section';
       el.innerHTML='<div class="container"><div class="showcase-commitments"><h3></h3><ul></ul></div></div>';root.appendChild(el);
     }else if(type==='services'){
-      const el=document.createElement('section');el.className='section services-preview';
+      const el=document.createElement('section');el.id='services';el.className='section services-preview';
       el.innerHTML='<div class="container services-showcase"><h2 class="services-showcase-title"></h2><div class="service-grid"></div></div>';root.appendChild(el);
     }else if(type==='everywhere'){
       const el=document.createElement('section');el.className='section everywhere-showcase';
@@ -73,7 +73,7 @@ function applyGmaxSiteSettings(data){
   let fav=document.querySelector('link[rel="icon"]');
   if(!fav){fav=document.createElement('link');fav.rel='icon';document.head.appendChild(fav)}
   if(s.favicon)fav.href=s.favicon;
-  const nav=s.nav||[];
+  const nav=(s.nav&&s.nav.length?s.nav:[{label:'Home',url:'#home',visible:true},{label:'About Us',url:'#about',visible:true},{label:'Services',url:'#services',visible:true},{label:'FAQ',url:'#faq',visible:true},{label:'Pricing',url:'#pricing',visible:true},{label:'Contact Us',url:'#contact',visible:true}]);
   document.querySelectorAll('.site-nav a').forEach((a,i)=>{const n=nav[i];if(!n)return;a.textContent=n.label||a.textContent;a.href=n.url||a.href;a.style.display=n.visible===false?'none':''});document.querySelectorAll('.footer-nav a').forEach(a=>{const n=nav.find(x=>x.url===a.getAttribute('href'));if(n){a.textContent=n.label;a.style.display=n.visible===false?'none':''}});
   const social=s.social||[];
   const ci=s.contactIcons||{};const iconMap=[ci.address||'fa-solid fa-location-dot',ci.email||'fa-regular fa-envelope',ci.phone||'fa-solid fa-phone'];document.querySelectorAll('.topbar-contact i,.footer-contact > a > i,.contact-item > i').forEach((el,i)=>{if(iconMap[i%3])el.className=iconMap[i%3]});
