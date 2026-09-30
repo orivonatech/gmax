@@ -1,6 +1,6 @@
 const GMAX_ANALYTICS_KEY='gmax-analytics-session-v1';
 function gmaxSession(){try{let id=localStorage.getItem(GMAX_ANALYTICS_KEY);if(!id){id='s-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10);localStorage.setItem(GMAX_ANALYTICS_KEY,id)}return id}catch(e){return ''}}
-function gmaxSource(){try{return document.referrer||new URLSearchParams(location.search).get('utm_source')||'direct'}catch(e){return 'direct'}}
+function gmaxSource(){try{if(document.referrer){try{return new URL(document.referrer).origin}catch(e){return 'referrer'}}return new URLSearchParams(location.search).get('utm_source')||'direct'}catch(e){return 'direct'}}
 window.gmaxTrack=function(event,extra){try{const payload=Object.assign({event,page:location.pathname+location.hash,source:gmaxSource(),sessionId:gmaxSession()},extra||{});fetch('/api/event',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(()=>{})}catch(e){}};
 document.addEventListener('DOMContentLoaded',()=>{window.gmaxTrack('page_view');document.addEventListener('click',e=>{const a=e.target.closest('a');if(!a)return;const href=a.getAttribute('href')||'';if(/whatsapp|wa\.me/i.test(href))window.gmaxTrack('whatsapp_click');else if(/^tel:/i.test(href))window.gmaxTrack('phone_click');else if(/^mailto:/i.test(href))window.gmaxTrack('email_click');else if(a.classList.contains('btn')||a.classList.contains('custom-section-button')||a.classList.contains('hero-read-more'))window.gmaxTrack('cta_click')})});
 'use strict';
