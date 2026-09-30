@@ -1,7 +1,7 @@
 {
-  "version": 6,
+  "version": 7,
   "status": "published",
-  "updatedAt": "2026-09-30T10:29:47.865Z",
+  "updatedAt": "2026-09-30T12:30:47.952Z",
   "homepage": {
     "heroHeading": "Telecom Activities",
     "heroSubtitle": "Building tomorrow’s connectivity today",
@@ -28,7 +28,7 @@
       "title": "",
       "subtitle": "",
       "description": "",
-      "image": ""
+      "image": "assets/images/gmax-everywhere-1790771367560jpg"
     },
     "images": [
       "assets/images/connections.jpg",
@@ -265,7 +265,7 @@
     {
       "role": "everywhere",
       "label": "Everywhere image",
-      "path": "",
+      "path": "assets/images/gmax-everywhere-1790771367560jpg",
       "alt": "G-MAX connectivity coverage"
     },
     {
@@ -283,11 +283,42 @@
     },
     "colors": {
       "primary": "#f58220",
-      "secondary": "#111111",
+      "secondary": "#092852",
       "accent": "#f58220",
       "success": "#52b949"
     },
-    "nav": [],
+    "nav": [
+      {
+        "label": "Home",
+        "url": "#home",
+        "visible": true
+      },
+      {
+        "label": "About Us",
+        "url": "#about",
+        "visible": true
+      },
+      {
+        "label": "Services",
+        "url": "#services",
+        "visible": true
+      },
+      {
+        "label": "FAQ",
+        "url": "#faq",
+        "visible": true
+      },
+      {
+        "label": "Pricing",
+        "url": "#pricing",
+        "visible": true
+      },
+      {
+        "label": "Contact Us",
+        "url": "#contact",
+        "visible": true
+      }
+    ],
     "social": [],
     "seo": {
       "title": "G-MAX | Always Ahead",
@@ -297,7 +328,7 @@
       "ogDescription": "Design, deploy, and optimize robust telecom networks with our end-to-end solutions.",
       "ogImage": "",
       "robots": "index,follow",
-      "themeColor": "#111111"
+      "themeColor": "#092852"
     }
   },
   "brandName": "",
@@ -323,10 +354,10 @@
   "whatsapp": {
     "number": "",
     "label": "",
-    "enabled": true
+    "enabled": false
   },
   "scrollDown": {
-    "enabled": true,
+    "enabled": false,
     "icon": ""
   },
   "footerCopyright": "",
