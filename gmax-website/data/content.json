@@ -323,10 +323,10 @@
   "whatsapp": {
     "number": "",
     "label": "",
-    "enabled": false
+    "enabled": true
   },
   "scrollDown": {
-    "enabled": false,
+    "enabled": true,
     "icon": ""
   },
   "footerCopyright": "",
