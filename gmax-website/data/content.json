@@ -30,6 +30,12 @@
       "description": "",
       "image": ""
     },
+    "images": [
+      "assets/images/connections.jpg",
+      "assets/images/4glt.jpg",
+      "assets/images/Faster.jpg",
+      "assets/images/office.jpg"
+    ],
     "layout": []
   },
   "about": {
@@ -176,18 +182,10 @@
     "phone": "+250 788304259"
   },
   "images": [
-    {
-      "path": "assets/images/connections.jpg"
-    },
-    {
-      "path": "assets/images/4glt.jpg"
-    },
-    {
-      "path": "assets/images/Faster.jpg"
-    },
-    {
-      "path": "assets/images/office.jpg"
-    }
+    {"role": "promo1", "label": "Homepage image 1", "path": "assets/images/connections.jpg"},
+    {"role": "promo2", "label": "Homepage image 2", "path": "assets/images/4glt.jpg"},
+    {"role": "promo3", "label": "Homepage image 3", "path": "assets/images/Faster.jpg"},
+    {"role": "about", "label": "About image", "path": "assets/images/office.jpg"}
   ],
   "site": {
     "contactIcons": {
