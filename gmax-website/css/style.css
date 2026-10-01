@@ -896,7 +896,7 @@ button,a{touch-action:manipulation}
 
 /* Final compact footer logo sizing */
 /* Compact footer — reduced logo and vertical height */
-.site-footer{padding-top:10px;min-height:260px}
+.site-footer{padding-top:0px;min-height:260px}
 .footer-content{gap:30px}
 .footer-logo img{width:100px;height:auto;max-width:100%;display:block;margin:0 0 7px}
 .footer-brand p{line-height:1.4}
