@@ -33,6 +33,7 @@ function makeFooterLogoTransparent(){
 }
 
 function initGmaxInteractions(){
+  makeFooterLogoTransparent();
   const menuButton=document.querySelector('.menu-toggle');
   const navigation=document.querySelector('.site-nav');
   const header=document.querySelector('.site-header');
