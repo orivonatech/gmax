@@ -1,7 +1,7 @@
 {
-  "version": 9,
+  "version": 10,
   "status": "published",
-  "updatedAt": "2026-10-01T10:13:55.782Z",
+  "updatedAt": "2026-10-01T15:29:12.458Z",
   "homepage": {
     "heroHeading": "Telecom Activities",
     "heroSubtitle": "Building tomorrow’s connectivity today",
@@ -193,62 +193,62 @@
     ],
     "daily": [
       [
-        "RF 300",
+        "RWF 300",
         "1 day",
         "1GB"
       ],
       [
-        "RF 100",
+        "RWF 100",
         "1 day",
         "60 MB"
       ],
       [
-        "RF 200",
+        "RWF 200",
         "1 day",
         "150 MB"
       ],
       [
-        "RF 300",
+        "RWF 300",
         "1 day",
         "300 MB"
       ],
       [
-        "RF 600",
+        "RWF 600",
         "1 day",
         "300 MB"
       ]
     ],
     "mup": [
       [
-        "RF 12,500",
+        "RWF 12,500",
         "30 days"
       ],
       [
-        "RF 25,000",
+        "RWF 25,000",
         "30 days"
       ],
       [
-        "RF 68,000",
+        "RWF 68,000",
         "30 days"
       ],
       [
-        "RF 96,000",
+        "RWF 96,000",
         "30 days"
       ],
       [
-        "RF 39,500",
+        "RWF 39,500",
         "30 days"
       ],
       [
-        "RF 33,000",
+        "RWF 33,000",
         "30 days"
       ],
       [
-        "RF 18,000",
+        "RWF 18,000",
         "30 days"
       ],
       [
-        "RF 120,000",
+        "RWF 120,000",
         "30 days"
       ]
     ]
