@@ -17,8 +17,9 @@ function bindContactForms(recipient){
       const phone=String(data.get('phone')||'').trim();
       const subject=String(data.get('subject')||'').trim();
       const message=String(data.get('message')||'').trim();
-      if(!name||!email||!subject||!message){
-        if(status){status.className='contact-form-status is-error';status.textContent='Please complete the required fields.'}
+      if(!name||!email||!subject||!message||!form.checkValidity()){
+        form.reportValidity();
+        if(status){status.className='contact-form-status is-error';status.textContent='Please complete the required fields with a valid email address.'}
         return;
       }
       const body=[
