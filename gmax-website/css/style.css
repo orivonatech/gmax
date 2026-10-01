@@ -247,18 +247,12 @@ p{margin:0 0 16px}
   .pricing-tab{padding:12px 10px;font-size:10px}
   .faq-page summary{font-size:15px}
   .contact-details h2{font-size:40px}
-  .contact-grid{gap:45px}
-  .contact-form-wrap{padding:30px}
   .footer-content{grid-template-columns:1fr 1fr;gap:35px}
   .footer-brand{grid-column:1/-1}
   .footer-logo img{width:140px}
   .footer-brand p{max-width:620px}
 }
 @media(max-width:420px){
-  .contact-form-wrap{padding:22px 18px}
-  .contact-form-title{font-size:24px}
-  .contact-field input{height:46px}
-
   .container{width:calc(100% - 32px)}
   .topbar-contact span:nth-child(2),.topbar-contact span:nth-child(3){display:none}
   .service-grid,.footer-content{grid-template-columns:1fr}
@@ -336,7 +330,7 @@ body{color:var(--gmax-ink)}
 .pricing-tab.active{color:#fff;background:var(--gmax-orange);border-color:var(--gmax-orange)}.pricing-table-wrap{border-radius:12px;box-shadow:var(--gmax-shadow);overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}.pricing-table th{background:var(--gmax-navy)}
 .faq-page details{border-radius:10px;border-color:var(--gmax-line);box-shadow:0 3px 14px rgba(0,0,0,.03)}.faq-page details[open]{border-color:#f0c39f;box-shadow:0 8px 24px rgba(0,0,0,.06)}
 .faq-page summary{font-weight:600;color:var(--gmax-navy)}.faq-page summary span{color:var(--gmax-green)}
-.contact-grid{gap:70px}.contact-details h2{color:var(--gmax-orange)}
+.contact-grid{gap:70px}.contact-details h2{color:var(--gmax-orange)}.contact-item>i{color:var(--gmax-orange)}.contact-note{border-left-color:var(--gmax-orange);background:var(--gmax-soft);color:var(--gmax-ink)}
 .site-footer{background:var(--gmax-navy);color:#d8e2ee}.footer-brand p{color:#b9c7d7}.footer-nav a,.footer-contact>a{color:#d8e2ee}.footer-nav a:hover,.footer-contact>a:hover{color:var(--gmax-orange)}.footer-contact> a > i{color:var(--gmax-orange)}
 .js-reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}.js-reveal.is-visible{opacity:1;transform:none}
 .scroll-down-widget{background:var(--gmax-orange)}.scroll-down-widget:hover{background:var(--gmax-green)}
@@ -448,6 +442,8 @@ body{color:var(--gmax-ink)}
 .faq-page details{margin-bottom:9px}
 .contact-grid{gap:48px}
 .contact-details h2{margin-bottom:24px}
+.contact-item{padding:14px 0}
+.contact-note{padding:24px}
 .site-footer{padding-top:16px}
 .footer-content{gap:42px}
 .footer-social{margin-top:30px}
@@ -572,7 +568,7 @@ html,body{max-width:100%;overflow-x:hidden}
 img,svg,video,canvas{max-width:100%;height:auto}
 button,a{touch-action:manipulation}
 .about-showcase-grid>*,.everywhere-grid>*,.contact-grid>*,.footer-content>*{min-width:0}
-.topbar-contact span,.footer-contact>a span,.footer-brand p,.faq-page summary,.faq-page details p,.contact-field input,.contact-field textarea{overflow-wrap:anywhere;word-break:break-word}
+.topbar-contact span,.footer-contact>a span,.footer-brand p,.faq-page summary,.faq-page details p,.contact-item a{overflow-wrap:anywhere;word-break:break-word}
 .pricing-table-wrap{max-width:100%;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
 .pricing-table{min-width:620px}
 .hero-carousel,.hero-slides{min-width:0;max-width:100%}
