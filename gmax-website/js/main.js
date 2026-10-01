@@ -16,9 +16,9 @@ function makeFooterLogoTransparent(){
         const data=imageData.data;
         for(let i=0;i<data.length;i+=4){
           const r=data[i],g=data[i+1],b=data[i+2];
-          const brightness=(r+g+b)/3;
-          const chroma=Math.max(r,g,b)-Math.min(r,g,b);
-          if(brightness>=225&&chroma<18)data[i+3]=0;
+          const minimum=Math.min(r,g,b);
+          const chroma=Math.max(r,g,b)-minimum;
+          if(minimum>=185&&chroma<70)data[i+3]=Math.max(0,Math.min(255,(205-minimum)*12));
         }
         ctx.putImageData(imageData,0,0);
         img.src=canvas.toDataURL('image/png');
