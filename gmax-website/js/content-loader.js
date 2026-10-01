@@ -247,7 +247,7 @@ function applyGmaxSiteSettings(data){
   if(colors.accent)root.style.setProperty('--orange',colors.accent);
   if(colors.success)root.style.setProperty('--green',colors.success);
   applyGmaxSeo(s);
-  document.querySelectorAll('.logo img,.footer-logo img').forEach(img=>{if(s.logo)img.src=s.logo;img.alt=s.brandName||'G-MAX'});
+  document.querySelectorAll('.logo img').forEach(img=>{if(s.logo)img.src=s.logo;img.alt=s.brandName||'G-MAX'});
   let fav=document.querySelector('link[rel="icon"]');
   if(!fav){fav=document.createElement('link');fav.rel='icon';document.head.appendChild(fav)}
   if(s.favicon)fav.href=s.favicon;
