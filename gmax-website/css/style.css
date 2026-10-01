@@ -13,6 +13,8 @@ p{margin:0 0 16px}
 .container{width:min(1640px,calc(100% - 120px));margin:0 auto}
 .section{padding:90px 0}
 
+/* ===== TOP BAR =====
+   Style the thin contact/social strip above the main header here. */
 .topbar{height:28px;background:var(--green);color:#fff}
 .topbar-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
 .topbar-contact{display:flex;align-items:center;gap:20px;font-size:13px;white-space:nowrap}
@@ -20,6 +22,8 @@ p{margin:0 0 16px}
 .topbar-contact i{font-size:16px;margin-right:9px}
 .topbar-social{display:flex;gap:26px;font-size:17px}
 
+/* ===== MAIN HEADER / NAVIGATION =====
+   Change header height, logo sizing, menu spacing and navigation appearance here. */
 .site-header{height:80px;background:#fff;position:relative;z-index:20;border-bottom:1px solid #edf0f4;transition:box-shadow .25s ease}
 .site-header.is-scrolled{box-shadow:0 5px 18px rgba(0,0,0,.08)}
 .nav-wrap{height:90%;display:flex;align-items:center;gap:32px}
@@ -36,6 +40,8 @@ p{margin:0 0 16px}
 .menu-toggle.is-open span:nth-child(2){opacity:0}
 .menu-toggle.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
+/* ===== HERO / SLIDER =====
+   Style the homepage hero, slide backgrounds, overlay, heading and CTA here. */
 .hero{min-height:700px;position:relative;isolation:isolate;background:linear-gradient(110deg,#111111 0%,#171717 52%,#222222 100%);overflow:hidden}
 .hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.62)}
 .hero-content{color:#fff;padding-top:203px;position:relative;z-index:2}
@@ -46,6 +52,8 @@ p{margin:0 0 16px}
 .btn-outline{border:2px solid #fff;color:#fff;background:transparent}
 .btn-outline:hover{background:#fff;color:var(--blue)}
 
+/* ===== ABOUT SECTION =====
+   Controls the About layout, images, text, mission/vision and commitments. */
 .about-showcase{background:#fff;padding:78px 0 88px}
 .about-showcase-grid{display:grid;grid-template-columns:46% 54%;gap:30px;align-items:start}
 .promo-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
@@ -73,6 +81,8 @@ p{margin:0 0 16px}
 .showcase-commitments li{position:relative;padding-left:38px;font-size:18px;line-height:1.85;color:#111;margin-bottom:4px}
 .showcase-commitments li:before{content:"✓";position:absolute;left:0;top:0;color:var(--green);font-size:23px;font-weight:700}
 
+/* ===== SERVICES =====
+   Controls service cards, icons, spacing, hover effects and service links. */
 .services-preview{padding-top:40px}
 .services-showcase-title{text-align:center;color:var(--orange);font:700 58px/1.15 'Open Sans',Arial,sans-serif;margin:0 0 64px}
 .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
@@ -88,6 +98,8 @@ p{margin:0 0 16px}
 .service-card p+p{margin-top:4px}
 .services-page{padding-top:78px}
 
+/* ===== COVERAGE / EVERYWHERE SECTION =====
+   Style the image-and-text coverage section here. */
 .everywhere-showcase{background:#fff;padding:0 0 92px}
 .everywhere-grid{display:grid;grid-template-columns:48% 52%;align-items:center;gap:48px}
 .everywhere-image.single{aspect-ratio:1/1;max-width:600px;border:1px solid #999;overflow:hidden}
@@ -106,6 +118,8 @@ p{margin:0 0 16px}
 .about-page-image{overflow:hidden}
 .about-page-image img{width:100%;display:block;aspect-ratio:1/1;object-fit:cover}
 
+/* ===== PRICING =====
+   Controls pricing tabs, tables, headings and horizontal table scrolling. */
 .pricing-tabs{display:flex;flex-wrap:wrap;justify-content:center;border-bottom:1px solid var(--line);margin:0 0 44px;gap:5px}
 .pricing-tab{cursor:pointer;border:0;background:transparent;padding:13px 22px;color:var(--navy);font:700 12px Montserrat;text-transform:uppercase;border-bottom:3px solid transparent;transition:color .25s ease,background .25s ease}
 .pricing-tab:hover{color:var(--orange);background:#fff7f0}
@@ -121,6 +135,8 @@ p{margin:0 0 16px}
 
 
 
+/* ===== FAQ =====
+   Style FAQ questions, answers, borders and open/closed states here. */
 .faq-page{max-width:1050px}
 .faq-page details{border:1px solid var(--line);padding:0 23px;margin-bottom:13px;background:#fff;transition:border-color .25s ease,box-shadow .25s ease}
 .faq-page details:hover{border-color:#cbd5e1}
@@ -133,6 +149,8 @@ p{margin:0 0 16px}
 .faq-page details p{font-size:16px;line-height:1.8}
 .faq-page details li{margin-bottom:8px}
 
+/* ===== CONTACT =====
+   Controls the contact introduction and message form layout. */
 .contact-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:80px;align-items:start}
 .contact-details{padding-top:8px}
 .contact-details h2{color:var(--orange);font-size:50px;margin-bottom:22px}
@@ -155,6 +173,8 @@ p{margin:0 0 16px}
 .contact-form-status.is-error{color:#b42318}
 .contact-note{display:none}
 
+/* ===== FOOTER =====
+   Style footer background, columns, footer logo, links, social icons and copyright here. */
 .site-footer{background:#000;color:#fff;padding:20px 0 0;min-height:345px}
 .footer-content{width:min(1640px,calc(100% - 120px));display:grid;grid-template-columns:1.55fr .72fr 1.35fr;gap:72px;align-items:start}
 .footer-logo img{width:180px;height:auto;display:block;margin:0 0 12px}
@@ -170,6 +190,8 @@ p{margin:0 0 16px}
 .footer-social span{display:inline-flex;width:24px;justify-content:center}
 .copyright{width:min(1640px,calc(100% - 120px));text-align:center;padding:18px 0 23px;color:#20c933;font-size:18px;line-height:1.3}
 
+/* ===== FLOATING ACTION BUTTONS =====
+   Style WhatsApp and scroll controls here. */
 .whatsapp-widget{position:fixed;right:35px;bottom:84px;z-index:50;display:flex;align-items:center;gap:10px}
 .whatsapp-widget span{background:#fff;color:#34495e;padding:11px 15px;border-radius:4px;box-shadow:0 1px 7px rgba(0,0,0,.15);font-size:14px}
 .whatsapp-widget strong{width:64px;height:64px;border-radius:50%;background:#22c55e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:34px;box-shadow:0 1px 6px rgba(0,0,0,.15);transition:transform .25s ease}
@@ -180,6 +202,8 @@ p{margin:0 0 16px}
 .js-reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .js-reveal.is-visible{opacity:1;transform:none}
 
+/* ===== TABLET BREAKPOINT =====
+   Adjust layout and sizing for medium-width screens here. */
 @media(max-width:980px){
   .container{width:min(100% - 56px,1140px)}
   .footer-content{gap:35px}
@@ -199,6 +223,8 @@ p{margin:0 0 16px}
   .service-card{min-height:280px}
   .about-page-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
 }
+/* ===== SMALL TABLET / LARGE PHONE =====
+   Adjust navigation, typography and content layout here. */
 @media(max-width:720px){
   .container{width:calc(100% - 44px)}
   .topbar{height:auto;min-height:48px}
@@ -252,6 +278,8 @@ p{margin:0 0 16px}
   .footer-logo img{width:140px}
   .footer-brand p{max-width:620px}
 }
+/* ===== SMALL PHONE BREAKPOINT =====
+   Fine-tune the smallest screens here. */
 @media(max-width:420px){
   .container{width:calc(100% - 32px)}
   .topbar-contact span:nth-child(2),.topbar-contact span:nth-child(3){display:none}
@@ -336,6 +364,8 @@ body{color:var(--gmax-ink)}
 .scroll-down-widget{background:var(--gmax-orange)}.scroll-down-widget:hover{background:var(--gmax-green)}
 @media(max-width:1050px){.container{width:min(100% - 40px,1100px)}.service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.about-showcase-grid,.everywhere-grid{grid-template-columns:1fr;gap:35px}}
 @media(max-width:800px){.topbar{height:auto;padding:8px 0}.topbar-contact{gap:8px;flex-wrap:wrap;font-size:11px}.topbar-social{display:none}.site-header{height:72px}.logo img{width:140px}.menu-toggle{display:block}.site-nav{display:none;position:absolute;top:72px;left:0;right:0;height:auto;padding:10px 20px;background:#fff;box-shadow:0 14px 25px rgba(0,0,0,.12);flex-direction:column;gap:3px}.site-nav.open{display:flex}.site-nav a{width:100%;height:46px;padding:0 14px}.site-nav a:after{display:none}.hero{min-height:570px}.hero-content{padding-top:120px}.hero h1{font-size:42px}.service-grid{grid-template-columns:1fr 1fr}.footer-content{grid-template-columns:1fr 1fr;gap:35px}.footer-brand{grid-column:1/-1}}
+/* ===== PHONE BREAKPOINT =====
+   Adjust single-column layouts, spacing and typography for phones here. */
 @media(max-width:560px){.container{width:calc(100% - 32px)}.service-grid{grid-template-columns:1fr}.service-card{min-height:auto}.hero{min-height:540px}.hero-content{padding-top:95px}.hero h1{font-size:36px}.about-showcase-grid{gap:26px}.promo-grid{gap:9px}.mission-vision-controls{flex-direction:column;gap:6px}.pricing-tabs{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.pricing-tab{white-space:nowrap}.footer-content{grid-template-columns:1fr}.footer-brand{grid-column:auto}}
 @media(prefers-reduced-motion:reduce){.js-reveal{opacity:1;transform:none}}
 
