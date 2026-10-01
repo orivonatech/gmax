@@ -1,5 +1,37 @@
 'use strict';
 
+function makeFooterLogoTransparent(){
+  document.querySelectorAll('.footer-logo img').forEach(img=>{
+    if(img.dataset.transparentProcessed==='1')return;
+    const process=()=>{
+      if(!img.naturalWidth||!img.naturalHeight)return;
+      try{
+        const canvas=document.createElement('canvas');
+        canvas.width=img.naturalWidth;
+        canvas.height=img.naturalHeight;
+        const ctx=canvas.getContext('2d',{willReadFrequently:true});
+        if(!ctx)return;
+        ctx.drawImage(img,0,0);
+        const imageData=ctx.getImageData(0,0,canvas.width,canvas.height);
+        const data=imageData.data;
+        for(let i=0;i<data.length;i+=4){
+          const r=data[i],g=data[i+1],b=data[i+2];
+          const brightness=(r+g+b)/3;
+          const chroma=Math.max(r,g,b)-Math.min(r,g,b);
+          if(brightness>=225&&chroma<18)data[i+3]=0;
+        }
+        ctx.putImageData(imageData,0,0);
+        img.src=canvas.toDataURL('image/png');
+        img.dataset.transparentProcessed='1';
+      }catch(e){
+        console.warn('G-MAX footer logo transparency:',e.message);
+      }
+    };
+    if(img.complete)process();
+    else img.addEventListener('load',process,{once:true});
+  });
+}
+
 function initGmaxInteractions(){
   const menuButton=document.querySelector('.menu-toggle');
   const navigation=document.querySelector('.site-nav');
