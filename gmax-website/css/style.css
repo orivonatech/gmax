@@ -926,7 +926,7 @@ button,a{touch-action:manipulation}
   .site-footer{min-height:210px}
   .footer-content{gap:24px}
   .footer-nav{padding-top:0}
-  .footer-contact{padding-top:2}
+  .footer-contact{padding-top:0}
   .footer-social{margin-top:18px}
 }
 @media(max-width:420px){
