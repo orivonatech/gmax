@@ -253,7 +253,7 @@ function applyGmaxSiteSettings(data){
   const nav=(s.nav&&s.nav.length?s.nav:[{label:'Home',url:'#home',visible:true},{label:'About Us',url:'#about',visible:true},{label:'Services',url:'#services',visible:true},{label:'FAQ',url:'#faq',visible:true},{label:'Pricing',url:'#pricing',visible:true},{label:'Contact Us',url:'#contact',visible:true}]);
   document.querySelectorAll('.site-nav a').forEach((a,i)=>{const n=nav[i];if(!n)return;a.textContent=n.label||a.textContent;a.href=n.url||a.href;a.style.display=n.visible===false?'none':''});document.querySelectorAll('.footer-nav a').forEach(a=>{const n=nav.find(x=>x.url===a.getAttribute('href'));if(n){a.textContent=n.label;a.style.display=n.visible===false?'none':''}});
   const social=s.social||[];
-  const ci=s.contactIcons||{};const iconMap=[ci.address||'fa-solid fa-location-dot',ci.email||'fa-regular fa-envelope',ci.phone||'fa-solid fa-phone'];document.querySelectorAll('.topbar-contact i,.footer-contact > a > i,.contact-item > i').forEach((el,i)=>{if(iconMap[i%3])el.className=iconMap[i%3]});
+  const ci=s.contactIcons||{};const iconMap=[ci.address||'fa-solid fa-location-dot',ci.email||'fa-regular fa-envelope',ci.phone||'fa-solid fa-phone'];document.querySelectorAll('.topbar-contact i,.footer-contact > a > i').forEach((el,i)=>{if(iconMap[i%3])el.className=iconMap[i%3]});
   document.querySelectorAll('.topbar-social span,.footer-social span').forEach((el,i)=>{
     const item=social[i];if(!item)return;
     el.style.display=item.visible===false?'none':'';
