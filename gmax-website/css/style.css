@@ -960,8 +960,8 @@ button,a{touch-action:manipulation}
   .footer-social{margin-top:18px}
 }
 @media(max-width:420px){
-  .footer-logo img{width:60px}
-  .site-footer{min-height:190px}
+  .footer-logo img{width:80px}
+  .site-footer{min-height:250px}
   .footer-content{gap:20px}
   .copyright{padding-top:10px;padding-bottom:12px}
 }
