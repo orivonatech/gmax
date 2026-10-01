@@ -1,7 +1,7 @@
 {
-  "version": 8,
+  "version": 9,
   "status": "published",
-  "updatedAt": "2026-09-30T13:39:32.674Z",
+  "updatedAt": "2026-10-01T10:13:55.782Z",
   "homepage": {
     "heroHeading": "Telecom Activities",
     "heroSubtitle": "Building tomorrow’s connectivity today",
@@ -134,22 +134,30 @@
     {
       "name": "Telecom Solutions",
       "description": "Building tomorrow’s connectivity today\nDesign, deploy, and optimize robust telecom networks with our end-to-end solutions",
-      "icon": "fa-solid fa-tower-broadcast"
+      "icon": "fa-solid fa-tower-broadcast",
+      "linkLabel": "Read More",
+      "url": ""
     },
     {
       "name": "Enterprise Networking",
       "description": "Secure, high-performance networks for the digital age\nDesign and deploy wired/wireless networks that keep your business connected",
-      "icon": "fa-solid fa-network-wired"
+      "icon": "fa-solid fa-network-wired",
+      "linkLabel": "Read More",
+      "url": ""
     },
     {
       "name": "CCTV",
       "description": "Protect what matters most\nInstall intelligent surveillance systems with AI-powered analytics, remote monitoring, and 24/7 threat detection",
-      "icon": "fa-solid fa-satellite-dish"
+      "icon": "fa-solid fa-satellite-dish",
+      "linkLabel": "Read More",
+      "url": ""
     },
     {
       "name": "IT Services",
       "description": "Your 24/7 technology partner\nProactive IT support, cybersecurity, and system maintenance to keep your business running smoothly.",
-      "icon": "fa-solid fa-server"
+      "icon": "fa-solid fa-server",
+      "linkLabel": "Read More",
+      "url": ""
     }
   ],
   "pricing": {
@@ -315,8 +323,8 @@
   "site": {
     "contactIcons": {
       "address": "",
-      "email": "",
-      "phone": ""
+      "email": "fa-regular fa-envelope",
+      "phone": "fa-solid fa-phone"
     },
     "colors": {
       "primary": "#f58220",
