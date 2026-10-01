@@ -29,7 +29,7 @@ function bindContactForms(recipient){
         message
       ].filter(Boolean).join('\\n');
       const mailSubject=subject+' — G-MAX Website';
-      window.location.href='mailto:'+encodeURIComponent(recipient)+'?subject='+encodeURIComponent(mailSubject)+'&body='+encodeURIComponent(body);
+      window.location.href='mailto:'+recipient+'?subject='+encodeURIComponent(mailSubject)+'&body='+encodeURIComponent(body);
       if(status){status.className='contact-form-status is-success';status.textContent='Your email app is opening with the message ready to send.'}
     });
   });
