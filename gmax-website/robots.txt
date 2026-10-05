@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin.html
 Disallow: /api/
-Sitemap: https://gmax.co.rw/sitemap.xml
+Sitemap: https://g-maxwebsite.vercel.app/sitemap.xml
