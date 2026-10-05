@@ -61,10 +61,14 @@ function initGmaxInteractions(){
     });
   });
 
-  document.querySelectorAll('.pricing-tab').forEach(tab=>{
-    if(tab.dataset.bound==='1')return;
-    tab.dataset.bound='1';
-    tab.addEventListener('click',()=>{
+  /* Pricing is rendered asynchronously by content-loader.js.
+     Use one delegated handler so tabs work even when the pricing DOM
+     is created after main.js has already initialized. */
+  if(!window.gmaxPricingTabsBound){
+    window.gmaxPricingTabsBound=true;
+    document.addEventListener('click',event=>{
+      const tab=event.target.closest('.pricing-tab');
+      if(!tab)return;
       document.querySelectorAll('.pricing-tab,.price-panel').forEach(el=>el.classList.remove('active'));
       document.querySelectorAll('.pricing-tab').forEach(item=>item.setAttribute('aria-selected','false'));
       tab.classList.add('active');
@@ -72,7 +76,7 @@ function initGmaxInteractions(){
       const panel=document.getElementById(tab.dataset.target);
       if(panel)panel.classList.add('active');
     });
-  });
+  }
 
   document.querySelectorAll('.faq-page details').forEach(detail=>{
     if(detail.dataset.bound==='1')return;
