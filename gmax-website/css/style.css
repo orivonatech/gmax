@@ -1165,3 +1165,142 @@ body{-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility}
     max-height:50px;
   }
 }
+
+
+/* =========================================================
+   FINAL COMPACT HOMEPAGE TYPOGRAPHY + CONTACT FORM
+   Keep headings clear without making sections oversized.
+   The contact form is narrower and shorter on desktop while
+   remaining full-width and touch-friendly on small screens.
+   ========================================================= */
+
+/* Homepage / section title scale */
+.hero-slide h1,
+.hero h1{font-size:34px;line-height:1.18}
+
+.about-showcase-copy h2,
+.about-page-copy h2{font-size:44px;line-height:1.15;margin-bottom:28px}
+
+.showcase-commitments h3{font-size:28px;line-height:1.2}
+
+.services-showcase-title{font-size:44px;line-height:1.15;margin-bottom:44px}
+
+.everywhere-copy h2{font-size:32px;line-height:1.2}
+
+.page-hero h1{font-size:36px;line-height:1.15}
+
+.custom-section-inner h2{font-size:40px;line-height:1.18}
+
+.contact-details h2{font-size:36px;line-height:1.2}
+
+.contact-form-title{font-size:22px;line-height:1.25;margin-bottom:18px}
+
+/* Smaller contact form */
+.contact-grid{
+  grid-template-columns:.9fr 1.1fr;
+  gap:42px;
+  max-width:1180px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.contact-form-wrap{
+  max-width:620px;
+  margin-left:auto;
+  padding:24px 28px;
+}
+
+.contact-form{
+  gap:14px;
+}
+
+.contact-field{gap:5px}
+
+.contact-field input,
+.contact-field textarea{
+  padding:9px 12px;
+  font-size:15px;
+}
+
+.contact-field input{height:42px}
+
+.contact-field textarea{
+  min-height:110px;
+  max-height:180px;
+}
+
+.contact-submit{gap:12px;margin-top:0}
+
+.contact-submit .btn{
+  min-width:140px;
+  min-height:44px;
+  padding:9px 20px;
+  font-size:15px;
+}
+
+/* Keep the compact sizes proportional on tablets and phones. */
+@media(max-width:900px){
+  .hero-slide h1,.hero h1{font-size:30px}
+  .about-showcase-copy h2,.about-page-copy h2{font-size:40px}
+  .services-showcase-title{font-size:40px}
+  .everywhere-copy h2{font-size:30px}
+  .page-hero h1{font-size:34px}
+  .custom-section-inner h2{font-size:36px}
+  .contact-details h2{font-size:34px}
+
+  .contact-grid{
+    max-width:720px;
+    gap:28px;
+  }
+
+  .contact-form-wrap{
+    max-width:none;
+    width:100%;
+    padding:22px 24px;
+  }
+}
+
+@media(max-width:600px){
+  .hero-slide h1,.hero h1{font-size:27px}
+  .about-showcase-copy h2,.about-page-copy h2{font-size:34px}
+  .showcase-commitments h3{font-size:25px}
+  .services-showcase-title{font-size:34px;margin-bottom:32px}
+  .everywhere-copy h2{font-size:28px}
+  .page-hero h1{font-size:30px}
+  .custom-section-inner h2{font-size:32px}
+  .contact-details h2{font-size:32px}
+
+  .contact-form-wrap{
+    padding:18px 16px;
+  }
+
+  .contact-form{
+    gap:12px;
+  }
+
+  .contact-field input{height:40px}
+
+  .contact-field textarea{
+    min-height:100px;
+  }
+
+  .contact-form-title{
+    font-size:20px;
+    margin-bottom:14px;
+  }
+
+  .contact-submit{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+}
+
+@media(max-width:360px){
+  .hero-slide h1,.hero h1{font-size:25px}
+  .about-showcase-copy h2,.about-page-copy h2{font-size:31px}
+  .services-showcase-title{font-size:31px}
+  .page-hero h1{font-size:27px}
+  .custom-section-inner h2{font-size:29px}
+  .contact-details h2{font-size:29px}
+  .contact-form-wrap{padding:16px 14px}
+}
