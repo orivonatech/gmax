@@ -4,7 +4,7 @@ A static HTML, CSS and vanilla JavaScript rebuild of the public G-MAX web presen
 
 ## Run locally
 
-Open `index.html` directly in a browser, or run a local static server:
+Run a local static server (recommended because the site loads `data/content.json` with `fetch()`; opening `index.html` directly with `file://` can be blocked by browser security):
 
 ```bash
 cd gmax-website
