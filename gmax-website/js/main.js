@@ -1,46 +1,11 @@
 'use strict';
 
 function makeFooterLogoBackgroundTransparent(){
+  /* Keep the real footer asset visible. Do not canvas-rewrite or replace it.
+     This avoids browser/security/CORS failures and preserves image quality. */
   document.querySelectorAll('.footer-logo img').forEach(img=>{
-    if(img.dataset.bgCleaned==='1')return;
-    const process=()=>{
-      if(!img.naturalWidth||!img.naturalHeight)return;
-      const canvas=document.createElement('canvas');
-      canvas.width=img.naturalWidth;
-      canvas.height=img.naturalHeight;
-      const ctx=canvas.getContext('2d',{willReadFrequently:true});
-      if(!ctx)return;
-      ctx.drawImage(img,0,0);
-      const imageData=ctx.getImageData(0,0,canvas.width,canvas.height);
-      const pixels=imageData.data;
-      const sample=(x,y)=>{
-        const i=(y*canvas.width+x)*4;
-        return [pixels[i],pixels[i+1],pixels[i+2]];
-      };
-      const points=[
-        sample(0,0),
-        sample(canvas.width-1,0),
-        sample(0,canvas.height-1),
-        sample(canvas.width-1,canvas.height-1)
-      ];
-      const bg=points.reduce((sum,p)=>[sum[0]+p[0],sum[1]+p[1],sum[2]+p[2]],[0,0,0]).map(v=>v/points.length);
-      for(let i=0;i<pixels.length;i+=4){
-        const dr=pixels[i]-bg[0];
-        const dg=pixels[i+1]-bg[1];
-        const db=pixels[i+2]-bg[2];
-        const distance=Math.sqrt(dr*dr+dg*dg+db*db);
-        if(distance<=22){
-          pixels[i+3]=0;
-        }else if(distance<68){
-          pixels[i+3]=Math.round(((distance-22)/46)*255);
-        }
-      }
-      ctx.putImageData(imageData,0,0);
-      img.src=canvas.toDataURL('image/png');
-      img.dataset.bgCleaned='1';
-    };
-    if(img.complete&&img.naturalWidth)process();
-    else img.addEventListener('load',process,{once:true});
+    img.style.visibility='visible';
+    img.style.opacity='1';
   });
 }
 
