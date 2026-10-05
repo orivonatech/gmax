@@ -447,7 +447,63 @@ body{min-height:100vh}
 /* Use the uploaded G-MAX JPEG logo in Admin branding */
 .brand-mark,.admin-brand img{background:#fff}
 .brand-mark img,.admin-brand img{content:url("assets/logo/gmax_logo.jpeg");object-fit:contain}
-</style></head>
+</style>
+<style id="final-admin-responsive">
+/* Final admin device-safety layer: keep the dashboard usable on laptop, tablet and phone. */
+html,body{width:100%;max-width:100%;min-width:0;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box;min-width:0}
+.admin-shell,.admin,.main,.admin-main,.admin-content{min-width:0;max-width:100%}
+.admin-content{overflow-wrap:anywhere}
+.table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.pricing-table{min-width:680px}
+.media-card{min-width:0}
+.media-preview img{max-width:100%;height:auto;object-fit:contain}
+
+@media(max-width:1000px){
+  .admin-shell{grid-template-columns:220px minmax(0,1fr)}
+  .admin-content{padding:22px}
+  .dashboard-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .admin-header{gap:14px}
+  .admin-search{min-width:180px}
+}
+@media(max-width:760px){
+  .admin-shell{display:block}
+  .admin-sidebar{display:none}
+  .mobile-menu{display:block}
+  .admin-content{padding:16px}
+  .admin-header{align-items:stretch;flex-direction:column;gap:12px}
+  .admin-header h1{font-size:24px}
+  .admin-actions{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .admin-actions .admin-search{grid-column:1/-1;width:100%;min-width:0}
+  .admin-actions button{width:100%}
+  .dashboard-grid{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr}
+  .panel{padding:18px}
+  .publish-bar{position:sticky;bottom:8px;flex-direction:column;align-items:stretch;padding:11px;z-index:50}
+  .publish-actions{display:grid;grid-template-columns:1fr 1fr}
+  .publish-actions button{width:100%}
+  .history-item{grid-template-columns:1fr}
+  .history-item button{width:100%}
+  .preview-frame{height:70vh}
+}
+@media(max-width:480px){
+  .admin-content{padding:12px}
+  .admin-header h1{font-size:22px}
+  .admin-actions{grid-template-columns:1fr}
+  .admin-actions .admin-search{grid-column:auto}
+  .welcome{padding:18px}
+  .panel{padding:15px}
+  .dashboard-card,.panel{border-radius:8px}
+  .dashboard-card{padding:17px}
+  .field input,.field textarea,.field select{font-size:16px}
+  .media-card{grid-template-columns:1fr}
+  .media-preview{min-height:120px}
+  .preview-thumb{width:100%;max-width:160px}
+  .publish-actions{grid-template-columns:1fr}
+  .publish-bar{margin:16px 0}
+}
+</style>
+</head>
 <body><div id="loginGate" class="login-gate"><form id="loginGateForm" class="login-card-g"><h1>G-MAX</h1><p>Secure website administration</p><label>Username</label><input id="adminUser" autocomplete="username" required><label>Password</label><input id="adminPass" type="password" autocomplete="current-password" required><button type="submit">Sign in</button><div id="loginErr" class="login-error-g"></div></form></div>
 <div class="admin admin-gated"><div class="mobile-admin-bar"><button type="button" class="mobile-admin-toggle" id="mobileAdminToggle" aria-expanded="false"><i class="fa-solid fa-bars"></i> Menu</button><span class="mobile-admin-title">G-MAX ADMIN</span></div>
 <aside class="sidebar">
