@@ -318,7 +318,7 @@ function applyGmaxSiteSettings(data){
     const i=el.querySelector('i');if(i&&sd.icon)i.className=sd.icon;
   });
   const hero=document.querySelector('.hero');
-  if(hero&&h.heroImage){hero.style.backgroundImage='url("'+h.heroImage.replace(/"/g,'&quot;')+'")'}
+  if(hero&&h.heroImage){const heroImage=assetUrl(h.heroImage,'');if(heroImage)hero.style.backgroundImage='url("'+heroImage.replace(/"/g,'&quot;')+'")'}
   const hb=h.heroButton||{};
   const btn=document.querySelector('.hero-read-more');
   if(btn){if(hb.label&&hb.url){const target=safeUrl(hb.url,'');if(!target){btn.style.display='none';return}btn.textContent=hb.label;btn.href=target;btn.style.display=''}else{btn.style.display='none'}}
@@ -355,7 +355,7 @@ function applyGmaxSiteSettings(data){
   text(document.querySelector('#contact .page-hero h1'),contactPage.pageTitle||'Contact Us');
   text(document.querySelector('#contact .contact-details h2'),contactPage.sectionTitle||'G-MAX LTD');
   const about=data.about||{};const st=h.sectionTitles||{};text(document.querySelector('.about-showcase-copy h2'),st.about||'About G-MAX');text(document.querySelector('.showcase-commitments h3'),st.commitments||'Our Core Commitments');text(document.querySelector('.services-showcase-title'),st.services||'Our Services');
-  const aboutImg=document.querySelector('.about-page-image img');if(aboutImg&&about.image)aboutImg.src=safeUrl(about.image,aboutImg.src);if(aboutImg)aboutImg.alt=mediaByRole('about').alt||'G-MAX office';
+  const aboutImg=document.querySelector('.about-page-image img');if(aboutImg&&about.image)aboutImg.src=assetUrl(about.image,aboutImg.src);if(aboutImg)aboutImg.alt=mediaByRole('about').alt||'G-MAX office';
   const pageTitles={
     '.page-hero h1':about.pageTitle||'About Us',
   };
