@@ -1,7 +1,7 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600;700&display=swap');
 
-:root{--blue:#111111;--orange:#f58220;--green:#52b949;--navy:#111111;--light:#f5f7fa;--text:#485260;--line:#e4e8ee;--shadow:0 9px 28px rgba(0,0,0,.1)}
+:root{--orange:#f58220;--green:#52b949;--navy:#111111;--light:#f5f7fa;--text:#485260;--line:#e4e8ee;--shadow:0 9px 28px rgba(0,0,0,.1)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;direction:ltr}
 body{margin:0;color:var(--text);font:15px/1.75 'Open Sans',Arial,sans-serif;background:#fff}
@@ -35,7 +35,7 @@ p{margin:0 0 16px}
 .site-nav a:hover,.site-nav a.active{color:var(--orange)}
 .site-nav a:hover:after,.site-nav a.active:after{transform:scaleX(1)}
 .menu-toggle{display:none;border:0;background:transparent;padding:11px;cursor:pointer}
-.menu-toggle span:not(.sr-only){display:block;width:24px;height:2px;background:var(--blue);margin:5px 0;transition:transform .25s ease,opacity .25s ease}
+.menu-toggle span:not(.sr-only){display:block;width:24px;height:2px;background:var(--navy);margin:5px 0;transition:transform .25s ease,opacity .25s ease}
 .menu-toggle.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .menu-toggle.is-open span:nth-child(2){opacity:0}
 .menu-toggle.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
@@ -50,7 +50,7 @@ p{margin:0 0 16px}
 .hero-content>p:last-of-type{margin-bottom:35px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:49px;padding:11px 28px;border:0;font:400 17px 'Open Sans',Arial,sans-serif;transition:.25s}
 .btn-outline{border:2px solid #fff;color:#fff;background:transparent}
-.btn-outline:hover{background:#fff;color:var(--blue)}
+.btn-outline:hover{background:#fff;color:var(--navy)}
 
 /* ===== ABOUT SECTION =====
    Controls the About layout, images, text, mission/vision and commitments. */
@@ -306,7 +306,7 @@ html{-ms-overflow-style:none;scrollbar-width:none}
 html::-webkit-scrollbar{display:none}
 
 /* CMS homepage section builder */
-.custom-section{padding:78px 0;background:#fff}.custom-section:nth-child(even){background:#f7f9fc}.custom-section-inner{text-align:center}.custom-section-inner h2{font:700 42px/1.2 'Open Sans',Arial,sans-serif;color:var(--navy);margin:0 0 12px}.custom-section-subtitle{font-size:20px;color:var(--blue);margin:0 0 14px}.custom-section-text{max-width:850px;margin:0 auto 26px;font-size:18px;line-height:1.8;color:#222}.custom-section-image{display:block;width:min(850px,100%);max-height:430px;object-fit:cover;border-radius:10px;margin:20px auto}.custom-section-button{display:inline-block}.commitments-section{padding:55px 0;background:#f7f9fc}.commitments-section .showcase-commitments{max-width:900px;margin:auto}
+.custom-section{padding:78px 0;background:#fff}.custom-section:nth-child(even){background:#f7f9fc}.custom-section-inner{text-align:center}.custom-section-inner h2{font:700 42px/1.2 'Open Sans',Arial,sans-serif;color:var(--navy);margin:0 0 12px}.custom-section-subtitle{font-size:20px;color:var(--orange);margin:0 0 14px}.custom-section-text{max-width:850px;margin:0 auto 26px;font-size:18px;line-height:1.8;color:#222}.custom-section-image{display:block;width:min(850px,100%);max-height:430px;object-fit:cover;border-radius:10px;margin:20px auto}.custom-section-button{display:inline-block}.commitments-section{padding:55px 0;background:#f7f9fc}.commitments-section .showcase-commitments{max-width:900px;margin:auto}
 @media(max-width:800px){.custom-section{padding:55px 0}.custom-section-inner h2{font-size:34px}.custom-section-text{font-size:16px}}
 
 /* Single-page navigation */
@@ -395,7 +395,7 @@ body{color:var(--gmax-ink)}
 @media(max-width:560px){.hero-content .hero-read-more{width:100%}.section{padding:64px 0}}
 
 /* G-MAX palette lock — public site must follow Admin brand colors */
-:root{--orange:#f58220;--green:#52b949;--navy:#111111;--blue:#111111}
+:root{--orange:#f58220;--green:#52b949;--navy:#111111}
 .hero{background:linear-gradient(120deg,#111111 0%,#111111 58%,#171717 100%)}
 .hero-overlay{background:linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.62))}
 .page-hero{background:linear-gradient(120deg,#111111 0%,#111111 72%,#171717 100%)}
