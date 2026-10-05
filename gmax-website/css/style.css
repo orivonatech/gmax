@@ -1354,3 +1354,46 @@ body{-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility}
     font-size:26px;
   }
 }
+
+
+/* =========================================================
+   CONTACT FORM REVEAL
+   Keep the Contact page clean: show only the Contact Us link
+   until the visitor explicitly asks to open the form.
+   ========================================================= */
+.contact-form-link{
+  display:inline-flex;
+  align-items:center;
+  margin-top:24px;
+  color:var(--gmax-orange,var(--orange,#f58220));
+  font-weight:700;
+  text-decoration:underline;
+  text-underline-offset:4px;
+  cursor:pointer;
+  transition:opacity .2s ease,transform .2s ease;
+}
+
+.contact-form-link:hover{
+  opacity:.8;
+  transform:translateX(2px);
+}
+
+.contact-form-wrap[hidden]{
+  display:none !important;
+}
+
+.contact-form-wrap.is-visible{
+  display:block;
+  animation:contactFormReveal .25s ease-out;
+}
+
+@keyframes contactFormReveal{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:600px){
+  .contact-form-link{
+    margin-top:18px;
+  }
+}
