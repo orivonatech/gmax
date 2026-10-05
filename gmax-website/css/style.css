@@ -1304,3 +1304,53 @@ body{-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility}
   .contact-details h2{font-size:29px}
   .contact-form-wrap{padding:16px 14px}
 }
+
+
+/* =========================================================
+   FINAL COMPACT PAGE BANNERS
+   One authoritative rule for Pricing, FAQ, Contact, About
+   and every other page using the shared .page-hero component.
+   This intentionally overrides older height declarations above.
+   ========================================================= */
+.page-hero{
+  height:150px;
+  min-height:150px;
+}
+
+.page-hero h1{
+  font-size:36px;
+  line-height:1.15;
+}
+
+@media (max-width:900px){
+  .page-hero{
+    height:125px;
+    min-height:125px;
+  }
+
+  .page-hero h1{
+    font-size:32px;
+  }
+}
+
+@media (max-width:600px){
+  .page-hero{
+    height:110px;
+    min-height:110px;
+  }
+
+  .page-hero h1{
+    font-size:28px;
+  }
+}
+
+@media (max-width:360px){
+  .page-hero{
+    height:100px;
+    min-height:100px;
+  }
+
+  .page-hero h1{
+    font-size:26px;
+  }
+}
