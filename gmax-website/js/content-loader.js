@@ -259,7 +259,8 @@ function applyGmaxSiteSettings(data){
   applyGmaxContent(data);
   const root=document.documentElement;
   const colors=s.colors||{};
-  if(colors.primary)root.style.setProperty('--blue',colors.primary);
+  /* G-MAX uses orange/green/black; primary is represented by --orange. */
+  if(colors.primary)root.style.setProperty('--orange',colors.primary);
   if(colors.secondary)root.style.setProperty('--navy',colors.secondary);
   if(colors.accent)root.style.setProperty('--orange',colors.accent);
   if(colors.success)root.style.setProperty('--green',colors.success);
