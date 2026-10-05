@@ -249,7 +249,7 @@ function applyGmaxSeo(s){
   setMeta('', 'website','og:type');
   let canonical=document.head.querySelector('link[rel="canonical"]');
   if(!canonical){canonical=document.createElement('link');canonical.rel='canonical';document.head.appendChild(canonical)}
-  canonical.href=seo.canonicalUrl||'https://gmax.co.rw/';
+  canonical.href=seo.canonicalUrl||'https://g-maxwebsite.vercel.app/';
 }
 
 function applyGmaxSiteSettings(data){
