@@ -1,8 +1,19 @@
 'use strict';
 async function loadGmaxContent(){const preview=new URLSearchParams(location.search).get('preview')==='1';try{const r=await fetch('data/content.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('Content unavailable');let data=await r.json();if(preview){try{const draft=JSON.parse(localStorage.getItem('gmax-admin-draft-v1')||'null');if(draft)data=draft}catch(e){}}applyGmaxSiteSettings(data);optimizePublicImages();window['dispatchEvent'](new Event('gmax-content-ready'))}catch(e){console.warn('G-MAX content loader:',e.message)}}
 function text(el,v){if(el&&v!=null)el.textContent=v}
+function safeUrl(value,fallback='#'){
+  const raw=String(value||'').trim();
+  if(!raw)return fallback;
+  if(raw.startsWith('#')||raw.startsWith('/')||raw.startsWith('./')||raw.startsWith('../'))return raw;
+  if(/^(mailto|tel):/i.test(raw))return raw;
+  try{
+    const u=new URL(raw,location.href);
+    if(u.protocol==='https:'||u.protocol==='http:')return u.href;
+  }catch(e){}
+  return fallback;
+}
 function lines(el,v){if(!el||v==null)return;el.textContent='';String(v).split(/\r?\n/).forEach((line,i)=>{if(i)el.appendChild(document.createElement('br'));el.appendChild(document.createTextNode(line))})}
-function applyGmaxContent(data){const h=data.homepage||{},about=data.about||{},contact=data.contact||{},contactPage=data.contactPage||{};document.querySelectorAll('.topbar-contact span').forEach((el,i)=>{if(i===0)text(el,contact.address);if(i===1)text(el,contact.email);if(i===2)text(el,contact.phone)});document.querySelectorAll('.footer-contact > a').forEach((el,i)=>{const span=el.querySelector('span');if(i===0){text(span,contact.address);el.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(contact.address||'')}if(i===1){text(span,contact.email);el.href='mailto:'+(contact.email||'')}if(i===2){text(span,contact.phone);el.href='tel:'+(contact.phone||'').replace(/\s/g,'')}});document.querySelectorAll('.footer-brand p').forEach(el=>text(el,h.about||about.description));const hero=document.querySelector('.hero-content');if(hero&&!Array.isArray(h.heroSlides)){const ps=hero.querySelectorAll('p');text(hero.querySelector('h1'),h.heroHeading);text(ps[0],h.heroSubtitle);text(ps[1],h.heroDescription)}document.querySelectorAll('.about-showcase-copy .about-lead,.about-page-copy > p').forEach(el=>text(el,h.about||about.description));document.querySelectorAll('[data-panel-content="mission"] p').forEach(el=>text(el,h.mission));document.querySelectorAll('[data-panel-content="vision"] p').forEach(el=>text(el,h.vision));document.querySelectorAll('.showcase-commitments ul').forEach(ul=>{ul.innerHTML='';(h.commitments||[]).forEach(v=>{const li=document.createElement('li');text(li,v);ul.appendChild(li)})});document.querySelectorAll('.services-page .service-card,.services-preview .service-card').forEach((card,i)=>{const s=(data.services||[])[i];if(!s)return;const ps=card.querySelectorAll('p');text(card.querySelector('h3'),s.name);const parts=String(s.description||'').split(/\r?\n/);text(ps[0],parts[0]||'');if(ps[1])text(ps[1],parts.slice(1).join(' '));let link=card.querySelector('.service-read-more');if(s.url&&!link){link=document.createElement('a');link.className='service-read-more';card.appendChild(link)}if(link){link.textContent=s.linkLabel||'Read More';link.href=s.url;link.style.display=s.url?'inline-flex':'none'}});const pricing=data.pricing||{};['promo','volume','daily','mup'].forEach(key=>{const panel=document.getElementById(key);if(!panel)return;const tbody=panel.querySelector('tbody');if(!tbody)return;tbody.innerHTML='';(pricing[key]||[]).forEach(row=>{const tr=document.createElement('tr');[0,1,2].forEach(i=>{const td=document.createElement('td');text(td,row[i]||'');tr.appendChild(td)});tbody.appendChild(tr)})});const faq=data.faq||[],faqPage=document.querySelector('#faq .faq-page');if(faqPage){faqPage.innerHTML='';faq.forEach((item,i)=>{const d=document.createElement('details');if(i===0)d.open=true;const s=document.createElement('summary');text(s,item.question);const plus=document.createElement('span');plus.setAttribute('aria-hidden','true');plus.textContent='+';s.appendChild(plus);const p=document.createElement('p');lines(p,item.answer);d.append(s,p);faqPage.appendChild(d)})}const cd=document.querySelector('#contact .contact-details');if(cd){const intro=cd.querySelector('.contact-intro');if(intro)text(intro,contactPage?.intro||'Have a question, project, or service request? Send us a message and our team will get back to you.')}bindContactForms(contact.email||'sales@gmax.co.rw');bindContactFormReveal();}
+function applyGmaxContent(data){const h=data.homepage||{},about=data.about||{},contact=data.contact||{},contactPage=data.contactPage||{};document.querySelectorAll('.topbar-contact span').forEach((el,i)=>{if(i===0)text(el,contact.address);if(i===1)text(el,contact.email);if(i===2)text(el,contact.phone)});document.querySelectorAll('.footer-contact > a').forEach((el,i)=>{const span=el.querySelector('span');if(i===0){text(span,contact.address);el.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(contact.address||'')}if(i===1){text(span,contact.email);el.href='mailto:'+(contact.email||'')}if(i===2){text(span,contact.phone);el.href='tel:'+(contact.phone||'').replace(/\s/g,'')}});document.querySelectorAll('.footer-brand p').forEach(el=>text(el,h.about||about.description));const hero=document.querySelector('.hero-content');if(hero&&!Array.isArray(h.heroSlides)){const ps=hero.querySelectorAll('p');text(hero.querySelector('h1'),h.heroHeading);text(ps[0],h.heroSubtitle);text(ps[1],h.heroDescription)}document.querySelectorAll('.about-showcase-copy .about-lead,.about-page-copy > p').forEach(el=>text(el,h.about||about.description));document.querySelectorAll('[data-panel-content="mission"] p').forEach(el=>text(el,h.mission));document.querySelectorAll('[data-panel-content="vision"] p').forEach(el=>text(el,h.vision));document.querySelectorAll('.showcase-commitments ul').forEach(ul=>{ul.innerHTML='';(h.commitments||[]).forEach(v=>{const li=document.createElement('li');text(li,v);ul.appendChild(li)})});document.querySelectorAll('.services-page .service-card,.services-preview .service-card').forEach((card,i)=>{const s=(data.services||[])[i];if(!s)return;const ps=card.querySelectorAll('p');text(card.querySelector('h3'),s.name);const parts=String(s.description||'').split(/\r?\n/);text(ps[0],parts[0]||'');if(ps[1])text(ps[1],parts.slice(1).join(' '));let link=card.querySelector('.service-read-more');if(s.url&&!link){link=document.createElement('a');link.className='service-read-more';card.appendChild(link)}if(link){link.textContent=s.linkLabel||'Read More';link.href=safeUrl(s.url);link.style.display=s.url&&safeUrl(s.url,'')?'inline-flex':'none'}});const pricing=data.pricing||{};['promo','volume','daily','mup'].forEach(key=>{const panel=document.getElementById(key);if(!panel)return;const tbody=panel.querySelector('tbody');if(!tbody)return;tbody.innerHTML='';(pricing[key]||[]).forEach(row=>{const tr=document.createElement('tr');[0,1,2].forEach(i=>{const td=document.createElement('td');text(td,row[i]||'');tr.appendChild(td)});tbody.appendChild(tr)})});const faq=data.faq||[],faqPage=document.querySelector('#faq .faq-page');if(faqPage){faqPage.innerHTML='';faq.forEach((item,i)=>{const d=document.createElement('details');if(i===0)d.open=true;const s=document.createElement('summary');text(s,item.question);const plus=document.createElement('span');plus.setAttribute('aria-hidden','true');plus.textContent='+';s.appendChild(plus);const p=document.createElement('p');lines(p,item.answer);d.append(s,p);faqPage.appendChild(d)})}const cd=document.querySelector('#contact .contact-details');if(cd){const intro=cd.querySelector('.contact-intro');if(intro)text(intro,contactPage?.intro||'Have a question, project, or service request? Send us a message and our team will get back to you.')}bindContactForms(contact.email||'sales@gmax.co.rw');bindContactFormReveal();}
 
 function bindContactForms(recipient){
 function bindContactFormReveal(){
@@ -112,7 +123,7 @@ function renderHomepageLayout(data){
       if(sec.subtitle){const sub=document.createElement('p');sub.className='custom-section-subtitle';text(sub,sec.subtitle);wrap.appendChild(sub)}
       if(sec.text){const p=document.createElement('p');p.className='custom-section-text';lines(p,sec.text);wrap.appendChild(p)}
       if(sec.image){const img=document.createElement('img');img.className='custom-section-image';img.src=sec.image;img.alt=sec.title||'G-MAX section image';wrap.appendChild(img)}
-      if(sec.buttonLabel){const a=document.createElement('a');a.className='btn btn-outline custom-section-button';a.textContent=sec.buttonLabel;a.href=sec.buttonUrl||'#';wrap.appendChild(a)}
+      if(sec.buttonLabel){const a=document.createElement('a');a.className='btn btn-outline custom-section-button';a.textContent=sec.buttonLabel;a.href=safeUrl(sec.buttonUrl||'#');wrap.appendChild(a)}
       el.appendChild(wrap);root.appendChild(el);
     }
   });
@@ -148,7 +159,7 @@ function renderHeroCarousel(data){
     if(slide.buttonLabel&&slide.url){
       const a=document.createElement('a');
       a.className='btn btn-outline hero-read-more';
-      a.href=slide.url;
+      a.href=safeUrl(slide.url);
       a.textContent=slide.buttonLabel;
       content.appendChild(a);
     }
@@ -265,12 +276,12 @@ function applyGmaxSiteSettings(data){
   if(colors.accent)root.style.setProperty('--orange',colors.accent);
   if(colors.success)root.style.setProperty('--green',colors.success);
   applyGmaxSeo(s);
-  document.querySelectorAll('.logo img').forEach(img=>{if(s.logo)img.src=s.logo;img.alt=s.brandName||'G-MAX'});
+  document.querySelectorAll('.logo img').forEach(img=>{if(s.logo)img.src=safeUrl(s.logo,img.src);img.alt=s.brandName||'G-MAX'});
   let fav=document.querySelector('link[rel="icon"]');
   if(!fav){fav=document.createElement('link');fav.rel='icon';document.head.appendChild(fav)}
-  if(s.favicon)fav.href=s.favicon;
+  if(s.favicon)fav.href=safeUrl(s.favicon,'');
   const nav=(s.nav&&s.nav.length?s.nav:[{label:'Home',url:'#home',visible:true},{label:'About Us',url:'#about',visible:true},{label:'Services',url:'#services',visible:true},{label:'FAQ',url:'#faq',visible:true},{label:'Pricing',url:'#pricing',visible:true},{label:'Contact Us',url:'#contact',visible:true}]);
-  document.querySelectorAll('.site-nav a').forEach((a,i)=>{const n=nav[i];if(!n)return;a.textContent=n.label||a.textContent;a.href=n.url||a.href;a.style.display=n.visible===false?'none':''});document.querySelectorAll('.footer-nav a').forEach(a=>{const n=nav.find(x=>x.url===a.getAttribute('href'));if(n){a.textContent=n.label;a.style.display=n.visible===false?'none':''}});
+  document.querySelectorAll('.site-nav a').forEach((a,i)=>{const n=nav[i];if(!n)return;a.textContent=n.label||a.textContent;a.href=safeUrl(n.url,a.href);a.style.display=n.visible===false?'none':''});document.querySelectorAll('.footer-nav a').forEach(a=>{const n=nav.find(x=>x.url===a.getAttribute('href'));if(n){a.textContent=n.label;a.style.display=n.visible===false?'none':''}});
   const social=s.social||[];
   const ci=s.contactIcons||{};const iconMap=[ci.address||'fa-solid fa-location-dot',ci.email||'fa-regular fa-envelope',ci.phone||'fa-solid fa-phone'];document.querySelectorAll('.topbar-contact i,.footer-contact > a > i').forEach((el,i)=>{if(iconMap[i%3])el.className=iconMap[i%3]});
   document.querySelectorAll('.topbar-social span,.footer-social span').forEach((el,i)=>{
@@ -278,7 +289,12 @@ function applyGmaxSiteSettings(data){
     el.style.display=item.visible===false?'none':'';
     el.innerHTML='<i class="'+(item.icon||'fa-brands fa-globe')+'"></i>';
     el.title=item.name||'Social media';
-    el.onclick=()=>{if(item.url)window.open(item.url,'_blank','noopener,noreferrer')};
+    el.setAttribute('aria-label',item.name||'Social media');
+    el.removeAttribute('aria-hidden');
+    el.setAttribute('role','link');
+    el.tabIndex=item.url?0:-1;
+    el.onclick=()=>{if(item.url)window.open(safeUrl(item.url,''),'_blank','noopener,noreferrer')};
+    el.onkeydown=event=>{if(item.url&&(event.key==='Enter'||event.key===' ')){event.preventDefault();window.open(safeUrl(item.url,''),'_blank','noopener,noreferrer')}};
     el.style.cursor=item.url?'pointer':'default';
   });
   const wa=s.whatsapp||{};
@@ -297,12 +313,12 @@ function applyGmaxSiteSettings(data){
   if(hero&&h.heroImage){hero.style.backgroundImage='url("'+h.heroImage.replace(/"/g,'&quot;')+'")'}
   const hb=h.heroButton||{};
   const btn=document.querySelector('.hero-read-more');
-  if(btn){if(hb.label&&hb.url){btn.textContent=hb.label;btn.href=hb.url;btn.style.display=''}else{btn.style.display='none'}}
+  if(btn){if(hb.label&&hb.url){const target=safeUrl(hb.url,'');if(!target){btn.style.display='none';return}btn.textContent=hb.label;btn.href=target;btn.style.display=''}else{btn.style.display='none'}}
   const media=data.images||[];const mediaByRole=role=>{const item=media.find(x=>x&&x.role===role);return item||{}};
   const promo=Array.isArray(h.images)&&h.images.length?h.images:(data.images||[]).filter(x=>/^promo[1-3]$/.test(x?.role||'')).map(x=>x.path).filter(Boolean);
-  document.querySelectorAll('.promo-grid img').forEach((img,i)=>{if(promo[i])img.src=promo[i];const meta=mediaByRole('promo'+(i+1));img.alt=meta.alt||'G-MAX promotional image'});
+  document.querySelectorAll('.promo-grid img').forEach((img,i)=>{if(promo[i])img.src=safeUrl(promo[i],img.src);const meta=mediaByRole('promo'+(i+1));img.alt=meta.alt||'G-MAX promotional image'});
   const ev=h.everywhere||{};
-  const evImg=document.querySelector('.everywhere-image img');if(evImg&&ev.image)evImg.src=ev.image;if(evImg)evImg.alt=mediaByRole('everywhere').alt||'G-MAX connectivity coverage';
+  const evImg=document.querySelector('.everywhere-image img');if(evImg&&ev.image)evImg.src=safeUrl(ev.image,evImg.src);if(evImg)evImg.alt=mediaByRole('everywhere').alt||'G-MAX connectivity coverage';
   const evCopy=document.querySelector('.everywhere-copy');if(evCopy){const ps=evCopy.querySelectorAll('p');text(evCopy.querySelector('h2'),ev.title||'We are everywhere');if(ps[0])text(ps[0],ev.subtitle||'');if(ps[1])text(ps[1],ev.description||'');}
   document.querySelectorAll('.services-page .service-grid,.services-preview .service-grid').forEach(grid=>{
     grid.innerHTML='';
@@ -318,7 +334,7 @@ function applyGmaxSiteSettings(data){
       if(service.url){
         const link=document.createElement('a');
         link.className='service-read-more';
-        link.href=service.url;
+        link.href=safeUrl(service.url);
         link.textContent=service.linkLabel||'Read More';
         card.appendChild(link);
       }
@@ -331,7 +347,7 @@ function applyGmaxSiteSettings(data){
   text(document.querySelector('#contact .page-hero h1'),contactPage.pageTitle||'Contact Us');
   text(document.querySelector('#contact .contact-details h2'),contactPage.sectionTitle||'G-MAX LTD');
   const about=data.about||{};const st=h.sectionTitles||{};text(document.querySelector('.about-showcase-copy h2'),st.about||'About G-MAX');text(document.querySelector('.showcase-commitments h3'),st.commitments||'Our Core Commitments');text(document.querySelector('.services-showcase-title'),st.services||'Our Services');
-  const aboutImg=document.querySelector('.about-page-image img');if(aboutImg&&about.image)aboutImg.src=about.image;if(aboutImg)aboutImg.alt=mediaByRole('about').alt||'G-MAX office';
+  const aboutImg=document.querySelector('.about-page-image img');if(aboutImg&&about.image)aboutImg.src=safeUrl(about.image,aboutImg.src);if(aboutImg)aboutImg.alt=mediaByRole('about').alt||'G-MAX office';
   const pageTitles={
     '.page-hero h1':about.pageTitle||'About Us',
   };
