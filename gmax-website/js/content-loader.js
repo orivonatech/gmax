@@ -17,7 +17,9 @@ function safeUrl(value,fallback='#'){
 function assetUrl(value,fallback=''){
   const raw=String(value||'').trim();
   if(!raw)return fallback;
-  if(/^assets\//i.test(raw))return '/'+raw.replace(/^\.\//,'');
+  if(/^assets\//i.test(raw)){
+    try{return new URL('./'+raw,document.baseURI).href}catch(e){return fallback}
+  }
   return safeUrl(raw,fallback);
 }
 function lines(el,v){if(!el||v==null)return;el.textContent='';String(v).split(/\r?\n/).forEach((line,i)=>{if(i)el.appendChild(document.createElement('br'));el.appendChild(document.createTextNode(line))})}
