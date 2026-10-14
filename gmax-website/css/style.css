@@ -1455,3 +1455,35 @@ body{-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility}
 #faq .faq-page details p,#faq .faq-page details ul{padding-bottom:12px}
 @media(max-width:800px){#faq>.page-hero{height:145px;min-height:145px}#faq>.content-page{padding:28px 0}}
 @media(max-width:560px){#faq>.page-hero{height:125px;min-height:125px}#faq>.page-hero h1{font-size:clamp(25px,7vw,34px);padding:0 16px}#faq>.content-page{padding:22px 0}#faq .faq-page details{padding:0 14px}#faq .faq-page summary{padding:12px 0;font-size:14px}#faq .faq-page details p,#faq .faq-page details ul{padding-bottom:10px}}
+
+
+/* HEADER / LOGO HEIGHT MATCH
+   Keep the navigation bar exactly as tall as the displayed logo.
+   The menu control is sized to fit within that same height.
+*/
+.site-header{height:50px;min-height:0;padding:0}
+.site-header .nav-wrap{height:100%;min-height:0;align-items:center}
+.site-header .logo{display:flex;align-items:center;height:100%;flex:0 1 auto}
+.site-header .logo img{display:block;height:50px;width:auto;max-height:100%;max-width:175px;object-fit:contain}
+.site-header .site-nav{height:100%;align-items:center}
+.site-header .site-nav a{height:100%;min-height:0}
+.site-header .menu-toggle{width:40px;height:40px;flex:0 0 40px}
+@media (max-width:1200px) and (min-width:901px){
+  .site-header{height:50px}
+  .site-header .logo img{height:50px;max-width:150px}
+}
+@media (max-width:900px){
+  .site-header{height:44px;min-height:0}
+  .site-header .nav-wrap{height:100%;gap:10px}
+  .site-header .logo img{height:44px;width:auto;max-width:140px;max-height:100%}
+  .site-header .menu-toggle{width:40px;height:40px;flex-basis:40px}
+  .site-header .site-nav{top:44px;height:auto;max-height:calc(100vh - 44px)}
+}
+@media (max-width:600px){
+  .site-header{height:44px}
+  .site-header .logo img{height:44px;max-width:132px}
+  .site-header .site-nav{top:44px;max-height:calc(100vh - 44px)}
+}
+@media (max-width:360px){
+  .site-header .logo img{height:44px;max-width:124px}
+}
