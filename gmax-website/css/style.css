@@ -1397,3 +1397,7 @@ body{-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility}
     margin-top:18px;
   }
 }
+
+
+/* G-MAX company description: render the ISP/RURA/KTRN paragraph in solid black. */
+.site-footer .footer-brand p{color:#000!important}
