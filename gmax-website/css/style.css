@@ -1446,3 +1446,12 @@ body{-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility}
     max-width: 380px;
   }
 }
+/* Compact FAQ section only; preserve sizing and styling of all other sections. */
+#faq>.page-hero{height:160px;min-height:160px}
+#faq>.content-page{padding:38px 0}
+#faq .faq-page details{padding:0 20px;margin-bottom:9px}
+#faq .faq-page summary{padding:14px 0;font-size:16px}
+#faq .faq-page summary span{font-size:24px}
+#faq .faq-page details p,#faq .faq-page details ul{padding-bottom:12px}
+@media(max-width:800px){#faq>.page-hero{height:145px;min-height:145px}#faq>.content-page{padding:28px 0}}
+@media(max-width:560px){#faq>.page-hero{height:125px;min-height:125px}#faq>.page-hero h1{font-size:clamp(25px,7vw,34px);padding:0 16px}#faq>.content-page{padding:22px 0}#faq .faq-page details{padding:0 14px}#faq .faq-page summary{padding:12px 0;font-size:14px}#faq .faq-page details p,#faq .faq-page details ul{padding-bottom:10px}}
