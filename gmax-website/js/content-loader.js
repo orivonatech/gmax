@@ -12,13 +12,14 @@ function safeUrl(value,fallback='#'){
   }catch(e){}
   return fallback;
 }
-/* Resolve repository assets from the deployed site root.
-   This prevents relative image paths from breaking on nested pages. */
+/* Resolve local assets from the deployment root, not the current page URL.
+   Root-relative paths keep images working on /, /index.html, and legacy nested URLs. */
 function assetUrl(value,fallback=''){
   const raw=String(value||'').trim();
   if(!raw)return fallback;
-  if(/^assets\//i.test(raw)){
-    try{return new URL('./'+raw,document.baseURI).href}catch(e){return fallback}
+  if(/^\/?assets\//i.test(raw)){
+    const path=raw.replace(/^\/+/, '');
+    try{return new URL('/'+path,window.location.origin).href}catch(e){return '/'+path}
   }
   return safeUrl(raw,fallback);
 }
