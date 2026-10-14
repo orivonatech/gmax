@@ -1422,3 +1422,27 @@ body{-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility}
 .showcase-commitments ul li {
   color: #000000;
 }
+
+/* We are everywhere: reduce the image size and show the complete image without cropping. */
+.everywhere-image.single {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  aspect-ratio: auto;
+  margin-inline: auto;
+  overflow: hidden;
+}
+
+.everywhere-image.single img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transform: none;
+}
+
+@media (max-width: 1050px) {
+  .everywhere-image.single {
+    max-width: 380px;
+  }
+}
