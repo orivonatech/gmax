@@ -1417,3 +1417,8 @@ body{-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility}
 #services .services-showcase-title{
   color:#000!important;
 }
+
+/* Our Core Commitments: keep the heading styling unchanged and make only the commitment statements black. */
+.showcase-commitments ul li {
+  color: #000000;
+}
