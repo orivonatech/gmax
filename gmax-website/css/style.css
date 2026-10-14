@@ -1487,3 +1487,25 @@ body{-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility}
 @media (max-width:360px){
   .site-header .logo img{height:44px;max-width:124px}
 }
+
+
+/* SUBHEADER: intentionally shorter than the main logo header */
+.topbar{
+  min-height:26px;
+  height:26px;
+  padding:2px 0;
+}
+.topbar .topbar-inner{min-height:22px;height:22px;align-items:center}
+.topbar .topbar-contact{font-size:10px;line-height:1.2;gap:12px}
+.topbar .topbar-social{gap:8px}
+.topbar .topbar-social a{font-size:11px;line-height:1}
+@media(max-width:900px){
+  .topbar{min-height:24px;height:24px;padding:1px 0}
+  .topbar .topbar-inner{min-height:22px;height:22px}
+  .topbar .topbar-contact{font-size:9px;gap:8px}
+}
+@media(max-width:600px){
+  .topbar{min-height:22px;height:22px;padding:0}
+  .topbar .topbar-inner{min-height:22px;height:22px}
+  .topbar .topbar-contact{font-size:9px;gap:6px}
+}
