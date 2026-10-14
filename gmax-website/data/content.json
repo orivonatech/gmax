@@ -1,7 +1,7 @@
 {
-  "version": 10,
+  "version": 11,
   "status": "published",
-  "updatedAt": "2026-10-01T15:29:16.112Z",
+  "updatedAt": "2026-10-14T08:53:39.574Z",
   "homepage": {
     "heroHeading": "Telecom Activities",
     "heroSubtitle": "Building tomorrow’s connectivity today",
@@ -19,7 +19,7 @@
       "commitments": "",
       "services": ""
     },
-    "heroImage": "",
+    "heroImage": "assets/images/gmax-hero-1791968008497png",
     "heroButton": {
       "label": "",
       "url": ""
@@ -280,7 +280,7 @@
     {
       "role": "hero",
       "label": "Hero background",
-      "path": "",
+      "path": "assets/images/gmax-hero-1791968008497png",
       "alt": "G-MAX homepage hero"
     },
     {
