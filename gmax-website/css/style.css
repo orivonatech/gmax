@@ -319,8 +319,8 @@ body{color:var(--gmax-ink)}
 .container{width:min(1400px,calc(100% - 64px))}
 .topbar{height:42px;background:var(--gmax-navy)}
 .topbar-contact{gap:22px;font-size:13px}.topbar-contact i{color:var(--gmax-orange);font-size:14px}.topbar-social{gap:17px;font-size:15px}
-.site-header{height:82px;position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);box-shadow:0 2px 14px rgba(0,0,0,.05)}
-.site-header.is-scrolled{box-shadow:0 8px 26px rgba(0,0,0,.10)}.nav-wrap{gap:24px}.logo img{width:156px}
+.site-header{height:72px;position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);box-shadow:0 2px 14px rgba(0,0,0,.05)}
+.site-header.is-scrolled{box-shadow:0 8px 26px rgba(0,0,0,.10)}.nav-wrap{height:100%;gap:24px}.logo img{width:150px;height:auto;max-height:50px;object-fit:contain}
 .site-nav{gap:8px}.site-nav a{height:44px;padding:0 13px;border-radius:8px;font-size:14px;text-transform:none;color:var(--gmax-navy)}
 .site-nav a:after{bottom:0;left:13px;right:13px;height:3px;border-radius:3px;background:var(--gmax-orange)}
 .site-nav a:hover,.site-nav a.active{color:var(--gmax-orange);background:#fff7f0}.menu-toggle span:not(.sr-only){background:var(--gmax-navy)}
@@ -363,7 +363,7 @@ body{color:var(--gmax-ink)}
 .js-reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}.js-reveal.is-visible{opacity:1;transform:none}
 .scroll-down-widget{background:var(--gmax-orange)}.scroll-down-widget:hover{background:var(--gmax-green)}
 @media(max-width:1050px){.container{width:min(100% - 40px,1100px)}.service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.about-showcase-grid,.everywhere-grid{grid-template-columns:1fr;gap:35px}}
-@media(max-width:800px){.topbar{height:auto;padding:8px 0}.topbar-contact{gap:8px;flex-wrap:wrap;font-size:11px}.topbar-social{display:none}.site-header{height:72px}.logo img{width:140px}.menu-toggle{display:block}.site-nav{display:none;position:absolute;top:72px;left:0;right:0;height:auto;padding:10px 20px;background:#fff;box-shadow:0 14px 25px rgba(0,0,0,.12);flex-direction:column;gap:3px}.site-nav.open{display:flex}.site-nav a{width:100%;height:46px;padding:0 14px}.site-nav a:after{display:none}.hero{min-height:570px}.hero-content{padding-top:120px}.hero h1{font-size:42px}.service-grid{grid-template-columns:1fr 1fr}.footer-content{grid-template-columns:1fr 1fr;gap:35px}.footer-brand{grid-column:1/-1}}
+@media(max-width:800px){.topbar{height:auto;padding:8px 0}.topbar-contact{gap:8px;flex-wrap:wrap;font-size:11px}.topbar-social{display:none}.site-header{height:64px}.logo img{width:132px;max-height:44px}.menu-toggle{display:block}.site-nav{display:none;position:absolute;top:64px;left:0;right:0;height:auto;padding:10px 20px;background:#fff;box-shadow:0 14px 25px rgba(0,0,0,.12);flex-direction:column;gap:3px}.site-nav.open{display:flex}.site-nav a{width:100%;height:46px;padding:0 14px}.site-nav a:after{display:none}.hero{min-height:570px}.hero-content{padding-top:120px}.hero h1{font-size:42px}.service-grid{grid-template-columns:1fr 1fr}.footer-content{grid-template-columns:1fr 1fr;gap:35px}.footer-brand{grid-column:1/-1}}
 /* ===== PHONE BREAKPOINT =====
    Adjust single-column layouts, spacing and typography for phones here. */
 @media(max-width:560px){.container{width:calc(100% - 32px)}.service-grid{grid-template-columns:1fr}.service-card{min-height:auto}.hero{min-height:540px}.hero-content{padding-top:95px}.hero h1{font-size:36px}.about-showcase-grid{gap:26px}.promo-grid{gap:9px}.mission-vision-controls{flex-direction:column;gap:6px}.pricing-tabs{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.pricing-tab{white-space:nowrap}.footer-content{grid-template-columns:1fr}.footer-brand{grid-column:auto}}
